@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Nginx多站点配置 | Leo Young Blog | Don&#39;t Repeat Yourself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="nginx">
+    <meta name="description" content="nginx multi site">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx多站点配置">
+<meta property="og:url" content="http://leoyoung07.github.io/2016/11/21/nginx-multi-site/index.html">
+<meta property="og:site_name" content="Leo Young Blog">
+<meta property="og:description" content="nginx multi site">
+<meta property="og:updated_time" content="2017-02-08T05:32:30.081Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx多站点配置">
+<meta name="twitter:description" content="nginx multi site">
+    
+        <link rel="alternative" href="/atom.xml" title="Leo Young Blog" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/icon/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Leo Young</h5>
+          <a href="mailto:420760135@qq.com" title="420760135@qq.com" class="mail">420760135@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Leo Young Blog
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/leoyoung07" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2008885165" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Nginx多站点配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Nginx多站点配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-20T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2016-11-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Nginx/">Nginx</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装Nginx"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装Nginx</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Nginx下的PHP站点配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">Nginx下的PHP站点配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装PHP环境"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安装PHP环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装FastCgi"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">安装FastCgi</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置Nginx"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置Nginx</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置php-cgi开机启动"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">设置php-cgi开机启动</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Nginx下的Django站点配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">Nginx下的Django站点配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装Django"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装Django</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装uwsgi"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">安装uwsgi</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置uwsgi"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">配置uwsgi</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置Nginx-1"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">配置Nginx</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#处理静态文件"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">处理静态文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-nginx-multi-site"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Nginx多站点配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年11月21日 0:00" datetime="2016-11-20T16:00:00.000Z"  itemprop="datePublished">2016-11-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Nginx/">Nginx</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>利用Nginx可以在一台服务器上搭建多个站点，实现从不同的二级域名访问不同的web应用。例如，我有一级域名 leoyoung.site，其下有2个二级域名 test.leoyoung.site 和 blog.leoyoung.site，它们都解析至同一IP，通过配置Nginx可以实现将 test.leoyoung.site 指向一个PHP站点，将 blog.leoyoung.site 指向一个 Django站点。服务器运行ubuntu 14.04系统，以下是配置方法。</p>
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><p><code>sudo apt-get install nginx</code></p>
+<p>安装后，所有的配置文件都在/etc/nginx下， 程序文件为/usr/sbin/nginx。查看nginx.conf文件，注意到以下几行配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##</span></div><div class="line"><span class="comment"># Virtual Host Configs</span></div><div class="line"><span class="comment">##</span></div><div class="line"></div><div class="line">include /etc/nginx/conf.d/*.conf;</div><div class="line">include /etc/nginx/sites-enabled/*;</div></pre></td></tr></table></figure>
+<p>因此，可在/etc/nginx/conf.d/目录下添加conf文件以实现多站点配置。</p>
+<h1 id="Nginx下的PHP站点配置"><a href="#Nginx下的PHP站点配置" class="headerlink" title="Nginx下的PHP站点配置"></a>Nginx下的PHP站点配置</h1><ul>
+<li><h2 id="安装PHP环境"><a href="#安装PHP环境" class="headerlink" title="安装PHP环境"></a>安装PHP环境</h2><p>  <code>sudo apt-get install php5-cli php5-cgi mysql-server php5-mysql</code></p>
+</li>
+<li><h2 id="安装FastCgi"><a href="#安装FastCgi" class="headerlink" title="安装FastCgi"></a>安装FastCgi</h2><p>  <code>sudo apt-get install php5-fpm</code></p>
+</li>
+<li><h2 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h2><p>  在 <code>/etc/nginx/conf.d</code> 目录下创建<code>test.leoyoung.site.conf</code>配置文件，其内容为：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line"></div><div class="line">    root /data/htdoc/<span class="built_in">test</span>;</div><div class="line">    index index.html index.htm;</div><div class="line"></div><div class="line">    server_name test.leoyoung.site;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        <span class="comment"># First attempt to serve request as file, then</span></div><div class="line">        <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">        try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ =404;</div><div class="line">        <span class="comment"># Uncomment to enable naxsi on this location</span></div><div class="line">        <span class="comment"># include /etc/nginx/naxsi.rules</span></div><div class="line">    &#125;</div><div class="line">    location ~ \.php$ &#123;</div><div class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</div><div class="line">        <span class="comment"># <span class="doctag">NOTE:</span> You should have "cgi.fix_pathinfo = 0;" in php.ini</span></div><div class="line"></div><div class="line">        <span class="comment"># With php5-cgi alone:</span></div><div class="line">        fastcgi_pass 127.0.0.1:8000;</div><div class="line">        <span class="comment"># With php5-fpm:</span></div><div class="line">        <span class="comment">#fastcgi_pass unix:/var/run/php5-fpm.sock;</span></div><div class="line">        fastcgi_index index.php;</div><div class="line">        include fastcgi_params;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  <code>/data/htdoc/test</code> 为PHP站点的根目录。</p>
+</li>
+<li><h2 id="设置php-cgi开机启动"><a href="#设置php-cgi开机启动" class="headerlink" title="设置php-cgi开机启动"></a>设置php-cgi开机启动</h2><p>  在 中添加一行：</p>
+<p>  <code>spawn-fcgi -a 127.0.0.1 -p 8000 -C 10 -u www-data -f /usr/bin/php-cgi &gt;&gt; /data/log/phpcgi.log 2&gt;&amp;1 &amp;</code></p>
+<p> 其中， <code>/data/log/phpcgi.log</code> 为访问日志文件。</p>
+</li>
+</ul>
+<h1 id="Nginx下的Django站点配置"><a href="#Nginx下的Django站点配置" class="headerlink" title="Nginx下的Django站点配置"></a>Nginx下的Django站点配置</h1><ul>
+<li><h2 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h2><p>  <code>pip3 install Django</code></p>
+</li>
+<li><h2 id="安装uwsgi"><a href="#安装uwsgi" class="headerlink" title="安装uwsgi"></a>安装uwsgi</h2><p>  <code>pip3 install uwsgi</code></p>
+</li>
+<li><h2 id="配置uwsgi"><a href="#配置uwsgi" class="headerlink" title="配置uwsgi"></a>配置uwsgi</h2></li>
+</ul>
+<ul>
+<li><h2 id="配置Nginx-1"><a href="#配置Nginx-1" class="headerlink" title="配置Nginx"></a>配置Nginx</h2></li>
+<li><h2 id="处理静态文件"><a href="#处理静态文件" class="headerlink" title="处理静态文件"></a>处理静态文件</h2></li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><p><a href="http://wiki.ubuntu.org.cn/Nginx#.E5.AE.89.E8.A3.85nginx" target="_blank" rel="external">Nginx - Ubuntu中文</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/jhao/p/6071790.html" target="_blank" rel="external">Ubuntu上通过nginx部署Django笔记</a></p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-08T05:32:30.081Z" itemprop="dateUpdated">2017年2月8日 13:32</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2016/11/21/nginx-multi-site/" target="_blank" rel="external">http://leoyoung07.github.io/2016/11/21/nginx-multi-site/</a>
+    </div>
+    <footer>
+        <a href="http://leoyoung07.github.io">
+            <img src="/img/avatar.jpg" alt="Leo Young">
+            Leo Young
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/&title=《Nginx多站点配置》 — Leo Young Blog&pic=http://leoyoung07.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/&title=《Nginx多站点配置》 — Leo Young Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Nginx多站点配置》 — Leo Young Blog&url=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/&via=http://leoyoung07.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/04/cloud-clipboard-based-on-lan/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">局域网环境下的“云”剪贴板</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/09/10/mvvm-light-dev-1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">MVVM Light 应用开发（一）——入门</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="nginx-multi-site" data-title="Nginx多站点配置" data-url="http://leoyoung07.github.io/2016/11/21/nginx-multi-site/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'leoyoung', theme: 'none'};
+lazyScripts.push('/js/embed.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Leo Young Blog &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/&title=《Nginx多站点配置》 — Leo Young Blog&pic=http://leoyoung07.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/&title=《Nginx多站点配置》 — Leo Young Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Nginx多站点配置》 — Leo Young Blog&url=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/&via=http://leoyoung07.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leoyoung07.github.io/2016/11/21/nginx-multi-site/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aSW7DMAwF0Nz/0u66COx8knELS0+roJn0smA5vV7xOd7O+7Nnr08+M3/X6GBgYDyWcVyeHqN60fx7T6kYGBgbMM4uMblo9PUB4/puGBgYGMnjaiJ4fV0MDAyMOxjXwbda6GJgYGBMithqGJ38HDfW4hgYGA9k5F33v398y3wDAwPjUYyjeHqpYRKCqw27X+/CwMBYmpEHuGT02BshVFc0Tl+JgYGxDWOyHpEEzeoqRqFkxcDAWJqRh7x8SJksUkyGBB94GBgYCzGqxWS+bNH7Fa8ZX/iPgYGB8UDGvCnWW/xK/lIO+hgYGIsyeqXmPIzOm3oYGBj7MKqDgSQszkehzaIaAwNjA8Yk1Obt/rxhVx4YYGBgbMPorUp8q0mXZHqn78LAwFiUkS9VJOVrL8hWQ/yH3BYDA2MDRp7eJa26f1u2wMDAWI6RFJZJqG1uohXbeYVGGwYGxkKMyUiyOm7std4+fDsGBsbSjOrQcd7Q70XIZMkMAwNjN0aeolWXt5LljN4KCAYGxg6MaplaTQQLaxPF9h8GBsaejF5K11uY6A04T1NDDAyM5RhH8bziU07sJskiBgbG0ozqtaqBdTISmEwnMTAw1mMkQbb30flCWC/gYmBg7MboLVXkiWZ5JNkrZTEwMDDiEnRSYzY/HwMDAyNeWk1WxKoD0SjdxMDA2ICRXyIJrL1hZx7iMTAwdmP0krbq4POO4SgGBsYGjB/6u9sZbF3DmAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

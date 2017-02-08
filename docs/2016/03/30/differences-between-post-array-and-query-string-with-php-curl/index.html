@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>PHP curl post 数组与 post query字符串的区别 | Leo Young Blog | Don&#39;t Repeat Yourself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="php,curl,post">
+    <meta name="description" content="使用PHP的curl方法post数据时通常使用以下方法：
+123456789$post_fields = [&quot;aaa&quot;=&amp;gt;&quot;aaaa&quot;, &quot;bbb&quot;=&amp;gt;&quot;bbbb&quot;];$url = &quot;http://localhost/sandbox/PHPTest/output.php&quot;;$ch = curl_init();curl_setopt($ch, CURLOPT_URL, $url);cur">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP curl post 数组与 post query字符串的区别">
+<meta property="og:url" content="http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/index.html">
+<meta property="og:site_name" content="Leo Young Blog">
+<meta property="og:description" content="使用PHP的curl方法post数据时通常使用以下方法：
+123456789$post_fields = [&quot;aaa&quot;=&amp;gt;&quot;aaaa&quot;, &quot;bbb&quot;=&amp;gt;&quot;bbbb&quot;];$url = &quot;http://localhost/sandbox/PHPTest/output.php&quot;;$ch = curl_init();curl_setopt($ch, CURLOPT_URL, $url);cur">
+<meta property="og:image" content="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/1.png">
+<meta property="og:image" content="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/2.png">
+<meta property="og:image" content="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/3.png">
+<meta property="og:image" content="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/4.png">
+<meta property="og:updated_time" content="2017-02-08T05:30:50.755Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP curl post 数组与 post query字符串的区别">
+<meta name="twitter:description" content="使用PHP的curl方法post数据时通常使用以下方法：
+123456789$post_fields = [&quot;aaa&quot;=&amp;gt;&quot;aaaa&quot;, &quot;bbb&quot;=&amp;gt;&quot;bbbb&quot;];$url = &quot;http://localhost/sandbox/PHPTest/output.php&quot;;$ch = curl_init();curl_setopt($ch, CURLOPT_URL, $url);cur">
+<meta name="twitter:image" content="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/1.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Leo Young Blog" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/icon/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Leo Young</h5>
+          <a href="mailto:420760135@qq.com" title="420760135@qq.com" class="mail">420760135@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Leo Young Blog
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/leoyoung07" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2008885165" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">PHP curl post 数组与 post query字符串的区别</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">PHP curl post 数组与 post query字符串的区别</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-03-29T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2016-03-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#直接post数组"><span class="post-toc-number">1.</span> <span class="post-toc-text">直接post数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#post-query字符串"><span class="post-toc-number">2.</span> <span class="post-toc-text">post query字符串</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-differences-between-post-array-and-query-string-with-php-curl"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">PHP curl post 数组与 post query字符串的区别</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年03月30日 0:00" datetime="2016-03-29T16:00:00.000Z"  itemprop="datePublished">2016-03-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>使用PHP的curl方法post数据时通常使用以下方法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$post_fields = [<span class="string">"aaa"</span>=&gt;<span class="string">"aaaa"</span>, <span class="string">"bbb"</span>=&gt;<span class="string">"bbbb"</span>];</div><div class="line">$url = <span class="string">"http://localhost/sandbox/PHPTest/output.php"</span>;</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch, CURLOPT_URL, $url);</div><div class="line">curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);</div><div class="line">curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</div><div class="line">$response = curl_exec($ch);</div><div class="line"><span class="keyword">echo</span> $response;</div></pre></td></tr></table></figure>
+<p>$url为php页面时，该方法没有遇到问题，但$url为jsp页面时，出现post数据为空的情况，即在jsp页面用<code>request.getParameter(&quot;aaa&quot;)</code>得到的结果为null。尝试将$post_fields拼接为query字符串：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$post_fields = http_build_query($post_fields);</div></pre></td></tr></table></figure>
+<p>结果正确。<br>抓包对比直接post数组与post query字符串两种方法结果如下：</p>
+<ul>
+<li><h3 id="直接post数组"><a href="#直接post数组" class="headerlink" title="直接post数组"></a>直接post数组</h3><ul>
+<li><p>header</p>
+<p>  <img src="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/1.png" alt="array header"></p>
+</li>
+<li><p>body</p>
+<p>  <img src="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/2.png" alt="array body"></p>
+</li>
+</ul>
+</li>
+<li><h3 id="post-query字符串"><a href="#post-query字符串" class="headerlink" title="post query字符串"></a>post query字符串</h3><ul>
+<li><p>header</p>
+<p>  <img src="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/3.png" alt="query string header"></p>
+</li>
+<li><p>body</p>
+<p>  <img src="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/4.png" alt="query string body"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>可见，直接post数组时，Content-type为<code>multipart/form-data</code>；而post query字符串时Content-type为<code>application/x-www-form-urlencoded</code>。</p>
+<p>PHP手册中对CURLOPT_POSTFIELDS的说明如下：</p>
+<blockquote>
+<p>全部数据使用HTTP协议中的”POST”操作来发送。要发送文件，在文件名前面加上@前缀并使用完整路径。这个参数可以通过urlencoded后的字符串类似’para1=val1&amp;para2=val2&amp;…’或使用一个以字段名为键值，字段数据为值的数组。如果value是一个数组，Content-Type头将会被设置成multipart/form-data。</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-08T05:30:50.755Z" itemprop="dateUpdated">2017年2月8日 13:30</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/" target="_blank" rel="external">http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/</a>
+    </div>
+    <footer>
+        <a href="http://leoyoung07.github.io">
+            <img src="/img/avatar.jpg" alt="Leo Young">
+            Leo Young
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/curl/">curl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/">post</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/&title=《PHP curl post 数组与 post query字符串的区别》 — Leo Young Blog&pic=http://leoyoung07.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/&title=《PHP curl post 数组与 post query字符串的区别》 — Leo Young Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP curl post 数组与 post query字符串的区别》 — Leo Young Blog&url=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/&via=http://leoyoung07.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/04/01/jsonp-and-cross-domain/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JSONP与跨域问题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/03/28/git-server-on-windows/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">在windows环境下用GitStack搭建git server的方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="differences-between-post-array-and-query-string-with-php-curl" data-title="PHP curl post 数组与 post query字符串的区别" data-url="http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'leoyoung', theme: 'none'};
+lazyScripts.push('/js/embed.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Leo Young Blog &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/&title=《PHP curl post 数组与 post query字符串的区别》 — Leo Young Blog&pic=http://leoyoung07.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/&title=《PHP curl post 数组与 post query字符串的区别》 — Leo Young Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PHP curl post 数组与 post query字符串的区别》 — Leo Young Blog&url=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/&via=http://leoyoung07.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADOUlEQVR42u3awY7iMBAEUP7/p1lpTyshslXtIGHzckIjcPySQ4+7+vGIr+ff69/Pr9frN5Pvv/vO9W+vV7vtwsbGxt6EnSx3DXtd5/pX72DJ3pI7Ro8GGxsb+zh2UrRmJW29TM5ez3+M2NjY2D/JTkjJdvO750ULGxsbGzsvYMnW8zKWtJOSe2FjY2NjJ//izx5Q+8jaB/rxXho2Njb217Nn7Z7v/PzxfBsbGxv7y9jP5astWu12k+ZUvWdsbGzsg9htA2i2obyCtIeT9tgT5Q/Y2NjYm7NnMWo7uDMLfWc7f7t/bGxs7CPYs5KTF7Yk0F1fIY8QsLGxsc9jzwZ01ls/KwFzvk5kwcbGxt6cfV1U2pvNykk+ZJNHDvWMEjY2Nva27OTI0Zac/AAzCwZWImdsbGzs89htEWo3N5uEzAvhdSuqyEOwsbGxt2XfW1RWOlttcbo3osbGxsY+iZ3f4K7200pBau8SvXNsbGzsrdhtI36lBd82jGa/jVbGxsbGPoh9VzNo1ni6dzxo2N7CxsbG3pydj9cUJSFu/c/WyUOFt2tiY2NjH8Rujx+zkpa0jT43BlQUM2xsbOxt2Xkjvn6W5QDNJ5pK2NjY2L/GXhl/zA8k+RBPfrBJPmNjY2Ofx27bNCutqOQNtCNB+V0e7XLY2NjYm7BXyszKkOVslDM/qBTxAzY2Nvbm7JWDR95mygOD295hnm9jY2Njb85uQ9y2QZ8/srZE3RAeYGNjYx/Ebrfelr31+OG2UUtsbGzsn2G31DY8yB9oHlQMDz/Y2NjYR7Dbf+Vn8UB+OGnD3fzvb0MCbGxs7M3Zn9hEO+7TDvq04zvRQQUbGxv7CPZK3Jtsq41pVw4nw8QbGxsbe1t2++9+2xKatYHuGvpZ6qVhY2NjfzH7WV7ryWkb/a4EA29fGzY2NvZB7HayJY8Brh9EO5qzXp+xsbGxz2Yn21opOSvHjPzIkQ8GYWNjY5/KHvai4k3kjfsasNJawsbGxv5JdlJy2mNJ21RaiS6wsbGxf5k9i2nzgpdHAm2JxcbGxv4F9qzdM9vu9TfbYpkXTmxsbOxT2W1rZqXxVB8YygNMHkVgY2NjH8H+A6tAqm6FPPExAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
