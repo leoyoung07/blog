@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Leo Young Blog</title>
   <subtitle>Don&#39;t Repeat Yourself</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/blog/atom.xml" rel="self"/>
   
-  <link href="http://leoyoung07.github.io/"/>
+  <link href="http://leoyoung07.github.io/blog/"/>
   <updated>2017-02-08T05:32:42.297Z</updated>
-  <id>http://leoyoung07.github.io/</id>
+  <id>http://leoyoung07.github.io/blog/</id>
   
   <author>
     <name>Leo Young</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>局域网环境下的“云”剪贴板</title>
-    <link href="http://leoyoung07.github.io/2016/12/04/cloud-clipboard-based-on-lan/"/>
-    <id>http://leoyoung07.github.io/2016/12/04/cloud-clipboard-based-on-lan/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/12/04/cloud-clipboard-based-on-lan/"/>
+    <id>http://leoyoung07.github.io/blog/2016/12/04/cloud-clipboard-based-on-lan/</id>
     <published>2016-12-03T16:00:00.000Z</published>
     <updated>2017-02-08T05:32:42.297Z</updated>
     
@@ -28,21 +28,21 @@
     
     </summary>
     
-      <category term="L-Clipboard" scheme="http://leoyoung07.github.io/categories/L-Clipboard/"/>
+      <category term="L-Clipboard" scheme="http://leoyoung07.github.io/blog/categories/L-Clipboard/"/>
     
     
-      <category term="c#" scheme="http://leoyoung07.github.io/tags/c/"/>
+      <category term="c#" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
     
-      <category term="tcp" scheme="http://leoyoung07.github.io/tags/tcp/"/>
+      <category term="tcp" scheme="http://leoyoung07.github.io/blog/tags/tcp/"/>
     
-      <category term="udp" scheme="http://leoyoung07.github.io/tags/udp/"/>
+      <category term="udp" scheme="http://leoyoung07.github.io/blog/tags/udp/"/>
     
   </entry>
   
   <entry>
     <title>Nginx多站点配置</title>
-    <link href="http://leoyoung07.github.io/2016/11/21/nginx-multi-site/"/>
-    <id>http://leoyoung07.github.io/2016/11/21/nginx-multi-site/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/11/21/nginx-multi-site/"/>
+    <id>http://leoyoung07.github.io/blog/2016/11/21/nginx-multi-site/</id>
     <published>2016-11-20T16:00:00.000Z</published>
     <updated>2017-02-08T05:32:30.081Z</updated>
     
@@ -90,17 +90,17 @@
     
     </summary>
     
-      <category term="Nginx" scheme="http://leoyoung07.github.io/categories/Nginx/"/>
+      <category term="Nginx" scheme="http://leoyoung07.github.io/blog/categories/Nginx/"/>
     
     
-      <category term="nginx" scheme="http://leoyoung07.github.io/tags/nginx/"/>
+      <category term="nginx" scheme="http://leoyoung07.github.io/blog/tags/nginx/"/>
     
   </entry>
   
   <entry>
     <title>MVVM Light 应用开发（一）——入门</title>
-    <link href="http://leoyoung07.github.io/2016/09/10/mvvm-light-dev-1/"/>
-    <id>http://leoyoung07.github.io/2016/09/10/mvvm-light-dev-1/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/09/10/mvvm-light-dev-1/"/>
+    <id>http://leoyoung07.github.io/blog/2016/09/10/mvvm-light-dev-1/</id>
     <published>2016-09-09T16:00:00.000Z</published>
     <updated>2017-02-08T05:32:16.323Z</updated>
     
@@ -112,21 +112,21 @@
     
     </summary>
     
-      <category term="MVVM-Light-Dev" scheme="http://leoyoung07.github.io/categories/MVVM-Light-Dev/"/>
+      <category term="MVVM-Light-Dev" scheme="http://leoyoung07.github.io/blog/categories/MVVM-Light-Dev/"/>
     
     
-      <category term="c#" scheme="http://leoyoung07.github.io/tags/c/"/>
+      <category term="c#" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
     
-      <category term="mvvm" scheme="http://leoyoung07.github.io/tags/mvvm/"/>
+      <category term="mvvm" scheme="http://leoyoung07.github.io/blog/tags/mvvm/"/>
     
-      <category term="wpf" scheme="http://leoyoung07.github.io/tags/wpf/"/>
+      <category term="wpf" scheme="http://leoyoung07.github.io/blog/tags/wpf/"/>
     
   </entry>
   
   <entry>
     <title>用C语言开发PHP扩展（一）——入门与填坑</title>
-    <link href="http://leoyoung07.github.io/2016/08/30/dev-php-extension-in-c-1/"/>
-    <id>http://leoyoung07.github.io/2016/08/30/dev-php-extension-in-c-1/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-1/"/>
+    <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-1/</id>
     <published>2016-08-29T16:00:00.000Z</published>
     <updated>2017-02-08T05:31:43.968Z</updated>
     
@@ -175,19 +175,19 @@
     
     </summary>
     
-      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/categories/PHP-Extension-Dev/"/>
+      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/blog/categories/PHP-Extension-Dev/"/>
     
     
-      <category term="c" scheme="http://leoyoung07.github.io/tags/c/"/>
+      <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
     
-      <category term="php" scheme="http://leoyoung07.github.io/tags/php/"/>
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
   </entry>
   
   <entry>
     <title>用C语言开发PHP扩展（二）——封装C函数的扩展</title>
-    <link href="http://leoyoung07.github.io/2016/08/30/dev-php-extension-in-c-2/"/>
-    <id>http://leoyoung07.github.io/2016/08/30/dev-php-extension-in-c-2/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/"/>
+    <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/</id>
     <published>2016-08-29T16:00:00.000Z</published>
     <updated>2017-02-08T05:31:58.771Z</updated>
     
@@ -203,19 +203,19 @@
     
     </summary>
     
-      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/categories/PHP-Extension-Dev/"/>
+      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/blog/categories/PHP-Extension-Dev/"/>
     
     
-      <category term="c" scheme="http://leoyoung07.github.io/tags/c/"/>
+      <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
     
-      <category term="php" scheme="http://leoyoung07.github.io/tags/php/"/>
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript中的求模和求余</title>
-    <link href="http://leoyoung07.github.io/2016/06/07/mod-and-rem-in-javascript/"/>
-    <id>http://leoyoung07.github.io/2016/06/07/mod-and-rem-in-javascript/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/06/07/mod-and-rem-in-javascript/"/>
+    <id>http://leoyoung07.github.io/blog/2016/06/07/mod-and-rem-in-javascript/</id>
     <published>2016-06-06T16:00:00.000Z</published>
     <updated>2017-02-08T05:31:30.083Z</updated>
     
@@ -246,19 +246,19 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://leoyoung07.github.io/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://leoyoung07.github.io/blog/categories/JavaScript/"/>
     
     
-      <category term="javascript" scheme="http://leoyoung07.github.io/tags/javascript/"/>
+      <category term="javascript" scheme="http://leoyoung07.github.io/blog/tags/javascript/"/>
     
-      <category term="math" scheme="http://leoyoung07.github.io/tags/math/"/>
+      <category term="math" scheme="http://leoyoung07.github.io/blog/tags/math/"/>
     
   </entry>
   
   <entry>
     <title>关于C语言中的getch和getchar函数</title>
-    <link href="http://leoyoung07.github.io/2016/04/28/c-getch-getchar/"/>
-    <id>http://leoyoung07.github.io/2016/04/28/c-getch-getchar/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/04/28/c-getch-getchar/"/>
+    <id>http://leoyoung07.github.io/blog/2016/04/28/c-getch-getchar/</id>
     <published>2016-04-27T16:00:00.000Z</published>
     <updated>2017-02-08T05:31:16.424Z</updated>
     
@@ -291,23 +291,23 @@
     
     </summary>
     
-      <category term="C" scheme="http://leoyoung07.github.io/categories/C/"/>
+      <category term="C" scheme="http://leoyoung07.github.io/blog/categories/C/"/>
     
     
-      <category term="c" scheme="http://leoyoung07.github.io/tags/c/"/>
+      <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
     
-      <category term="buffer" scheme="http://leoyoung07.github.io/tags/buffer/"/>
+      <category term="buffer" scheme="http://leoyoung07.github.io/blog/tags/buffer/"/>
     
-      <category term="LF" scheme="http://leoyoung07.github.io/tags/LF/"/>
+      <category term="LF" scheme="http://leoyoung07.github.io/blog/tags/LF/"/>
     
-      <category term="windows" scheme="http://leoyoung07.github.io/tags/windows/"/>
+      <category term="windows" scheme="http://leoyoung07.github.io/blog/tags/windows/"/>
     
   </entry>
   
   <entry>
     <title>JSONP与跨域问题</title>
-    <link href="http://leoyoung07.github.io/2016/04/01/jsonp-and-cross-domain/"/>
-    <id>http://leoyoung07.github.io/2016/04/01/jsonp-and-cross-domain/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/04/01/jsonp-and-cross-domain/"/>
+    <id>http://leoyoung07.github.io/blog/2016/04/01/jsonp-and-cross-domain/</id>
     <published>2016-03-31T16:00:00.000Z</published>
     <updated>2017-02-08T05:31:03.393Z</updated>
     
@@ -337,21 +337,21 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://leoyoung07.github.io/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://leoyoung07.github.io/blog/categories/JavaScript/"/>
     
     
-      <category term="javascript" scheme="http://leoyoung07.github.io/tags/javascript/"/>
+      <category term="javascript" scheme="http://leoyoung07.github.io/blog/tags/javascript/"/>
     
-      <category term="jsonp" scheme="http://leoyoung07.github.io/tags/jsonp/"/>
+      <category term="jsonp" scheme="http://leoyoung07.github.io/blog/tags/jsonp/"/>
     
-      <category term="cross-domain" scheme="http://leoyoung07.github.io/tags/cross-domain/"/>
+      <category term="cross-domain" scheme="http://leoyoung07.github.io/blog/tags/cross-domain/"/>
     
   </entry>
   
   <entry>
     <title>PHP curl post 数组与 post query字符串的区别</title>
-    <link href="http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/"/>
-    <id>http://leoyoung07.github.io/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/"/>
+    <id>http://leoyoung07.github.io/blog/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/</id>
     <published>2016-03-29T16:00:00.000Z</published>
     <updated>2017-02-08T05:30:50.755Z</updated>
     
@@ -394,21 +394,21 @@
     
     </summary>
     
-      <category term="PHP" scheme="http://leoyoung07.github.io/categories/PHP/"/>
+      <category term="PHP" scheme="http://leoyoung07.github.io/blog/categories/PHP/"/>
     
     
-      <category term="php" scheme="http://leoyoung07.github.io/tags/php/"/>
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
-      <category term="curl" scheme="http://leoyoung07.github.io/tags/curl/"/>
+      <category term="curl" scheme="http://leoyoung07.github.io/blog/tags/curl/"/>
     
-      <category term="post" scheme="http://leoyoung07.github.io/tags/post/"/>
+      <category term="post" scheme="http://leoyoung07.github.io/blog/tags/post/"/>
     
   </entry>
   
   <entry>
     <title>在windows环境下用GitStack搭建git server的方法</title>
-    <link href="http://leoyoung07.github.io/2016/03/28/git-server-on-windows/"/>
-    <id>http://leoyoung07.github.io/2016/03/28/git-server-on-windows/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/03/28/git-server-on-windows/"/>
+    <id>http://leoyoung07.github.io/blog/2016/03/28/git-server-on-windows/</id>
     <published>2016-03-27T16:00:00.000Z</published>
     <updated>2017-02-08T05:30:32.071Z</updated>
     
@@ -457,21 +457,21 @@
     
     </summary>
     
-      <category term="Git" scheme="http://leoyoung07.github.io/categories/Git/"/>
+      <category term="Git" scheme="http://leoyoung07.github.io/blog/categories/Git/"/>
     
     
-      <category term="windows" scheme="http://leoyoung07.github.io/tags/windows/"/>
+      <category term="windows" scheme="http://leoyoung07.github.io/blog/tags/windows/"/>
     
-      <category term="git" scheme="http://leoyoung07.github.io/tags/git/"/>
+      <category term="git" scheme="http://leoyoung07.github.io/blog/tags/git/"/>
     
-      <category term="server" scheme="http://leoyoung07.github.io/tags/server/"/>
+      <category term="server" scheme="http://leoyoung07.github.io/blog/tags/server/"/>
     
   </entry>
   
   <entry>
     <title>用JavaScript获取URL参数的方法</title>
-    <link href="http://leoyoung07.github.io/2016/03/27/javascript-get-url-search-params/"/>
-    <id>http://leoyoung07.github.io/2016/03/27/javascript-get-url-search-params/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/03/27/javascript-get-url-search-params/"/>
+    <id>http://leoyoung07.github.io/blog/2016/03/27/javascript-get-url-search-params/</id>
     <published>2016-03-26T16:00:00.000Z</published>
     <updated>2017-02-08T05:30:13.482Z</updated>
     
@@ -490,19 +490,19 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://leoyoung07.github.io/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://leoyoung07.github.io/blog/categories/JavaScript/"/>
     
     
-      <category term="javascript" scheme="http://leoyoung07.github.io/tags/javascript/"/>
+      <category term="javascript" scheme="http://leoyoung07.github.io/blog/tags/javascript/"/>
     
-      <category term="regex" scheme="http://leoyoung07.github.io/tags/regex/"/>
+      <category term="regex" scheme="http://leoyoung07.github.io/blog/tags/regex/"/>
     
   </entry>
   
   <entry>
     <title>微信公众平台下通过网页授权获取用户信息的方法</title>
-    <link href="http://leoyoung07.github.io/2016/03/22/wechat-auth-get-user-info/"/>
-    <id>http://leoyoung07.github.io/2016/03/22/wechat-auth-get-user-info/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/03/22/wechat-auth-get-user-info/"/>
+    <id>http://leoyoung07.github.io/blog/2016/03/22/wechat-auth-get-user-info/</id>
     <published>2016-03-21T16:00:00.000Z</published>
     <updated>2017-02-08T05:29:46.773Z</updated>
     
@@ -542,19 +542,19 @@
     
     </summary>
     
-      <category term="WeChat" scheme="http://leoyoung07.github.io/categories/WeChat/"/>
+      <category term="WeChat" scheme="http://leoyoung07.github.io/blog/categories/WeChat/"/>
     
     
-      <category term="php" scheme="http://leoyoung07.github.io/tags/php/"/>
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
-      <category term="wechat" scheme="http://leoyoung07.github.io/tags/wechat/"/>
+      <category term="wechat" scheme="http://leoyoung07.github.io/blog/tags/wechat/"/>
     
   </entry>
   
   <entry>
     <title>将数字转换为EXCEL列名的方法</title>
-    <link href="http://leoyoung07.github.io/2015/12/26/number-to-excel-letter/"/>
-    <id>http://leoyoung07.github.io/2015/12/26/number-to-excel-letter/</id>
+    <link href="http://leoyoung07.github.io/blog/2015/12/26/number-to-excel-letter/"/>
+    <id>http://leoyoung07.github.io/blog/2015/12/26/number-to-excel-letter/</id>
     <published>2015-12-25T16:00:00.000Z</published>
     <updated>2017-02-08T05:39:50.350Z</updated>
     
@@ -567,19 +567,19 @@
     
     </summary>
     
-      <category term="PHP" scheme="http://leoyoung07.github.io/categories/PHP/"/>
+      <category term="PHP" scheme="http://leoyoung07.github.io/blog/categories/PHP/"/>
     
     
-      <category term="php" scheme="http://leoyoung07.github.io/tags/php/"/>
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
-      <category term="convert" scheme="http://leoyoung07.github.io/tags/convert/"/>
+      <category term="convert" scheme="http://leoyoung07.github.io/blog/tags/convert/"/>
     
   </entry>
   
   <entry>
     <title>微信公众平台带参数二维码配置工具的实现</title>
-    <link href="http://leoyoung07.github.io/2015/12/09/wechat-qr-code-manage/"/>
-    <id>http://leoyoung07.github.io/2015/12/09/wechat-qr-code-manage/</id>
+    <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/"/>
+    <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/</id>
     <published>2015-12-08T16:00:00.000Z</published>
     <updated>2017-02-08T05:29:20.565Z</updated>
     
@@ -602,23 +602,23 @@
     
     </summary>
     
-      <category term="WeChat" scheme="http://leoyoung07.github.io/categories/WeChat/"/>
+      <category term="WeChat" scheme="http://leoyoung07.github.io/blog/categories/WeChat/"/>
     
     
-      <category term="php" scheme="http://leoyoung07.github.io/tags/php/"/>
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
-      <category term="curl" scheme="http://leoyoung07.github.io/tags/curl/"/>
+      <category term="curl" scheme="http://leoyoung07.github.io/blog/tags/curl/"/>
     
-      <category term="wechat" scheme="http://leoyoung07.github.io/tags/wechat/"/>
+      <category term="wechat" scheme="http://leoyoung07.github.io/blog/tags/wechat/"/>
     
-      <category term="tools" scheme="http://leoyoung07.github.io/tags/tools/"/>
+      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
     
   </entry>
   
   <entry>
     <title>微信公众平台自定义菜单配置工具的实现</title>
-    <link href="http://leoyoung07.github.io/2015/12/09/wechat-button-manage/"/>
-    <id>http://leoyoung07.github.io/2015/12/09/wechat-button-manage/</id>
+    <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/"/>
+    <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/</id>
     <published>2015-12-08T16:00:00.000Z</published>
     <updated>2017-02-08T05:28:56.199Z</updated>
     
@@ -641,16 +641,16 @@
     
     </summary>
     
-      <category term="WeChat" scheme="http://leoyoung07.github.io/categories/WeChat/"/>
+      <category term="WeChat" scheme="http://leoyoung07.github.io/blog/categories/WeChat/"/>
     
     
-      <category term="php" scheme="http://leoyoung07.github.io/tags/php/"/>
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
-      <category term="curl" scheme="http://leoyoung07.github.io/tags/curl/"/>
+      <category term="curl" scheme="http://leoyoung07.github.io/blog/tags/curl/"/>
     
-      <category term="wechat" scheme="http://leoyoung07.github.io/tags/wechat/"/>
+      <category term="wechat" scheme="http://leoyoung07.github.io/blog/tags/wechat/"/>
     
-      <category term="tools" scheme="http://leoyoung07.github.io/tags/tools/"/>
+      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
     
   </entry>
   
