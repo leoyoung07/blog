@@ -34,18 +34,18 @@ $post_fields = http_build_query($post_fields);
 - ### 直接post数组
     - header
 
-        ![array header](http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/1.png)
+        ![array header](http://leoyoung07.github.io/blog/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/1.png)
     - body
 
-        ![array body](http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/2.png)
+        ![array body](http://leoyoung07.github.io/blog/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/2.png)
 
 - ### post query字符串
     - header
 
-        ![query string header](http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/3.png)
+        ![query string header](http://leoyoung07.github.io/blog/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/3.png)
     - body
 
-        ![query string body](http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/4.png)
+        ![query string body](http://leoyoung07.github.io/blog/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/4.png)
 
 可见，直接post数组时，Content-type为`multipart/form-data`；而post query字符串时Content-type为`application/x-www-form-urlencoded`。
 

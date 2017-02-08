@@ -353,7 +353,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/"/>
     <id>http://leoyoung07.github.io/blog/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/</id>
     <published>2016-03-29T16:00:00.000Z</published>
-    <updated>2017-02-08T05:30:50.755Z</updated>
+    <updated>2017-02-08T10:22:19.767Z</updated>
     
     <content type="html"><![CDATA[<p>使用PHP的curl方法post数据时通常使用以下方法：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$post_fields = [<span class="string">"aaa"</span>=&gt;<span class="string">"aaaa"</span>, <span class="string">"bbb"</span>=&gt;<span class="string">"bbbb"</span>];</div><div class="line">$url = <span class="string">"http://localhost/sandbox/PHPTest/output.php"</span>;</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch, CURLOPT_URL, $url);</div><div class="line">curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);</div><div class="line">curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</div><div class="line">$response = curl_exec($ch);</div><div class="line"><span class="keyword">echo</span> $response;</div></pre></td></tr></table></figure>
@@ -363,19 +363,19 @@
 <ul>
 <li><h3 id="直接post数组"><a href="#直接post数组" class="headerlink" title="直接post数组"></a>直接post数组</h3><ul>
 <li><p>header</p>
-<p>  <img src="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/1.png" alt="array header"></p>
+<p>  <img src="http://leoyoung07.github.io/blog/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/1.png" alt="array header"></p>
 </li>
 <li><p>body</p>
-<p>  <img src="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/2.png" alt="array body"></p>
+<p>  <img src="http://leoyoung07.github.io/blog/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/2.png" alt="array body"></p>
 </li>
 </ul>
 </li>
 <li><h3 id="post-query字符串"><a href="#post-query字符串" class="headerlink" title="post query字符串"></a>post query字符串</h3><ul>
 <li><p>header</p>
-<p>  <img src="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/3.png" alt="query string header"></p>
+<p>  <img src="http://leoyoung07.github.io/blog/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/3.png" alt="query string header"></p>
 </li>
 <li><p>body</p>
-<p>  <img src="http://leoyoung07.github.io/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/4.png" alt="query string body"></p>
+<p>  <img src="http://leoyoung07.github.io/blog/img/2016-03-30-differences-between-post-array-and-query-string-with-php-curl/4.png" alt="query string body"></p>
 </li>
 </ul>
 </li>
