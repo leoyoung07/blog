@@ -124,6 +124,34 @@
   </entry>
   
   <entry>
+    <title>用C语言开发PHP扩展（二）——封装C函数的扩展</title>
+    <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/"/>
+    <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/</id>
+    <published>2016-08-29T16:00:00.000Z</published>
+    <updated>2017-02-08T05:31:58.771Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>函数定义之间不能有空行</li>
+<li>使用资源是为了实现自动释放</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      dev php extension in c 2
+    
+    </summary>
+    
+      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/blog/categories/PHP-Extension-Dev/"/>
+    
+    
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
+    
+      <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用C语言开发PHP扩展（一）——入门与填坑</title>
     <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-1/"/>
     <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-1/</id>
@@ -178,37 +206,9 @@
       <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/blog/categories/PHP-Extension-Dev/"/>
     
     
-      <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
-    
       <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
-  </entry>
-  
-  <entry>
-    <title>用C语言开发PHP扩展（二）——封装C函数的扩展</title>
-    <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/"/>
-    <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/</id>
-    <published>2016-08-29T16:00:00.000Z</published>
-    <updated>2017-02-08T05:31:58.771Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>函数定义之间不能有空行</li>
-<li>使用资源是为了实现自动释放</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      dev php extension in c 2
-    
-    </summary>
-    
-      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/blog/categories/PHP-Extension-Dev/"/>
-    
-    
       <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
-    
-      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
   </entry>
   
