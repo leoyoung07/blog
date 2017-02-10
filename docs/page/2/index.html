@@ -99,9 +99,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/blog/custom"  >
+              <a href="/blog/friends"  >
                 <i class="icon icon-lg icon-link"></i>
-                测试
+                Friends
               </a>
             </li>
         
@@ -153,56 +153,6 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
-    
-        <li class="post-list-item fade">
-            <article id="post-javascript-get-url-search-params"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016年03月27日 0:00" datetime="2016-03-26T16:00:00.000Z"  itemprop="datePublished">2016-03-27</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/JavaScript/">JavaScript</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/blog/2016/03/27/javascript-get-url-search-params/">用JavaScript获取URL参数的方法</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        JavaScript中通过正则表达式获取URL参数的方法：
-1234567function getQueryString(name) &#123;    var reg = new RegExp("(^|&amp;)" + name + "=([^&amp;]*)(&amp;|$)", "i");    var r = location.search.substr(1).match(reg)...
-    
-
-        <a href="/blog/2016/03/27/javascript-get-url-search-params/" class="post-more waves-effect waves-button">
-            more...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/regex/">regex</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
     
         <li class="post-list-item fade">
             <article id="post-wechat-auth-get-user-info"
@@ -315,57 +265,6 @@ https:/...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-wechat-qr-code-manage"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2015年12月09日 0:00" datetime="2015-12-08T16:00:00.000Z"  itemprop="datePublished">2015-12-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/WeChat/">WeChat</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/blog/2015/12/09/wechat-qr-code-manage/">微信公众平台带参数二维码配置工具的实现</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        配置带参数的二维码同样需要先获取Access Token，获取方法在 微信公众平台自定义菜单配置工具的实现 一文中有描述。
-利用获取到的Access Token，可以创建二维码的Ticket。通过POST方法向服务器提交相关信息，JS代码如下：
-123456789101112131415161718192021222324252627282930function getTicket()&#1...
-    
-
-        <a href="/blog/2015/12/09/wechat-qr-code-manage/" class="post-more waves-effect waves-button">
-            more...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/curl/">curl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/tools/">tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/wechat/">wechat</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
             <article id="post-wechat-button-manage"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -402,6 +301,57 @@ https:/...
     
 
         <a href="/blog/2015/12/09/wechat-button-manage/" class="post-more waves-effect waves-button">
+            more...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/curl/">curl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/tools/">tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/wechat/">wechat</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-wechat-qr-code-manage"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015年12月09日 0:00" datetime="2015-12-08T16:00:00.000Z"  itemprop="datePublished">2015-12-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/WeChat/">WeChat</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/blog/2015/12/09/wechat-qr-code-manage/">微信公众平台带参数二维码配置工具的实现</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        配置带参数的二维码同样需要先获取Access Token，获取方法在 微信公众平台自定义菜单配置工具的实现 一文中有描述。
+利用获取到的Access Token，可以创建二维码的Ticket。通过POST方法向服务器提交相关信息，JS代码如下：
+123456789101112131415161718192021222324252627282930function getTicket()&#1...
+    
+
+        <a href="/blog/2015/12/09/wechat-qr-code-manage/" class="post-more waves-effect waves-button">
             more...
         </a>
     </div>

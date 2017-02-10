@@ -1,0 +1,23 @@
+<%- partial('_partial/header', {
+    title: locals.title || theme.friends_title,
+    hdClass: 'index-header'
+}) %>
+
+<div class="container body-wrap fade">
+    <div class="">
+      <ul class="nav">
+        <%
+          var friend;
+          for (var i in config.friends) {
+            friend = config.friends[i];
+          %>
+            <li class="">
+              <a href="<%- url_for(friend.url) %>" target="_blank">
+                <i class="icon icon-lg icon-address-book"></i>
+                <%=(friend.name || _.startCase(i)) %>
+              </a>
+            </li>
+        <% } %>
+      </ul>
+    </div>
+</div>

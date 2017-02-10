@@ -69,3 +69,10 @@ theme: indigo
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+
+# Friends
+friends:
+  jacean:
+    name: Jacean Wan
+    url: http://jacean.github.io

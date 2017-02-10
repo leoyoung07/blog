@@ -1,0 +1,4 @@
+---
+layout: friends
+comments: false
+---

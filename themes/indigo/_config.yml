@@ -25,8 +25,8 @@ menu:
     url: http://weibo.com/u/2008885165
     target: _blank
   link:
-    text: 测试
-    url: /custom
+    text: Friends
+    url: /friends
 
 rss: /atom.xml
 
@@ -45,6 +45,7 @@ color: '#67939E'
 tags_title: Tags
 archives_title: Archives
 categories_title: Categories
+friends_title: Friends
 
 # 文章截断
 excerpt_render: false

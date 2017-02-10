@@ -101,3 +101,6 @@ include /etc/nginx/sites-enabled/*;
 - [Nginx - Ubuntu中文](http://wiki.ubuntu.org.cn/Nginx#.E5.AE.89.E8.A3.85nginx)
 
 - [Ubuntu上通过nginx部署Django笔记](http://www.cnblogs.com/jhao/p/6071790.html)
+
+
+## 未完待续。。。
