@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://leoyoung07.github.io/blog/"/>
-  <updated>2017-02-10T15:28:16.997Z</updated>
+  <updated>2017-02-14T17:08:04.000Z</updated>
   <id>http://leoyoung07.github.io/blog/</id>
   
   <author>
@@ -20,9 +20,25 @@
     <link href="http://leoyoung07.github.io/blog/2016/12/04/cloud-clipboard-based-on-lan/"/>
     <id>http://leoyoung07.github.io/blog/2016/12/04/cloud-clipboard-based-on-lan/</id>
     <published>2016-12-03T16:00:00.000Z</published>
-    <updated>2017-02-10T15:28:16.997Z</updated>
+    <updated>2017-02-14T17:08:04.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>有两台电脑在同一局域网下，有时需要将一些内容从一台电脑复制粘贴到另一台，用OneNote等在线笔记工具同步不够及时，不方便。因此，需要一个能够在局域网不同电脑之间共享剪切板内容的工具。</p>
+<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><ul>
+<li><p>开发语言</p>
+<p>  在windows环境下开发，使用C#作为开发语言。</p>
+</li>
+<li><p>数据传输</p>
+<p>  由于需要实时、双向传输数据，所以采用 TCP 协议来实现数据传输。</p>
+</li>
+<li><p>建立连接</p>
+<p>  建立 TCP 连接需要知道对方的IP，在使用动态获取IP的局域网内，每次连接都需要手动查询、填写IP，很繁琐。因此，考虑先使用 UDP 组播来实现自动获取局域网内其他客户端的IP地址，之后再改用 TCP 协议进行连接、传输数据。</p>
+</li>
+<li><p>操作剪切板内容</p>
+<p>  .NET 提供了 API，可以方便地设置和获取系统剪切板的内容。为方便操作，通过注册全局快捷键来实现将内容复制到剪切板并传输到其他电脑的客户端。</p>
+</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>代码已上传至GitHub：<br><a href="https://github.com/leoyoung07/L-ShareAssistant" target="_blank" rel="external">L-ShareAssistant</a></p>
+<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>]]></content>
     
     <summary type="html">
     
@@ -30,7 +46,7 @@
     
     </summary>
     
-      <category term="L-Clipboard" scheme="http://leoyoung07.github.io/blog/categories/L-Clipboard/"/>
+      <category term="LeoYoungProjects" scheme="http://leoyoung07.github.io/blog/categories/LeoYoungProjects/"/>
     
     
       <category term="c#" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
@@ -100,34 +116,6 @@
   </entry>
   
   <entry>
-    <title>用C语言开发PHP扩展（二）——封装C函数的扩展</title>
-    <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/"/>
-    <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/</id>
-    <published>2016-08-29T16:00:00.000Z</published>
-    <updated>2017-02-10T15:28:36.677Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>函数定义之间不能有空行</li>
-<li>使用资源是为了实现自动释放</li>
-</ul>
-<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>]]></content>
-    
-    <summary type="html">
-    
-      dev php extension in c 2
-    
-    </summary>
-    
-      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/blog/categories/PHP-Extension-Dev/"/>
-    
-    
-      <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
-    
-      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
     <title>用C语言开发PHP扩展（一）——入门与填坑</title>
     <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-1/"/>
     <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-1/</id>
@@ -176,6 +164,34 @@
     <summary type="html">
     
       dev php extension in c 1
+    
+    </summary>
+    
+      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/blog/categories/PHP-Extension-Dev/"/>
+    
+    
+      <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
+    
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用C语言开发PHP扩展（二）——封装C函数的扩展</title>
+    <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/"/>
+    <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/</id>
+    <published>2016-08-29T16:00:00.000Z</published>
+    <updated>2017-02-10T15:28:36.677Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>函数定义之间不能有空行</li>
+<li>使用资源是为了实现自动释放</li>
+</ul>
+<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>]]></content>
+    
+    <summary type="html">
+    
+      dev php extension in c 2
     
     </summary>
     
@@ -553,45 +569,6 @@
   </entry>
   
   <entry>
-    <title>微信公众平台自定义菜单配置工具的实现</title>
-    <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/"/>
-    <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/</id>
-    <published>2015-12-08T16:00:00.000Z</published>
-    <updated>2017-02-08T05:28:56.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于JS脚本跨域访问的问题，无法通过jQuery的Ajax方法直接调用微信的API，故采用服务器端转发的方式与微信API交互。</p>
-<p>配置自定义菜单须先获取Access Token，前端JS代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAccessToken</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> appidParam = $(<span class="string">"#appid"</span>).val();</div><div class="line">    <span class="keyword">var</span> secretParam = $(<span class="string">"#secret"</span>).val();</div><div class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"get_access_token.php?appid="</span>+appidParam+<span class="string">"&amp;secret="</span>+secretParam+<span class="string">"&amp;time="</span>+date.getTime();</div><div class="line">    $.get(url, <span class="function"><span class="keyword">function</span> (<span class="params">data,status</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> result = <span class="built_in">eval</span>(<span class="string">"("</span>+data+<span class="string">")"</span>);</div><div class="line">        $(<span class="string">"#info"</span>).css(<span class="string">"display"</span>,<span class="string">"block"</span>);</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> (result[<span class="string">"errcode"</span>])!=<span class="string">"undefined"</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">var</span> errorInfo = <span class="string">"错误代码："</span>+result[<span class="string">"errcode"</span>]+<span class="string">";错误信息："</span>+result[<span class="string">"errmsg"</span>];</div><div class="line">            $(<span class="string">"#info"</span>).html(errorInfo);</div><div class="line">            $(<span class="string">"#changeBtn"</span>).attr(<span class="string">"disabled"</span>,<span class="string">"disabled"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">var</span> successInfo = <span class="string">"获取Access Token 成功："</span> + result[<span class="string">"access_token"</span>];</div><div class="line">            $(<span class="string">"#accessToken"</span>).val(result[<span class="string">"access_token"</span>]);</div><div class="line">            $(<span class="string">"#info"</span>).html(successInfo);</div><div class="line">            $(<span class="string">"#changeBtn"</span>).removeAttr(<span class="string">"disabled"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>服务器端使用PHP的curl工具进行转发，代码如下</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$appid = $_GET[<span class="string">"appid"</span>];</div><div class="line">$secret = $_GET[<span class="string">"secret"</span>];</div><div class="line">$api_url = <span class="string">"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=&#123;$appid&#125;&amp;secret=&#123;$secret&#125;"</span>;</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch,CURLOPT_URL,$api_url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">$json_result = curl_exec($ch);</div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $json_result;</div></pre></td></tr></table></figure>
-<p>利用获取到的 Access Token，下一步可以配置自定义菜单。目前还需要自己编写自定义菜单的JSON，以后有时间会加上可视化界面。通过POST方法向服务器提交JSON的JS代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeButton</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"button_manage.php?access_token="</span>+$(<span class="string">"#accessToken"</span>).val();</div><div class="line">    <span class="keyword">var</span> button_json = $(<span class="string">"#buttonBody"</span>).val();</div><div class="line">    $.post(url,&#123;<span class="string">"button_json"</span>:button_json&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">data,status</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> result = <span class="built_in">eval</span>(<span class="string">"("</span>+data+<span class="string">")"</span>);</div><div class="line">        <span class="keyword">if</span>(result[<span class="string">"errcode"</span>] == <span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">            alert(<span class="string">"配置成功"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            alert(<span class="string">"配置失败，错误代码："</span>+result[<span class="string">"errcode"</span>]+<span class="string">"错误信息："</span>+result[<span class="string">"errmsg"</span>]);</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>服务器端的PHP代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$access_token = $_GET[<span class="string">"access_token"</span>];</div><div class="line">$api_url = <span class="string">"https://api.weixin.qq.com/cgi-bin/menu/create?access_token=&#123;$access_token&#125;"</span>;</div><div class="line">$button_json = $_POST[<span class="string">"button_json"</span>];</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch,CURLOPT_URL,$api_url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POSTFIELDS, $button_json);</div><div class="line">$json_result = curl_exec($ch);</div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $json_result;</div></pre></td></tr></table></figure>
-<p>实现效果可访问：</p>
-<p><a href="http://leo07.sinaapp.com/button_manage.html" target="_blank" rel="external">http://leo07.sinaapp.com/button_manage.html</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      wechat button manage
-    
-    </summary>
-    
-      <category term="WeChat" scheme="http://leoyoung07.github.io/blog/categories/WeChat/"/>
-    
-    
-      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
-    
-      <category term="curl" scheme="http://leoyoung07.github.io/blog/tags/curl/"/>
-    
-      <category term="wechat" scheme="http://leoyoung07.github.io/blog/tags/wechat/"/>
-    
-      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
-    
-  </entry>
-  
-  <entry>
     <title>微信公众平台带参数二维码配置工具的实现</title>
     <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/"/>
     <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/</id>
@@ -614,6 +591,45 @@
     <summary type="html">
     
       wechat qr code manage
+    
+    </summary>
+    
+      <category term="WeChat" scheme="http://leoyoung07.github.io/blog/categories/WeChat/"/>
+    
+    
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
+    
+      <category term="curl" scheme="http://leoyoung07.github.io/blog/tags/curl/"/>
+    
+      <category term="wechat" scheme="http://leoyoung07.github.io/blog/tags/wechat/"/>
+    
+      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信公众平台自定义菜单配置工具的实现</title>
+    <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/"/>
+    <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/</id>
+    <published>2015-12-08T16:00:00.000Z</published>
+    <updated>2017-02-08T05:28:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于JS脚本跨域访问的问题，无法通过jQuery的Ajax方法直接调用微信的API，故采用服务器端转发的方式与微信API交互。</p>
+<p>配置自定义菜单须先获取Access Token，前端JS代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAccessToken</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> appidParam = $(<span class="string">"#appid"</span>).val();</div><div class="line">    <span class="keyword">var</span> secretParam = $(<span class="string">"#secret"</span>).val();</div><div class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"get_access_token.php?appid="</span>+appidParam+<span class="string">"&amp;secret="</span>+secretParam+<span class="string">"&amp;time="</span>+date.getTime();</div><div class="line">    $.get(url, <span class="function"><span class="keyword">function</span> (<span class="params">data,status</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> result = <span class="built_in">eval</span>(<span class="string">"("</span>+data+<span class="string">")"</span>);</div><div class="line">        $(<span class="string">"#info"</span>).css(<span class="string">"display"</span>,<span class="string">"block"</span>);</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> (result[<span class="string">"errcode"</span>])!=<span class="string">"undefined"</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">var</span> errorInfo = <span class="string">"错误代码："</span>+result[<span class="string">"errcode"</span>]+<span class="string">";错误信息："</span>+result[<span class="string">"errmsg"</span>];</div><div class="line">            $(<span class="string">"#info"</span>).html(errorInfo);</div><div class="line">            $(<span class="string">"#changeBtn"</span>).attr(<span class="string">"disabled"</span>,<span class="string">"disabled"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">var</span> successInfo = <span class="string">"获取Access Token 成功："</span> + result[<span class="string">"access_token"</span>];</div><div class="line">            $(<span class="string">"#accessToken"</span>).val(result[<span class="string">"access_token"</span>]);</div><div class="line">            $(<span class="string">"#info"</span>).html(successInfo);</div><div class="line">            $(<span class="string">"#changeBtn"</span>).removeAttr(<span class="string">"disabled"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>服务器端使用PHP的curl工具进行转发，代码如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$appid = $_GET[<span class="string">"appid"</span>];</div><div class="line">$secret = $_GET[<span class="string">"secret"</span>];</div><div class="line">$api_url = <span class="string">"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=&#123;$appid&#125;&amp;secret=&#123;$secret&#125;"</span>;</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch,CURLOPT_URL,$api_url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">$json_result = curl_exec($ch);</div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $json_result;</div></pre></td></tr></table></figure>
+<p>利用获取到的 Access Token，下一步可以配置自定义菜单。目前还需要自己编写自定义菜单的JSON，以后有时间会加上可视化界面。通过POST方法向服务器提交JSON的JS代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeButton</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"button_manage.php?access_token="</span>+$(<span class="string">"#accessToken"</span>).val();</div><div class="line">    <span class="keyword">var</span> button_json = $(<span class="string">"#buttonBody"</span>).val();</div><div class="line">    $.post(url,&#123;<span class="string">"button_json"</span>:button_json&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">data,status</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> result = <span class="built_in">eval</span>(<span class="string">"("</span>+data+<span class="string">")"</span>);</div><div class="line">        <span class="keyword">if</span>(result[<span class="string">"errcode"</span>] == <span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">            alert(<span class="string">"配置成功"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            alert(<span class="string">"配置失败，错误代码："</span>+result[<span class="string">"errcode"</span>]+<span class="string">"错误信息："</span>+result[<span class="string">"errmsg"</span>]);</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>服务器端的PHP代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$access_token = $_GET[<span class="string">"access_token"</span>];</div><div class="line">$api_url = <span class="string">"https://api.weixin.qq.com/cgi-bin/menu/create?access_token=&#123;$access_token&#125;"</span>;</div><div class="line">$button_json = $_POST[<span class="string">"button_json"</span>];</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch,CURLOPT_URL,$api_url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POSTFIELDS, $button_json);</div><div class="line">$json_result = curl_exec($ch);</div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $json_result;</div></pre></td></tr></table></figure>
+<p>实现效果可访问：</p>
+<p><a href="http://leo07.sinaapp.com/button_manage.html" target="_blank" rel="external">http://leo07.sinaapp.com/button_manage.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      wechat button manage
     
     </summary>
     

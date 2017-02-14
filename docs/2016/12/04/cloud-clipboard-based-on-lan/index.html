@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://leoyoung07.github.io/blog/2016/12/04/cloud-clipboard-based-on-lan/index.html">
 <meta property="og:site_name" content="Leo Young Blog">
 <meta property="og:description" content="cloud clipboard based on lan">
-<meta property="og:updated_time" content="2017-02-10T15:28:16.997Z">
+<meta property="og:updated_time" content="2017-02-14T17:08:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="局域网环境下的“云”剪贴板">
 <meta name="twitter:description" content="cloud clipboard based on lan">
@@ -150,7 +150,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/L-Clipboard/">L-Clipboard</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/LeoYoungProjects/">LeoYoungProjects</a></li></ul>
 
             
         </h5>
@@ -166,7 +166,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#未完待续。。。"><span class="post-toc-number">1.</span> <span class="post-toc-text">未完待续。。。</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">需求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计"><span class="post-toc-number">2.</span> <span class="post-toc-text">设计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#未完待续。。。"><span class="post-toc-number">4.</span> <span class="post-toc-text">未完待续。。。</span></a></li></ol>
         </nav>
     </aside>
     
@@ -179,7 +179,7 @@
             <time class="post-time" title="2016年12月04日 0:00" datetime="2016-12-03T16:00:00.000Z"  itemprop="datePublished">2016-12-04</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/L-Clipboard/">L-Clipboard</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/LeoYoungProjects/">LeoYoungProjects</a></li></ul>
 
 
 
@@ -193,14 +193,30 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>
+            <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>有两台电脑在同一局域网下，有时需要将一些内容从一台电脑复制粘贴到另一台，用OneNote等在线笔记工具同步不够及时，不方便。因此，需要一个能够在局域网不同电脑之间共享剪切板内容的工具。</p>
+<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><ul>
+<li><p>开发语言</p>
+<p>  在windows环境下开发，使用C#作为开发语言。</p>
+</li>
+<li><p>数据传输</p>
+<p>  由于需要实时、双向传输数据，所以采用 TCP 协议来实现数据传输。</p>
+</li>
+<li><p>建立连接</p>
+<p>  建立 TCP 连接需要知道对方的IP，在使用动态获取IP的局域网内，每次连接都需要手动查询、填写IP，很繁琐。因此，考虑先使用 UDP 组播来实现自动获取局域网内其他客户端的IP地址，之后再改用 TCP 协议进行连接、传输数据。</p>
+</li>
+<li><p>操作剪切板内容</p>
+<p>  .NET 提供了 API，可以方便地设置和获取系统剪切板的内容。为方便操作，通过注册全局快捷键来实现将内容复制到剪切板并传输到其他电脑的客户端。</p>
+</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>代码已上传至GitHub：<br><a href="https://github.com/leoyoung07/L-ShareAssistant" target="_blank" rel="external">L-ShareAssistant</a></p>
+<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-02-10T15:28:16.997Z" itemprop="dateUpdated">2017年2月10日 23:28</time>
+    最后更新时间：<time datetime="2017-02-14T17:08:04.000Z" itemprop="dateUpdated">2017年2月15日 1:08</time>
 </span><br>
 
 
