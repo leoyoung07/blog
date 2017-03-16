@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://leoyoung07.github.io/blog/"/>
-  <updated>2017-02-14T17:08:04.000Z</updated>
+  <updated>2017-03-16T06:17:26.385Z</updated>
   <id>http://leoyoung07.github.io/blog/</id>
   
   <author>
@@ -16,191 +16,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>局域网环境下的“云”剪贴板</title>
-    <link href="http://leoyoung07.github.io/blog/2016/12/04/cloud-clipboard-based-on-lan/"/>
-    <id>http://leoyoung07.github.io/blog/2016/12/04/cloud-clipboard-based-on-lan/</id>
-    <published>2016-12-03T16:00:00.000Z</published>
-    <updated>2017-02-14T17:08:04.000Z</updated>
+    <title>使用TypeScript开发Node.js项目</title>
+    <link href="http://leoyoung07.github.io/blog/2017/03/16/start-a-nodejs-project-with-typescript/"/>
+    <id>http://leoyoung07.github.io/blog/2017/03/16/start-a-nodejs-project-with-typescript/</id>
+    <published>2017-03-16T05:42:05.000Z</published>
+    <updated>2017-03-16T06:17:26.385Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>有两台电脑在同一局域网下，有时需要将一些内容从一台电脑复制粘贴到另一台，用OneNote等在线笔记工具同步不够及时，不方便。因此，需要一个能够在局域网不同电脑之间共享剪切板内容的工具。</p>
-<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><ul>
-<li><p>开发语言</p>
-<p>  在windows环境下开发，使用C#作为开发语言。</p>
-</li>
-<li><p>数据传输</p>
-<p>  由于需要实时、双向传输数据，所以采用 TCP 协议来实现数据传输。</p>
-</li>
-<li><p>建立连接</p>
-<p>  建立 TCP 连接需要知道对方的IP，在使用动态获取IP的局域网内，每次连接都需要手动查询、填写IP，很繁琐。因此，考虑先使用 UDP 组播来实现自动获取局域网内其他客户端的IP地址，之后再改用 TCP 协议进行连接、传输数据。</p>
-</li>
-<li><p>操作剪切板内容</p>
-<p>  .NET 提供了 API，可以方便地设置和获取系统剪切板的内容。为方便操作，通过注册全局快捷键来实现将内容复制到剪切板并传输到其他电脑的客户端。</p>
+    <content type="html"><![CDATA[<h1 id="使用TypeScript开发Node-js项目的主要步骤"><a href="#使用TypeScript开发Node-js项目的主要步骤" class="headerlink" title="使用TypeScript开发Node.js项目的主要步骤"></a>使用TypeScript开发Node.js项目的主要步骤</h1><h2 id="安装TypeScript"><a href="#安装TypeScript" class="headerlink" title="安装TypeScript"></a>安装TypeScript</h2><ul>
+<li><p>全局安装TypeScript:</p>
+<p>  <code>npm install -g typescript</code></p>
 </li>
 </ul>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>代码已上传至GitHub：<br><a href="https://github.com/leoyoung07/L-ShareAssistant" target="_blank" rel="external">L-ShareAssistant</a></p>
-<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>]]></content>
+<h2 id="初始化node项目"><a href="#初始化node项目" class="headerlink" title="初始化node项目"></a>初始化node项目</h2><p><code>npm init -y</code></p>
+<h2 id="安装-types-node"><a href="#安装-types-node" class="headerlink" title="安装 @types/node"></a>安装 @types/node</h2><p><code>npm install --save-dev @types/node</code></p>
+<h2 id="初始化并配置tsconfig文件"><a href="#初始化并配置tsconfig文件" class="headerlink" title="初始化并配置tsconfig文件"></a>初始化并配置tsconfig文件</h2><ul>
+<li><p>初始化tsconfig.json:</p>
+<p>  <code>tsc --init</code></p>
+</li>
+<li><p>在tsconfig.json的<code>compilerOptions</code>中添加<code>typeRoots</code>配置：</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    "compilerOptions": &#123;</div><div class="line">        ....</div><div class="line">        "typeRoots": [</div><div class="line">            "./node_modules/@types"</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="安装依赖模块的TypeScript版本"><a href="#安装依赖模块的TypeScript版本" class="headerlink" title="安装依赖模块的TypeScript版本"></a>安装依赖模块的TypeScript版本</h2><p><code>npm install --save-dev @types/xxx</code></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://basarat.gitbooks.io/typescript/docs/quick/nodejs.html" target="_blank" rel="external">NodeJS QuickStart · TypeScript Deep Dive</a></li>
+</ul>
+]]></content>
     
     <summary type="html">
     
-      cloud clipboard based on lan
+      start-a-nodejs-project-with-typescript
     
     </summary>
     
-      <category term="LeoYoungProjects" scheme="http://leoyoung07.github.io/blog/categories/LeoYoungProjects/"/>
+      <category term="TypeScript" scheme="http://leoyoung07.github.io/blog/categories/TypeScript/"/>
     
     
-      <category term="c#" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
+      <category term="node.js" scheme="http://leoyoung07.github.io/blog/tags/node-js/"/>
     
-      <category term="tcp" scheme="http://leoyoung07.github.io/blog/tags/tcp/"/>
-    
-      <category term="udp" scheme="http://leoyoung07.github.io/blog/tags/udp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx多站点配置</title>
-    <link href="http://leoyoung07.github.io/blog/2016/11/21/nginx-multi-site/"/>
-    <id>http://leoyoung07.github.io/blog/2016/11/21/nginx-multi-site/</id>
-    <published>2016-11-20T16:00:00.000Z</published>
-    <updated>2017-02-10T15:27:48.770Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>利用Nginx可以在一台服务器上搭建多个站点，实现从不同的二级域名访问不同的web应用。例如，我有一级域名 leoyoung.site，其下有2个二级域名 test.leoyoung.site 和 blog.leoyoung.site，它们都解析至同一IP，通过配置Nginx可以实现将 test.leoyoung.site 指向一个PHP站点，将 blog.leoyoung.site 指向一个 Django站点。服务器运行ubuntu 14.04系统，以下是配置方法。</p>
-<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><p><code>sudo apt-get install nginx</code></p>
-<p>安装后，所有的配置文件都在/etc/nginx下， 程序文件为/usr/sbin/nginx。查看nginx.conf文件，注意到以下几行配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##</span></div><div class="line"><span class="comment"># Virtual Host Configs</span></div><div class="line"><span class="comment">##</span></div><div class="line"></div><div class="line">include /etc/nginx/conf.d/*.conf;</div><div class="line">include /etc/nginx/sites-enabled/*;</div></pre></td></tr></table></figure>
-<p>因此，可在/etc/nginx/conf.d/目录下添加conf文件以实现多站点配置。</p>
-<h1 id="Nginx下的PHP站点配置"><a href="#Nginx下的PHP站点配置" class="headerlink" title="Nginx下的PHP站点配置"></a>Nginx下的PHP站点配置</h1><ul>
-<li><h2 id="安装PHP环境"><a href="#安装PHP环境" class="headerlink" title="安装PHP环境"></a>安装PHP环境</h2><p>  <code>sudo apt-get install php5-cli php5-cgi mysql-server php5-mysql</code></p>
-</li>
-<li><h2 id="安装FastCgi"><a href="#安装FastCgi" class="headerlink" title="安装FastCgi"></a>安装FastCgi</h2><p>  <code>sudo apt-get install php5-fpm</code></p>
-</li>
-<li><h2 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h2><p>  在 <code>/etc/nginx/conf.d</code> 目录下创建<code>test.leoyoung.site.conf</code>配置文件，其内容为：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line"></div><div class="line">    root /data/htdoc/<span class="built_in">test</span>;</div><div class="line">    index index.html index.htm;</div><div class="line"></div><div class="line">    server_name test.leoyoung.site;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        <span class="comment"># First attempt to serve request as file, then</span></div><div class="line">        <span class="comment"># as directory, then fall back to displaying a 404.</span></div><div class="line">        try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ =404;</div><div class="line">        <span class="comment"># Uncomment to enable naxsi on this location</span></div><div class="line">        <span class="comment"># include /etc/nginx/naxsi.rules</span></div><div class="line">    &#125;</div><div class="line">    location ~ \.php$ &#123;</div><div class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</div><div class="line">        <span class="comment"># <span class="doctag">NOTE:</span> You should have "cgi.fix_pathinfo = 0;" in php.ini</span></div><div class="line"></div><div class="line">        <span class="comment"># With php5-cgi alone:</span></div><div class="line">        fastcgi_pass 127.0.0.1:8000;</div><div class="line">        <span class="comment"># With php5-fpm:</span></div><div class="line">        <span class="comment">#fastcgi_pass unix:/var/run/php5-fpm.sock;</span></div><div class="line">        fastcgi_index index.php;</div><div class="line">        include fastcgi_params;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>  <code>/data/htdoc/test</code> 为PHP站点的根目录。</p>
-</li>
-<li><h2 id="设置php-cgi开机启动"><a href="#设置php-cgi开机启动" class="headerlink" title="设置php-cgi开机启动"></a>设置php-cgi开机启动</h2><p>  在 中添加一行：</p>
-<p>  <code>spawn-fcgi -a 127.0.0.1 -p 8000 -C 10 -u www-data -f /usr/bin/php-cgi &gt;&gt; /data/log/phpcgi.log 2&gt;&amp;1 &amp;</code></p>
-<p> 其中， <code>/data/log/phpcgi.log</code> 为访问日志文件。</p>
-</li>
-</ul>
-<h1 id="Nginx下的Django站点配置"><a href="#Nginx下的Django站点配置" class="headerlink" title="Nginx下的Django站点配置"></a>Nginx下的Django站点配置</h1><ul>
-<li><h2 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h2><p>  <code>pip3 install Django</code></p>
-</li>
-<li><h2 id="安装uwsgi"><a href="#安装uwsgi" class="headerlink" title="安装uwsgi"></a>安装uwsgi</h2><p>  <code>pip3 install uwsgi</code></p>
-</li>
-<li><h2 id="配置uwsgi"><a href="#配置uwsgi" class="headerlink" title="配置uwsgi"></a>配置uwsgi</h2></li>
-</ul>
-<ul>
-<li><h2 id="配置Nginx-1"><a href="#配置Nginx-1" class="headerlink" title="配置Nginx"></a>配置Nginx</h2></li>
-<li><h2 id="处理静态文件"><a href="#处理静态文件" class="headerlink" title="处理静态文件"></a>处理静态文件</h2></li>
-</ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><p><a href="http://wiki.ubuntu.org.cn/Nginx#.E5.AE.89.E8.A3.85nginx" target="_blank" rel="external">Nginx - Ubuntu中文</a></p>
-</li>
-<li><p><a href="http://www.cnblogs.com/jhao/p/6071790.html" target="_blank" rel="external">Ubuntu上通过nginx部署Django笔记</a></p>
-</li>
-</ul>
-<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>]]></content>
-    
-    <summary type="html">
-    
-      nginx multi site
-    
-    </summary>
-    
-      <category term="Nginx" scheme="http://leoyoung07.github.io/blog/categories/Nginx/"/>
-    
-    
-      <category term="nginx" scheme="http://leoyoung07.github.io/blog/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用C语言开发PHP扩展（一）——入门与填坑</title>
-    <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-1/"/>
-    <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-1/</id>
-    <published>2016-08-29T16:00:00.000Z</published>
-    <updated>2017-02-10T15:28:29.272Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>开发环境</li>
-<li>PHP源码</li>
-<li>函数定义</li>
-<li>扩展骨架</li>
-<li><p>开发步骤</p>
-<blockquote>
-<p>  To use your new extension, you will have to execute the following steps:</p>
-<ol>
-<li>$ cd ..</li>
-<li>$ vi ext/myfunctions/config.m4</li>
-<li>$ ./buildconf</li>
-<li>$ ./configure –[with|enable]-myfunctions</li>
-<li>$ make</li>
-<li>$ ./php -f ext/myfunctions/myfunctions.php</li>
-<li>$ vi ext/myfunctions/myfunctions.c</li>
-<li><p>$ make</p>
-<p>Repeat steps 3-6 until you are satisfied with ext/myfunctions/config.m4 and<br>step 6 confirms that your module is compiled into PHP. Then, start writing<br>code and repeat the last two steps as often as necessary.</p>
-</li>
-</ol>
-</blockquote>
-</li>
-<li><p>函数实现</p>
-</li>
-<li>编译</li>
-<li>测试运行</li>
-</ol>
-<ul>
-<li>跨平台CRLF与LF</li>
-<li><p>bison安装<br>checking for bison version… invalid<br>configure: WARNING: This bison version is not supported for regeneration of the Zend/PHP parsers (found: none, min: 204, excluded: ).<br>checking for re2c… no<br>configure: WARNING: You will need re2c 0.13.4 or later if you want to regenerate PHP parsers.<br>configure: error: bison is required to build PHP/Zend when building a GIT checkout!</p>
-</li>
-<li><p>libxml2<br>configure: error: xml2-config not found. Please check your libxml2 installation.<br>解决<br>apt-get install libxml2-dev</p>
-</li>
-<li><p>./sapi/cli/php</p>
-</li>
-</ul>
-<p><a href="https://www.hongweipeng.com/index.php/archives/739/" target="_blank" rel="external">https://www.hongweipeng.com/index.php/archives/739/</a></p>
-<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>]]></content>
-    
-    <summary type="html">
-    
-      dev php extension in c 1
-    
-    </summary>
-    
-      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/blog/categories/PHP-Extension-Dev/"/>
-    
-    
-      <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
-    
-      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用C语言开发PHP扩展（二）——封装C函数的扩展</title>
-    <link href="http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/"/>
-    <id>http://leoyoung07.github.io/blog/2016/08/30/dev-php-extension-in-c-2/</id>
-    <published>2016-08-29T16:00:00.000Z</published>
-    <updated>2017-02-10T15:28:36.677Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>函数定义之间不能有空行</li>
-<li>使用资源是为了实现自动释放</li>
-</ul>
-<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>]]></content>
-    
-    <summary type="html">
-    
-      dev php extension in c 2
-    
-    </summary>
-    
-      <category term="PHP-Extension-Dev" scheme="http://leoyoung07.github.io/blog/categories/PHP-Extension-Dev/"/>
-    
-    
-      <category term="c" scheme="http://leoyoung07.github.io/blog/tags/c/"/>
-    
-      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
+      <category term="TypeScript" scheme="http://leoyoung07.github.io/blog/tags/TypeScript/"/>
     
   </entry>
   
@@ -209,7 +63,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/06/07/mod-and-rem-in-javascript/"/>
     <id>http://leoyoung07.github.io/blog/2016/06/07/mod-and-rem-in-javascript/</id>
     <published>2016-06-06T16:00:00.000Z</published>
-    <updated>2017-02-08T05:31:30.000Z</updated>
+    <updated>2017-02-08T05:31:30.083Z</updated>
     
     <content type="html"><![CDATA[<h1 id="求模与求余"><a href="#求模与求余" class="headerlink" title="求模与求余"></a>求模与求余</h1><p>求模和求余其实是两种不同的运算。当两个操作数同号时，它们的运算结果相同；而当两个操作数异号时，它们的运算结果就不同了。</p>
 <p>求模与求余运算都分两步进行：</p>
@@ -252,7 +106,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/04/28/c-getch-getchar/"/>
     <id>http://leoyoung07.github.io/blog/2016/04/28/c-getch-getchar/</id>
     <published>2016-04-27T16:00:00.000Z</published>
-    <updated>2017-02-08T05:31:16.000Z</updated>
+    <updated>2017-02-08T05:31:16.424Z</updated>
     
     <content type="html"><![CDATA[<p>最近在阅读K&amp;R的经典之作The C Programming Language（C程序设计语言）时遇到了一个看似简单的函数 <code>getchar()</code> ，书中对其的描述是：</p>
 <blockquote>
@@ -301,7 +155,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/04/01/jsonp-and-cross-domain/"/>
     <id>http://leoyoung07.github.io/blog/2016/04/01/jsonp-and-cross-domain/</id>
     <published>2016-03-31T16:00:00.000Z</published>
-    <updated>2017-02-08T05:31:03.000Z</updated>
+    <updated>2017-02-08T05:31:03.393Z</updated>
     
     <content type="html"><![CDATA[<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p><strong>跨域问题</strong>是由于浏览器的<strong>同源策略</strong>而产生的，同源是指<strong>同协议</strong>、<strong>同域名</strong>、<strong>同端口</strong>，出于安全的考虑，浏览器禁止脚本的跨域（不同源）请求。</p>
 <p>虽然浏览器禁止跨域请求，但是却允许引用和执行来自其他域的脚本文件，这也就是下面将要提到的 JSONP 的原理。</p>
@@ -345,7 +199,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/"/>
     <id>http://leoyoung07.github.io/blog/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/</id>
     <published>2016-03-29T16:00:00.000Z</published>
-    <updated>2017-02-08T10:22:19.000Z</updated>
+    <updated>2017-02-08T10:22:19.767Z</updated>
     
     <content type="html"><![CDATA[<p>使用PHP的curl方法post数据时通常使用以下方法：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$post_fields = [<span class="string">"aaa"</span>=&gt;<span class="string">"aaaa"</span>, <span class="string">"bbb"</span>=&gt;<span class="string">"bbbb"</span>];</div><div class="line">$url = <span class="string">"http://localhost/sandbox/PHPTest/output.php"</span>;</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch, CURLOPT_URL, $url);</div><div class="line">curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);</div><div class="line">curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</div><div class="line">$response = curl_exec($ch);</div><div class="line"><span class="keyword">echo</span> $response;</div></pre></td></tr></table></figure>
@@ -402,7 +256,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/03/28/git-server-on-windows/"/>
     <id>http://leoyoung07.github.io/blog/2016/03/28/git-server-on-windows/</id>
     <published>2016-03-27T16:00:00.000Z</published>
-    <updated>2017-02-08T05:30:32.000Z</updated>
+    <updated>2017-02-08T05:30:32.071Z</updated>
     
     <content type="html"><![CDATA[<p>在Windows环境下用GitStack搭建git server的方法：</p>
 <ul>
@@ -465,7 +319,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/03/27/javascript-get-url-search-params/"/>
     <id>http://leoyoung07.github.io/blog/2016/03/27/javascript-get-url-search-params/</id>
     <published>2016-03-26T16:00:00.000Z</published>
-    <updated>2017-02-08T05:30:13.000Z</updated>
+    <updated>2017-02-08T05:30:13.482Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript中通过正则表达式获取URL参数的方法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQueryString</span>(<span class="params">name</span>) </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span> + name + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>, <span class="string">"i"</span>);</div><div class="line">    <span class="keyword">var</span> r = location.search.substr(<span class="number">1</span>).match(reg);</div><div class="line">    <span class="keyword">if</span> (r != <span class="literal">null</span>) <span class="keyword">return</span> <span class="built_in">decodeURI</span>(r[<span class="number">2</span>]);</div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -496,7 +350,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/03/22/wechat-auth-get-user-info/"/>
     <id>http://leoyoung07.github.io/blog/2016/03/22/wechat-auth-get-user-info/</id>
     <published>2016-03-21T16:00:00.000Z</published>
-    <updated>2017-02-08T05:29:46.000Z</updated>
+    <updated>2017-02-08T05:29:46.773Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li><h3 id="授权方式"><a href="#授权方式" class="headerlink" title="授权方式"></a>授权方式</h3><p>微信网页的授权方式分为两种：</p>
@@ -548,7 +402,7 @@
     <link href="http://leoyoung07.github.io/blog/2015/12/26/number-to-excel-letter/"/>
     <id>http://leoyoung07.github.io/blog/2015/12/26/number-to-excel-letter/</id>
     <published>2015-12-25T16:00:00.000Z</published>
-    <updated>2017-02-08T05:39:50.000Z</updated>
+    <updated>2017-02-08T05:39:50.350Z</updated>
     
     <content type="html"><![CDATA[<p>用递归函数将数字转换为EXCEL中的列名，直接上代码（PHP）：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//递归求解</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">R_NumToLetter</span><span class="params">($num)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>($num == <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">    &#125;</div><div class="line">    $base = <span class="number">26</span>;</div><div class="line">    $mod = (int)($num % $base);</div><div class="line">    $num = (int)($num / $base);</div><div class="line">    <span class="keyword">if</span>($mod == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> R_NumToLetter($num - <span class="number">1</span>).NumToLetter($base);</div><div class="line">    <span class="keyword">if</span>($num == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> NumToLetter($mod);</div><div class="line">    <span class="keyword">return</span> R_NumToLetter($num).NumToLetter($mod);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">NumToLetter</span><span class="params">($num)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>($num == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">    $num = (int)$num - <span class="number">1</span>;</div><div class="line">    $ord_A = ord(<span class="string">'A'</span>);</div><div class="line">    $chr = chr($ord_A + $num);</div><div class="line">    <span class="keyword">return</span> $chr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
@@ -569,50 +423,11 @@
   </entry>
   
   <entry>
-    <title>微信公众平台带参数二维码配置工具的实现</title>
-    <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/"/>
-    <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/</id>
-    <published>2015-12-08T16:00:00.000Z</published>
-    <updated>2017-02-08T05:29:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>配置带参数的二维码同样需要先获取Access Token，获取方法在 <em>微信公众平台自定义菜单配置工具的实现</em> 一文中有描述。</p>
-<p>利用获取到的Access Token，可以创建二维码的Ticket。通过POST方法向服务器提交相关信息，JS代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTicket</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"qrcode_manage.php?access_token="</span>+$(<span class="string">"#accessToken"</span>).val();</div><div class="line">    <span class="keyword">var</span> qrcode_type = $(<span class="string">"#qrType"</span>).val();</div><div class="line">    <span class="keyword">var</span> qrcode_scene_id = $(<span class="string">"#qrSceneId"</span>).val();</div><div class="line">    $.post(url,</div><div class="line">        &#123;</div><div class="line">            <span class="string">"qrcode_type"</span>:qrcode_type,</div><div class="line">            <span class="string">"qrcode_scene_id"</span>:qrcode_scene_id</div><div class="line">        &#125;,</div><div class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">data,status</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> result = <span class="built_in">eval</span>(<span class="string">"("</span>+data+<span class="string">")"</span>);</div><div class="line">            $(<span class="string">"#ticketInfo"</span>).css(<span class="string">"display"</span>,<span class="string">"block"</span>);</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> (result[<span class="string">"errcode"</span>])!=<span class="string">"undefined"</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">var</span> errorInfo = <span class="string">"错误代码："</span>+result[<span class="string">"errcode"</span>]+<span class="string">";错误信息："</span>+result[<span class="string">"errmsg"</span>];</div><div class="line">                $(<span class="string">"#ticketInfo"</span>).html(errorInfo);</div><div class="line">                $(<span class="string">"#getQrcodeBtn"</span>).attr(<span class="string">"disabled"</span>,<span class="string">"disabled"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">var</span> successInfo = <span class="string">"获取Ticket 成功，Ticket："</span> + result[<span class="string">"ticket"</span>];</div><div class="line">                successInfo += <span class="string">"&lt;br&gt;url:"</span> + result[<span class="string">"url"</span>];</div><div class="line">                $(<span class="string">"#ticket"</span>).val(result[<span class="string">"ticket"</span>]);</div><div class="line">                $(<span class="string">"#ticketInfo"</span>).html(successInfo);</div><div class="line">                $(<span class="string">"#getQrcodeBtn"</span>).removeAttr(<span class="string">"disabled"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>服务器端进行转发的PHP代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">$access_token = $_GET[<span class="string">"access_token"</span>];</div><div class="line">$api_url = <span class="string">"https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=&#123;$access_token&#125;"</span>;</div><div class="line">$qrcode_type = $_POST[<span class="string">"qrcode_type"</span>];</div><div class="line">$qrcode_scene_id = (int)$_POST[<span class="string">"qrcode_scene_id"</span>];</div><div class="line">$qrcode_array = <span class="keyword">array</span>();</div><div class="line"><span class="keyword">if</span>($qrcode_type == <span class="string">"QR_SCENE"</span>)</div><div class="line">&#123;</div><div class="line">    $qrcode_array[<span class="string">"expire_seconds"</span>] = <span class="number">604800</span>; <span class="comment">//七天</span></div><div class="line">    $qrcode_array[<span class="string">"action_name"</span>] = <span class="string">"QR_SCENE"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">    $qrcode_array[<span class="string">"action_name"</span>] = <span class="string">"QR_LIMIT_SCENE"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$qrcode_array[<span class="string">"action_info"</span>][<span class="string">"scene"</span>][<span class="string">"scene_id"</span>] = $qrcode_scene_id;</div><div class="line">$qrcode_json = json_encode($qrcode_array);</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch,CURLOPT_URL,$api_url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POSTFIELDS, $qrcode_json);</div><div class="line">$json_result = curl_exec($ch);</div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $json_result;</div></pre></td></tr></table></figure>
-<p>之后，可以通过Ticket换取二维码，JS代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQrcode</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> ticket = $(<span class="string">"#ticket"</span>).val();</div><div class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"qrcode_manage.php?ticket="</span>+ticket+<span class="string">"&amp;time="</span>+date.getTime();</div><div class="line">    $(<span class="string">"#qrcode"</span>).attr(<span class="string">"src"</span>,<span class="string">"qrcode_manage.php?ticket="</span>+ticket+<span class="string">"&amp;time="</span>+date.getTime());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>服务器端进行转发的PHP代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ticket = $_GET[<span class="string">"ticket"</span>];</div><div class="line">$api_url = <span class="string">"https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=&#123;$ticket&#125;"</span>;</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch,CURLOPT_URL,$api_url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">$qrcode_result = curl_exec($ch);</div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $qrcode_result;</div></pre></td></tr></table></figure>
-<p>实现效果可访问：</p>
-<p><a href="http://leo07.sinaapp.com/qrcode_manage.html" target="_blank" rel="external">http://leo07.sinaapp.com/qrcode_manage.html</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      wechat qr code manage
-    
-    </summary>
-    
-      <category term="WeChat" scheme="http://leoyoung07.github.io/blog/categories/WeChat/"/>
-    
-    
-      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
-    
-      <category term="curl" scheme="http://leoyoung07.github.io/blog/tags/curl/"/>
-    
-      <category term="wechat" scheme="http://leoyoung07.github.io/blog/tags/wechat/"/>
-    
-      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
-    
-  </entry>
-  
-  <entry>
     <title>微信公众平台自定义菜单配置工具的实现</title>
     <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/"/>
     <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/</id>
     <published>2015-12-08T16:00:00.000Z</published>
-    <updated>2017-02-08T05:28:56.000Z</updated>
+    <updated>2017-02-08T05:28:56.199Z</updated>
     
     <content type="html"><![CDATA[<p>由于JS脚本跨域访问的问题，无法通过jQuery的Ajax方法直接调用微信的API，故采用服务器端转发的方式与微信API交互。</p>
 <p>配置自定义菜单须先获取Access Token，前端JS代码如下：</p>
@@ -630,6 +445,45 @@
     <summary type="html">
     
       wechat button manage
+    
+    </summary>
+    
+      <category term="WeChat" scheme="http://leoyoung07.github.io/blog/categories/WeChat/"/>
+    
+    
+      <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
+    
+      <category term="curl" scheme="http://leoyoung07.github.io/blog/tags/curl/"/>
+    
+      <category term="wechat" scheme="http://leoyoung07.github.io/blog/tags/wechat/"/>
+    
+      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信公众平台带参数二维码配置工具的实现</title>
+    <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/"/>
+    <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/</id>
+    <published>2015-12-08T16:00:00.000Z</published>
+    <updated>2017-02-08T05:29:20.565Z</updated>
+    
+    <content type="html"><![CDATA[<p>配置带参数的二维码同样需要先获取Access Token，获取方法在 <em>微信公众平台自定义菜单配置工具的实现</em> 一文中有描述。</p>
+<p>利用获取到的Access Token，可以创建二维码的Ticket。通过POST方法向服务器提交相关信息，JS代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTicket</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"qrcode_manage.php?access_token="</span>+$(<span class="string">"#accessToken"</span>).val();</div><div class="line">    <span class="keyword">var</span> qrcode_type = $(<span class="string">"#qrType"</span>).val();</div><div class="line">    <span class="keyword">var</span> qrcode_scene_id = $(<span class="string">"#qrSceneId"</span>).val();</div><div class="line">    $.post(url,</div><div class="line">        &#123;</div><div class="line">            <span class="string">"qrcode_type"</span>:qrcode_type,</div><div class="line">            <span class="string">"qrcode_scene_id"</span>:qrcode_scene_id</div><div class="line">        &#125;,</div><div class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">data,status</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> result = <span class="built_in">eval</span>(<span class="string">"("</span>+data+<span class="string">")"</span>);</div><div class="line">            $(<span class="string">"#ticketInfo"</span>).css(<span class="string">"display"</span>,<span class="string">"block"</span>);</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> (result[<span class="string">"errcode"</span>])!=<span class="string">"undefined"</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">var</span> errorInfo = <span class="string">"错误代码："</span>+result[<span class="string">"errcode"</span>]+<span class="string">";错误信息："</span>+result[<span class="string">"errmsg"</span>];</div><div class="line">                $(<span class="string">"#ticketInfo"</span>).html(errorInfo);</div><div class="line">                $(<span class="string">"#getQrcodeBtn"</span>).attr(<span class="string">"disabled"</span>,<span class="string">"disabled"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">var</span> successInfo = <span class="string">"获取Ticket 成功，Ticket："</span> + result[<span class="string">"ticket"</span>];</div><div class="line">                successInfo += <span class="string">"&lt;br&gt;url:"</span> + result[<span class="string">"url"</span>];</div><div class="line">                $(<span class="string">"#ticket"</span>).val(result[<span class="string">"ticket"</span>]);</div><div class="line">                $(<span class="string">"#ticketInfo"</span>).html(successInfo);</div><div class="line">                $(<span class="string">"#getQrcodeBtn"</span>).removeAttr(<span class="string">"disabled"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>服务器端进行转发的PHP代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">$access_token = $_GET[<span class="string">"access_token"</span>];</div><div class="line">$api_url = <span class="string">"https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=&#123;$access_token&#125;"</span>;</div><div class="line">$qrcode_type = $_POST[<span class="string">"qrcode_type"</span>];</div><div class="line">$qrcode_scene_id = (int)$_POST[<span class="string">"qrcode_scene_id"</span>];</div><div class="line">$qrcode_array = <span class="keyword">array</span>();</div><div class="line"><span class="keyword">if</span>($qrcode_type == <span class="string">"QR_SCENE"</span>)</div><div class="line">&#123;</div><div class="line">    $qrcode_array[<span class="string">"expire_seconds"</span>] = <span class="number">604800</span>; <span class="comment">//七天</span></div><div class="line">    $qrcode_array[<span class="string">"action_name"</span>] = <span class="string">"QR_SCENE"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">    $qrcode_array[<span class="string">"action_name"</span>] = <span class="string">"QR_LIMIT_SCENE"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$qrcode_array[<span class="string">"action_info"</span>][<span class="string">"scene"</span>][<span class="string">"scene_id"</span>] = $qrcode_scene_id;</div><div class="line">$qrcode_json = json_encode($qrcode_array);</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch,CURLOPT_URL,$api_url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POSTFIELDS, $qrcode_json);</div><div class="line">$json_result = curl_exec($ch);</div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $json_result;</div></pre></td></tr></table></figure>
+<p>之后，可以通过Ticket换取二维码，JS代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQrcode</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> ticket = $(<span class="string">"#ticket"</span>).val();</div><div class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">    <span class="keyword">var</span> url = <span class="string">"qrcode_manage.php?ticket="</span>+ticket+<span class="string">"&amp;time="</span>+date.getTime();</div><div class="line">    $(<span class="string">"#qrcode"</span>).attr(<span class="string">"src"</span>,<span class="string">"qrcode_manage.php?ticket="</span>+ticket+<span class="string">"&amp;time="</span>+date.getTime());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>服务器端进行转发的PHP代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ticket = $_GET[<span class="string">"ticket"</span>];</div><div class="line">$api_url = <span class="string">"https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=&#123;$ticket&#125;"</span>;</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch,CURLOPT_URL,$api_url);</div><div class="line">curl_setopt($ch,CURLOPT_RETURNTRANSFER,<span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">$qrcode_result = curl_exec($ch);</div><div class="line">curl_close($ch);</div><div class="line"><span class="keyword">echo</span> $qrcode_result;</div></pre></td></tr></table></figure>
+<p>实现效果可访问：</p>
+<p><a href="http://leo07.sinaapp.com/qrcode_manage.html" target="_blank" rel="external">http://leo07.sinaapp.com/qrcode_manage.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      wechat qr code manage
     
     </summary>
     
