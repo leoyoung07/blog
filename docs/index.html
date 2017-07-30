@@ -155,6 +155,58 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-tcp-notes"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年07月30日 12:57" datetime="2017-07-30T04:57:29.000Z"  itemprop="datePublished">2017-07-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/TCP/">TCP</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/blog/2017/07/30/tcp-notes/">关于TCP的那些琐事</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        一、关于连接状态与心跳包主动断开连接如果一方主动断开连接，另一方尝试接收数据时会抛出异常，例如C#下会抛出SocketException:
+123ErrorCode: 10054Message: &quot;远程主机强迫关闭了一个现有的连接。&quot;SocketErrorCode: ConnectionReset
+捕获该异常，可以判断对方是否主动断开连接。
+网络异常断开连接如果是网络异常...
+    
+
+        <a href="/blog/2017/07/30/tcp-notes/" class="post-more waves-effect waves-button">
+            more...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/tcp/">tcp</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-start-a-nodejs-project-with-typescript"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -205,6 +257,62 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/TypeScript/">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/node-js/">node.js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-echarts-problems"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年02月21日 0:00" datetime="2017-02-20T16:00:00.000Z"  itemprop="datePublished">2017-02-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/blog/2017/02/21/echarts-problems/">ECharts 使用过程中遇到的问题</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        记录ECharts使用过程中遇到的一些问题
+页面内容被tooltip的div遮盖
+
+描述：
+  在页面中为div元素使用全局的style（主要是宽和高）时，图表后面的内容会被tooltip的div遮盖，导致input等元素无法点击、无法输入内容。
+
+原因：
+  图表初始化时会在TooltipContent方法中创建一个空的div元素作为tooltip，不带样式，而包含该div的父级div的p...
+    
+
+        <a href="/blog/2017/02/21/echarts-problems/" class="post-more waves-effect waves-button">
+            more...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/echarts/">echarts</a></li></ul>
 
     </div>
     
@@ -428,7 +536,7 @@ JSONPJSONP（JSON with Padding） 是一种动态加载js的技术，即使用ja
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-git-server-on-windows"
+            <article id="post-git-stack-on-windows"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -448,7 +556,7 @@ JSONPJSONP（JSON with Padding） 是一种动态加载js的技术，即使用ja
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/blog/2016/03/28/git-server-on-windows/">在windows环境下用GitStack搭建git server的方法</a>
+      <a class="post-title-link" href="/blog/2016/03/28/git-stack-on-windows/">在windows环境下用GitStack搭建git server的方法</a>
     </h3>
   
 
@@ -465,7 +573,7 @@ JSONPJSONP（JSON with Padding） 是一种动态加载js的技术，即使用ja
   在服务器下载安装GitStack，安装完成后，可在 Admin 页面的 Setting 中配置 Server Ports 和 Repositories Location ，然后在 Security 中选择 Communication pr...
     
 
-        <a href="/blog/2016/03/28/git-server-on-windows/" class="post-more waves-effect waves-button">
+        <a href="/blog/2016/03/28/git-stack-on-windows/" class="post-more waves-effect waves-button">
             more...
         </a>
     </div>
@@ -583,107 +691,6 @@ https:/...
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/wechat/">wechat</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-number-to-excel-letter"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2015年12月26日 0:00" datetime="2015-12-25T16:00:00.000Z"  itemprop="datePublished">2015-12-26</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/PHP/">PHP</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/blog/2015/12/26/number-to-excel-letter/">将数字转换为EXCEL列名的方法</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        用递归函数将数字转换为EXCEL中的列名，直接上代码（PHP）：
-12345678910111213141516171819202122232425//递归求解function R_NumToLetter($num)&#123;    if($num == 0)    &#123;        return '';    &#125;    $base = 26;    $mod = (i...
-    
-
-        <a href="/blog/2015/12/26/number-to-excel-letter/" class="post-more waves-effect waves-button">
-            more...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/convert/">convert</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/php/">php</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-wechat-button-manage"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2015年12月09日 0:00" datetime="2015-12-08T16:00:00.000Z"  itemprop="datePublished">2015-12-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/WeChat/">WeChat</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/blog/2015/12/09/wechat-button-manage/">微信公众平台自定义菜单配置工具的实现</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        由于JS脚本跨域访问的问题，无法通过jQuery的Ajax方法直接调用微信的API，故采用服务器端转发的方式与微信API交互。
-配置自定义菜单须先获取Access Token，前端JS代码如下：
-12345678910111213141516171819202122232425function getAccessToken()&#123;    var appidParam = $("#ap...
-    
-
-        <a href="/blog/2015/12/09/wechat-button-manage/" class="post-more waves-effect waves-button">
-            more...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/curl/">curl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/tools/">tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/wechat/">wechat</a></li></ul>
 
     </div>
     

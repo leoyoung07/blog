@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>在windows环境下用GitStack搭建git server的方法 | Leo Young Blog | Don&#39;t Repeat Yourself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#67939E">
+    
+    
+    <meta name="keywords" content="windows,git,server">
+    <meta name="description" content="GitStack on windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在windows环境下用GitStack搭建git server的方法">
+<meta property="og:url" content="http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/index.html">
+<meta property="og:site_name" content="Leo Young Blog">
+<meta property="og:description" content="GitStack on windows">
+<meta property="og:updated_time" content="2017-07-30T04:41:39.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在windows环境下用GitStack搭建git server的方法">
+<meta name="twitter:description" content="GitStack on windows">
+    
+        <link rel="alternative" href="/atom.xml" title="Leo Young Blog" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/blog/icon/favicon.ico">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Leo Young</h5>
+          <a href="mailto:420760135@qq.com" title="420760135@qq.com" class="mail">420760135@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Leo Young Blog
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/leoyoung07" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2008885165" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/friends"  >
+                <i class="icon icon-lg icon-link"></i>
+                Friends
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">在windows环境下用GitStack搭建git server的方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">在windows环境下用GitStack搭建git server的方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-03-27T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2016-03-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/Git/">Git</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-git-stack-on-windows"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">在windows环境下用GitStack搭建git server的方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年03月28日 0:00" datetime="2016-03-27T16:00:00.000Z"  itemprop="datePublished">2016-03-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/Git/">Git</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在Windows环境下用GitStack搭建git server的方法：</p>
+<ul>
+<li><p>安装/配置GitStack</p>
+<p>  GitStack下载地址：<a href="http://gitstack.com/download/" target="_blank" rel="external">GitStack</a></p>
+<p>  在服务器下载安装GitStack，安装完成后，可在 <em>Admin</em> 页面的 <em>Setting</em> 中配置 <em>Server Ports</em> 和 <em>Repositories Location</em> ，然后在 <em>Security</em> 中选择 <em>Communication protocols</em> 为 <em>Accept http and https</em> 。</p>
+</li>
+<li><p>添加User</p>
+<p>  在 <em>Admin</em> 页面的 <em>Users &amp; Groups</em> 中添加User。</p>
+</li>
+<li><p>添加Repository</p>
+<p>  在 <em>Admin</em> 页面的 <em>Repository</em> 中新建Repository，并添加刚才创建的User。</p>
+</li>
+<li><p>远程clone</p>
+<p>  在自己的机器上clone刚才添加的Repository：</p>
+<p>  <code>git clone https://name:password@your_server_domain:port/your_repository.git</code></p>
+</li>
+<li><p>远程push</p>
+<p>  在自己的机器上添加文件，并push到服务器：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add --all .</div><div class="line">git commit -m <span class="string">"init"</span></div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<ul>
+<li><p>服务器本地clone</p>
+<p>  服务器上，在你想要部署代码的位置进行clone：</p>
+<p>  <code>git clone https://name:password@localhost:port/your_repository.git</code></p>
+</li>
+<li><p>配置Hook</p>
+<p>  服务器上，找到你Repository所在位置，打开hooks文件夹添加名为 <em>post-receive</em> 的文件，文件内容例如：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"><span class="built_in">unset</span> GIT_DIR</div><div class="line">DeployPath=path_to_your_deploy_folder</div><div class="line"></div><div class="line"><span class="built_in">cd</span> <span class="variable">$DeployPath</span></div><div class="line">git pull origin master</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>修改GitStack服务的登录方式</strong></p>
+<p>  在服务中找到 <em>GitStack</em> ，右键 属性 打开登录选项卡，将登录身份由 <em>本地系统账户</em> 改为  <em>Administrator</em> ，重启 <em>GitStack</em> 服务。</p>
+</li>
+</ul>
+<p>完成以上的步骤，下次从自己的机器push到服务器时，就可以实现自动部署。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-07-30T04:41:39.707Z" itemprop="dateUpdated">2017年7月30日 12:41</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/blog/2016/03/28/git-stack-on-windows/" target="_blank" rel="external">http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/</a>
+    </div>
+    <footer>
+        <a href="http://leoyoung07.github.io/blog">
+            <img src="/blog/img/avatar.jpg" alt="Leo Young">
+            Leo Young
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/server/">server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/windows/">windows</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/&title=《在windows环境下用GitStack搭建git server的方法》 — Leo Young Blog&pic=http://leoyoung07.github.io/blog/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/&title=《在windows环境下用GitStack搭建git server的方法》 — Leo Young Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在windows环境下用GitStack搭建git server的方法》 — Leo Young Blog&url=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/&via=http://leoyoung07.github.io/blog" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/blog/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">PHP curl post 数组与 post query字符串的区别</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blog/2016/03/27/javascript-get-url-search-params/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">用JavaScript获取URL参数的方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="git-stack-on-windows" data-title="在windows环境下用GitStack搭建git server的方法" data-url="http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'leoyoung', theme: 'none'};
+lazyScripts.push('/blog/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/blog/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/blog/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Leo Young Blog &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/&title=《在windows环境下用GitStack搭建git server的方法》 — Leo Young Blog&pic=http://leoyoung07.github.io/blog/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/&title=《在windows环境下用GitStack搭建git server的方法》 — Leo Young Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在windows环境下用GitStack搭建git server的方法》 — Leo Young Blog&url=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/&via=http://leoyoung07.github.io/blog" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3awU7FQAgF0Pf/P61bjb72AoOpyenK2KadMyaAMK9XfH28ub7e/fn85OfkK8cuPDw8vENLv/5ksrjki8n7ky14+108PDy8Nd67RSSA6wXNqdfrubHg4eHhPYZ3vbikCM6Lcjw8PLz/zqsWuHnoTzoJeHh4eM/hVdsNSRDP35MX6Iu9Fjw8PLyYl0+RnvPzynwPDw8PbzxVn4y78oFW9dhBYbV4eHh4C7w84M5HWXnimT+Dh4eHt8frDezzAVgvoCfN32jNeHh4eAu83iGqXrGbt4B73YbXPF/h4eHhBbxeoyEZ/8/fOenQ4uHh4e3xemkgH+dXN6W3fc3sgYeHhzeuVBPA2Yl8NYUkzYib9ICHh4e3xssD93yEVk0nefsYDw8Pb4OXh9pqGV0tefMQnxze+uVMGR4eHt4hXh7uq5/Jt6zX2G0O1fDw8PDGvDwQ95qzvZZEnipuGih4eHh4C7zkdc3eRqsI7o3ZogMHeHh4eId4vcSQ71xhdw+1Qr49j4eHh7fAqxbN1RFXrwSfNCOivyEeHh7emJeH6VNNhLOT/V4SwsPDw5vzNhJD3rqtppPqXTw8PLxTvPxj1buT0Vpvo/Hw8PD+njcJ+nnR3Lt64zE8PDy8DV4v4PZC+UbCKB8jwMPDwzvESx6qtlzz3+QppNkuwcPDw1vjTQL62dF+r6WLh4eH9xxeb5Q1P25V7cS+fR4PDw/vKO+jeOWhOW/gTkZrN+/Ew8PDW+D1RlBRV/hyub2DAhuJBA8PD6/Hq7YbeqV2tfGRb9DNXTw8PLw1Xq/Ynbdc80J5sdeCh4eHt8zrHQ5IKvpqIolKbTw8PLzH8Hqjr8lkqtcQwcPDw9vj9Y6f5qlivkHJd0dtXDw8PLyYV/0nvxCUg3HaNWzloAAeHh5en/cJi22Sl4GRnCoAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/blog/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/blog/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

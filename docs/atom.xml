@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://leoyoung07.github.io/blog/"/>
-  <updated>2017-03-16T06:17:26.385Z</updated>
+  <updated>2017-07-30T11:08:22.625Z</updated>
   <id>http://leoyoung07.github.io/blog/</id>
   
   <author>
@@ -16,11 +16,74 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于TCP的那些琐事</title>
+    <link href="http://leoyoung07.github.io/blog/2017/07/30/tcp-notes/"/>
+    <id>http://leoyoung07.github.io/blog/2017/07/30/tcp-notes/</id>
+    <published>2017-07-30T04:57:29.000Z</published>
+    <updated>2017-07-30T11:08:22.625Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、关于连接状态与心跳包"><a href="#一、关于连接状态与心跳包" class="headerlink" title="一、关于连接状态与心跳包"></a>一、关于连接状态与心跳包</h2><h3 id="主动断开连接"><a href="#主动断开连接" class="headerlink" title="主动断开连接"></a>主动断开连接</h3><p>如果一方主动断开连接，另一方尝试接收数据时会抛出异常，例如C#下会抛出<code>SocketException</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ErrorCode: 10054</div><div class="line">Message: &quot;远程主机强迫关闭了一个现有的连接。&quot;</div><div class="line">SocketErrorCode: ConnectionReset</div></pre></td></tr></table></figure>
+<p>捕获该异常，可以判断对方是否主动断开连接。</p>
+<h3 id="网络异常断开连接"><a href="#网络异常断开连接" class="headerlink" title="网络异常断开连接"></a>网络异常断开连接</h3><p>如果是网络异常导致连接断开，接收数据的一方无法得知网络连接状态，这时就需要用心跳机制来解决这个问题。TCP 本身有 Keepalive 选项，但默认关闭，而且检测周期过长（2个小时），因此一般都在应用层自己实现心跳包。心跳包即像心跳一样每隔一段时间向对方发送一个数据包，告诉对方自己连接正常。根据业务场景需要，心跳包可以两边都发送或者由一边主动发送，发送周期可设置在30s左右。如果由客户端主动发心跳包，服务端被动检测连接的周期可<br>设置为客户端发送周期的两到三倍。</p>
+<h2 id="二、关于消息格式"><a href="#二、关于消息格式" class="headerlink" title="二、关于消息格式"></a>二、关于消息格式</h2><h3 id="TLV格式"><a href="#TLV格式" class="headerlink" title="TLV格式"></a>TLV格式</h3><p>消息格式可基于TLV（Type Length Value）进行设计：</p>
+<blockquote>
+<p>[int32_t]Type(4bytes) | [int32_t]Length(4bytes) | [bytes array]Value |</p>
+</blockquote>
+<p>这种格式较为常见，接收方获得 Type 和 Length 后即可动态创建buffer接收、处理数据。</p>
+<h3 id="文本格式"><a href="#文本格式" class="headerlink" title="文本格式"></a>文本格式</h3><p>消息格式也可以使用类似http协议的文本格式进行设计：</p>
+<blockquote>
+<p>Header \r\n\r\n Body</p>
+</blockquote>
+<p>文本格式便于扩展和阅读，更加灵活。这也是 <em>UNIX编程艺术</em> 一书中推荐的协议格式。</p>
+<h2 id="三、关于字节序"><a href="#三、关于字节序" class="headerlink" title="三、关于字节序"></a>三、关于字节序</h2><h3 id="大端序与小端序"><a href="#大端序与小端序" class="headerlink" title="大端序与小端序"></a>大端序与小端序</h3><p>不同计算机对多字节整型的存储方式不同：</p>
+<blockquote>
+<p>Some computers put the most significant byte first (known as big-endian order) and others put the least-significant byte first (known as little-endian order).</p>
+</blockquote>
+<p>定义：</p>
+<blockquote>
+<p>如果最低有效位在最高有效位的前面，则称小端序；反之则称大端序</p>
+</blockquote>
+<p>不同计算机可能采用不一样的字节序（主机字节序），而网络传输一般采用大端序（网络字节序）。</p>
+<h3 id="主机字节序与网络字节序的转换"><a href="#主机字节序与网络字节序的转换" class="headerlink" title="主机字节序与网络字节序的转换"></a>主机字节序与网络字节序的转换</h3><p>C#中的<code>IPAddress</code>类提供了两个方法对主机字节序与网络字节序进行转换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public static int NetworkToHostOrder(int network)</div><div class="line">public static int HostToNetworkOrder(int host)</div></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a href="http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/overview.html" target="_blank" rel="external">TCP keepalive overview</a></p>
+</li>
+<li><p><a href="https://www.zhihu.com/question/35896874" target="_blank" rel="external">服务端主动发送心跳包，还是客户端发送比较好？</a></p>
+</li>
+<li><p><a href="https://www.felix021.com/blog/read.php?2076" target="_blank" rel="external">闲说HeartBeat心跳包和TCP协议的KeepAlive机制</a></p>
+</li>
+<li><p><a href="https://www.zhihu.com/question/58628159/answer/157900365" target="_blank" rel="external">大多tcp应用采用长度+数据的格式传输数据，如何防止恶意虚报长度？</a></p>
+</li>
+<li><p><a href="https://msdn.microsoft.com/en-us/library/653kcke1.aspx" target="_blank" rel="external">IPAddress.NetworkToHostOrder Method</a></p>
+</li>
+<li><p><a href="https://zh.wikipedia.org/wiki/%E5%AD%97%E8%8A%82%E5%BA%8F" target="_blank" rel="external">字节顺序-维基百科</a></p>
+</li>
+<li><p><a href="https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Data/endian.html" target="_blank" rel="external">Big and Little Endian</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      tcp-notes
+    
+    </summary>
+    
+      <category term="TCP" scheme="http://leoyoung07.github.io/blog/categories/TCP/"/>
+    
+    
+      <category term="tcp" scheme="http://leoyoung07.github.io/blog/tags/tcp/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用TypeScript开发Node.js项目</title>
     <link href="http://leoyoung07.github.io/blog/2017/03/16/start-a-nodejs-project-with-typescript/"/>
     <id>http://leoyoung07.github.io/blog/2017/03/16/start-a-nodejs-project-with-typescript/</id>
     <published>2017-03-16T05:42:05.000Z</published>
-    <updated>2017-03-16T06:17:26.385Z</updated>
+    <updated>2017-03-16T06:23:21.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="使用TypeScript开发Node-js项目的主要步骤"><a href="#使用TypeScript开发Node-js项目的主要步骤" class="headerlink" title="使用TypeScript开发Node.js项目的主要步骤"></a>使用TypeScript开发Node.js项目的主要步骤</h1><h2 id="安装TypeScript"><a href="#安装TypeScript" class="headerlink" title="安装TypeScript"></a>安装TypeScript</h2><ul>
 <li><p>全局安装TypeScript:</p>
@@ -59,11 +122,50 @@
   </entry>
   
   <entry>
+    <title>ECharts 使用过程中遇到的问题</title>
+    <link href="http://leoyoung07.github.io/blog/2017/02/21/echarts-problems/"/>
+    <id>http://leoyoung07.github.io/blog/2017/02/21/echarts-problems/</id>
+    <published>2017-02-20T16:00:00.000Z</published>
+    <updated>2017-02-21T06:28:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="记录ECharts使用过程中遇到的一些问题"><a href="#记录ECharts使用过程中遇到的一些问题" class="headerlink" title="记录ECharts使用过程中遇到的一些问题"></a>记录ECharts使用过程中遇到的一些问题</h1><ol>
+<li><p>页面内容被tooltip的div遮盖</p>
+<ul>
+<li><p>描述：</p>
+<p>  在页面中为div元素使用全局的style（主要是宽和高）时，图表后面的内容会被tooltip的div遮盖，导致input等元素无法点击、无法输入内容。</p>
+</li>
+<li><p>原因：</p>
+<p>  图表初始化时会在TooltipContent方法中创建一个空的div元素作为tooltip，不带样式，而包含该div的父级div的position被设置为relative。当页面中为div元素设置全局的宽和高时，tooltip的div就会遮盖后面的元素。</p>
+</li>
+<li><p>解决：</p>
+<p>  修改源码，在TooltipContent方法中，tooltip的div被创建后，为其添加 <code>display: none</code> 样式。即：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> el = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line">el.style.display = <span class="string">"none"</span>;</div></pre></td></tr></table></figure>
+<p>  由于tooltip所在的div的style（主要是display属性）在显示时会动态改变，所以这样修改不会影响之后tooltip的显示。</p>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      echarts-problems
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://leoyoung07.github.io/blog/categories/JavaScript/"/>
+    
+    
+      <category term="echarts" scheme="http://leoyoung07.github.io/blog/tags/echarts/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript中的求模和求余</title>
     <link href="http://leoyoung07.github.io/blog/2016/06/07/mod-and-rem-in-javascript/"/>
     <id>http://leoyoung07.github.io/blog/2016/06/07/mod-and-rem-in-javascript/</id>
     <published>2016-06-06T16:00:00.000Z</published>
-    <updated>2017-02-08T05:31:30.083Z</updated>
+    <updated>2017-02-08T05:31:30.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="求模与求余"><a href="#求模与求余" class="headerlink" title="求模与求余"></a>求模与求余</h1><p>求模和求余其实是两种不同的运算。当两个操作数同号时，它们的运算结果相同；而当两个操作数异号时，它们的运算结果就不同了。</p>
 <p>求模与求余运算都分两步进行：</p>
@@ -106,7 +208,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/04/28/c-getch-getchar/"/>
     <id>http://leoyoung07.github.io/blog/2016/04/28/c-getch-getchar/</id>
     <published>2016-04-27T16:00:00.000Z</published>
-    <updated>2017-02-08T05:31:16.424Z</updated>
+    <updated>2017-02-08T05:31:16.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近在阅读K&amp;R的经典之作The C Programming Language（C程序设计语言）时遇到了一个看似简单的函数 <code>getchar()</code> ，书中对其的描述是：</p>
 <blockquote>
@@ -155,7 +257,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/04/01/jsonp-and-cross-domain/"/>
     <id>http://leoyoung07.github.io/blog/2016/04/01/jsonp-and-cross-domain/</id>
     <published>2016-03-31T16:00:00.000Z</published>
-    <updated>2017-02-08T05:31:03.393Z</updated>
+    <updated>2017-02-08T05:31:03.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p><strong>跨域问题</strong>是由于浏览器的<strong>同源策略</strong>而产生的，同源是指<strong>同协议</strong>、<strong>同域名</strong>、<strong>同端口</strong>，出于安全的考虑，浏览器禁止脚本的跨域（不同源）请求。</p>
 <p>虽然浏览器禁止跨域请求，但是却允许引用和执行来自其他域的脚本文件，这也就是下面将要提到的 JSONP 的原理。</p>
@@ -199,7 +301,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/"/>
     <id>http://leoyoung07.github.io/blog/2016/03/30/differences-between-post-array-and-query-string-with-php-curl/</id>
     <published>2016-03-29T16:00:00.000Z</published>
-    <updated>2017-02-08T10:22:19.767Z</updated>
+    <updated>2017-02-08T10:22:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>使用PHP的curl方法post数据时通常使用以下方法：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$post_fields = [<span class="string">"aaa"</span>=&gt;<span class="string">"aaaa"</span>, <span class="string">"bbb"</span>=&gt;<span class="string">"bbbb"</span>];</div><div class="line">$url = <span class="string">"http://localhost/sandbox/PHPTest/output.php"</span>;</div><div class="line">$ch = curl_init();</div><div class="line">curl_setopt($ch, CURLOPT_URL, $url);</div><div class="line">curl_setopt($ch, CURLOPT_POST, <span class="number">1</span>);</div><div class="line">curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);</div><div class="line">curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</div><div class="line">$response = curl_exec($ch);</div><div class="line"><span class="keyword">echo</span> $response;</div></pre></td></tr></table></figure>
@@ -253,10 +355,10 @@
   
   <entry>
     <title>在windows环境下用GitStack搭建git server的方法</title>
-    <link href="http://leoyoung07.github.io/blog/2016/03/28/git-server-on-windows/"/>
-    <id>http://leoyoung07.github.io/blog/2016/03/28/git-server-on-windows/</id>
+    <link href="http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/"/>
+    <id>http://leoyoung07.github.io/blog/2016/03/28/git-stack-on-windows/</id>
     <published>2016-03-27T16:00:00.000Z</published>
-    <updated>2017-02-08T05:30:32.071Z</updated>
+    <updated>2017-07-30T04:41:39.707Z</updated>
     
     <content type="html"><![CDATA[<p>在Windows环境下用GitStack搭建git server的方法：</p>
 <ul>
@@ -299,7 +401,7 @@
     
     <summary type="html">
     
-      git server on windows
+      GitStack on windows
     
     </summary>
     
@@ -319,7 +421,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/03/27/javascript-get-url-search-params/"/>
     <id>http://leoyoung07.github.io/blog/2016/03/27/javascript-get-url-search-params/</id>
     <published>2016-03-26T16:00:00.000Z</published>
-    <updated>2017-02-08T05:30:13.482Z</updated>
+    <updated>2017-02-08T05:30:13.000Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript中通过正则表达式获取URL参数的方法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQueryString</span>(<span class="params">name</span>) </span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span> + name + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>, <span class="string">"i"</span>);</div><div class="line">    <span class="keyword">var</span> r = location.search.substr(<span class="number">1</span>).match(reg);</div><div class="line">    <span class="keyword">if</span> (r != <span class="literal">null</span>) <span class="keyword">return</span> <span class="built_in">decodeURI</span>(r[<span class="number">2</span>]);</div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -350,7 +452,7 @@
     <link href="http://leoyoung07.github.io/blog/2016/03/22/wechat-auth-get-user-info/"/>
     <id>http://leoyoung07.github.io/blog/2016/03/22/wechat-auth-get-user-info/</id>
     <published>2016-03-21T16:00:00.000Z</published>
-    <updated>2017-02-08T05:29:46.773Z</updated>
+    <updated>2017-02-08T05:29:46.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li><h3 id="授权方式"><a href="#授权方式" class="headerlink" title="授权方式"></a>授权方式</h3><p>微信网页的授权方式分为两种：</p>
@@ -402,7 +504,7 @@
     <link href="http://leoyoung07.github.io/blog/2015/12/26/number-to-excel-letter/"/>
     <id>http://leoyoung07.github.io/blog/2015/12/26/number-to-excel-letter/</id>
     <published>2015-12-25T16:00:00.000Z</published>
-    <updated>2017-02-08T05:39:50.350Z</updated>
+    <updated>2017-02-08T05:39:50.000Z</updated>
     
     <content type="html"><![CDATA[<p>用递归函数将数字转换为EXCEL中的列名，直接上代码（PHP）：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//递归求解</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">R_NumToLetter</span><span class="params">($num)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>($num == <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">    &#125;</div><div class="line">    $base = <span class="number">26</span>;</div><div class="line">    $mod = (int)($num % $base);</div><div class="line">    $num = (int)($num / $base);</div><div class="line">    <span class="keyword">if</span>($mod == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> R_NumToLetter($num - <span class="number">1</span>).NumToLetter($base);</div><div class="line">    <span class="keyword">if</span>($num == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> NumToLetter($mod);</div><div class="line">    <span class="keyword">return</span> R_NumToLetter($num).NumToLetter($mod);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">NumToLetter</span><span class="params">($num)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>($num == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">    $num = (int)$num - <span class="number">1</span>;</div><div class="line">    $ord_A = ord(<span class="string">'A'</span>);</div><div class="line">    $chr = chr($ord_A + $num);</div><div class="line">    <span class="keyword">return</span> $chr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
@@ -427,7 +529,7 @@
     <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/"/>
     <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-button-manage/</id>
     <published>2015-12-08T16:00:00.000Z</published>
-    <updated>2017-02-08T05:28:56.199Z</updated>
+    <updated>2017-02-08T05:28:56.000Z</updated>
     
     <content type="html"><![CDATA[<p>由于JS脚本跨域访问的问题，无法通过jQuery的Ajax方法直接调用微信的API，故采用服务器端转发的方式与微信API交互。</p>
 <p>配置自定义菜单须先获取Access Token，前端JS代码如下：</p>
@@ -466,7 +568,7 @@
     <link href="http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/"/>
     <id>http://leoyoung07.github.io/blog/2015/12/09/wechat-qr-code-manage/</id>
     <published>2015-12-08T16:00:00.000Z</published>
-    <updated>2017-02-08T05:29:20.565Z</updated>
+    <updated>2017-02-08T05:29:20.000Z</updated>
     
     <content type="html"><![CDATA[<p>配置带参数的二维码同样需要先获取Access Token，获取方法在 <em>微信公众平台自定义菜单配置工具的实现</em> 一文中有描述。</p>
 <p>利用获取到的Access Token，可以创建二维码的Ticket。通过POST方法向服务器提交相关信息，JS代码如下：</p>
