@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>一些好用的HTTP调试工具 | Leo Young Blog | Don&#39;t Repeat Yourself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#67939E">
+    
+    
+    <meta name="keywords" content="tools">
+    <meta name="description" content="http-debug-tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些好用的HTTP调试工具">
+<meta property="og:url" content="http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/index.html">
+<meta property="og:site_name" content="Leo Young Blog">
+<meta property="og:description" content="http-debug-tools">
+<meta property="og:updated_time" content="2017-07-30T13:38:02.925Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一些好用的HTTP调试工具">
+<meta name="twitter:description" content="http-debug-tools">
+    
+        <link rel="alternative" href="/atom.xml" title="Leo Young Blog" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/blog/icon/favicon.ico">
+    <link rel="stylesheet" href="/blog/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Leo Young</h5>
+          <a href="mailto:420760135@qq.com" title="420760135@qq.com" class="mail">420760135@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Leo Young Blog
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/leoyoung07" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2008885165" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/friends"  >
+                <i class="icon icon-lg icon-link"></i>
+                Friends
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">一些好用的HTTP调试工具</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">一些好用的HTTP调试工具</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-30T12:19:16.000Z" itemprop="datePublished" class="page-time">
+  2017-07-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/Tools/">Tools</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、发送请求"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、发送请求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cURL"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">cURL</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HTTPie"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">HTTPie</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Postman-Restlet-Client"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Postman/Restlet Client</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、抓包-未完待续。。。"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、抓包(未完待续。。。)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fiddler-Charles"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Fiddler/Charles</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Wireshark"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Wireshark</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Chrome-dev-tools"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Chrome dev-tools</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TcpDump"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">TcpDump</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-http-debug-tools"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">一些好用的HTTP调试工具</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年07月30日 20:19" datetime="2017-07-30T12:19:16.000Z"  itemprop="datePublished">2017-07-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/Tools/">Tools</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="一、发送请求"><a href="#一、发送请求" class="headerlink" title="一、发送请求"></a>一、发送请求</h2><h3 id="cURL"><a href="#cURL" class="headerlink" title="cURL"></a>cURL</h3><p>cURL 是Linux下的命令行工具，windows 下可通过MinGW安装（安装Git for windows即可）。</p>
+<p>基本用法：</p>
+<ul>
+<li>GET</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="string">"http://www.hotmail.com/when/junk.cgi?birthyear=1905&amp;press=OK"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>POST</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># application/x-www-form-urlencoded</span></div><div class="line">curl --data <span class="string">"birthyear=1905&amp;press=%20OK%20"</span>  http://www.example.com/when.cgi</div></pre></td></tr></table></figure>
+<ul>
+<li>HEAD</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl --head <span class="string">"http://www.hotmail.com/when/junk.cgi?birthyear=1905&amp;press=OK"</span></div></pre></td></tr></table></figure>
+<h3 id="HTTPie"><a href="#HTTPie" class="headerlink" title="HTTPie"></a>HTTPie</h3><p>HTTPie 是使用python开发的命令行工具，可用pip安装。</p>
+<p>基本用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http [flags] [METHOD] URL [ITEM [ITEM]]</div></pre></td></tr></table></figure>
+<h3 id="Postman-Restlet-Client"><a href="#Postman-Restlet-Client" class="headerlink" title="Postman/Restlet Client"></a>Postman/Restlet Client</h3><p>Postman 和 Restlet Client都是Chrome下的扩展（应用），具有图形化界面，很容易使用。</p>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop" target="_blank" rel="external">Postman</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/restlet-client-rest-api-t/aejoelaoggembcahagimdiliamlcdmfm" target="_blank" rel="external">Restlet Client</a></li>
+</ul>
+<h2 id="二、抓包-未完待续。。。"><a href="#二、抓包-未完待续。。。" class="headerlink" title="二、抓包(未完待续。。。)"></a>二、抓包(未完待续。。。)</h2><h3 id="Fiddler-Charles"><a href="#Fiddler-Charles" class="headerlink" title="Fiddler/Charles"></a>Fiddler/Charles</h3><h3 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h3><h3 id="Chrome-dev-tools"><a href="#Chrome-dev-tools" class="headerlink" title="Chrome dev-tools"></a>Chrome dev-tools</h3><h3 id="TcpDump"><a href="#TcpDump" class="headerlink" title="TcpDump"></a>TcpDump</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a href="https://curl.haxx.se/docs/httpscripting.html" target="_blank" rel="external">curl - Tutorial</a></p>
+</li>
+<li><p><a href="https://httpie.org/doc" target="_blank" rel="external">Documentation | HTTPie – CLI HTTP client</a></p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-07-30T13:38:02.925Z" itemprop="dateUpdated">2017年7月30日 21:38</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/blog/2017/07/30/http-debug-tools/" target="_blank" rel="external">http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/</a>
+    </div>
+    <footer>
+        <a href="http://leoyoung07.github.io/blog">
+            <img src="/blog/img/avatar.jpg" alt="Leo Young">
+            Leo Young
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/tools/">tools</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/&title=《一些好用的HTTP调试工具》 — Leo Young Blog&pic=http://leoyoung07.github.io/blog/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/&title=《一些好用的HTTP调试工具》 — Leo Young Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一些好用的HTTP调试工具》 — Leo Young Blog&url=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/&via=http://leoyoung07.github.io/blog" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blog/2017/07/30/tcp-notes/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">关于TCP的那些琐事</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/blog/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/blog/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Leo Young Blog &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/&title=《一些好用的HTTP调试工具》 — Leo Young Blog&pic=http://leoyoung07.github.io/blog/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/&title=《一些好用的HTTP调试工具》 — Leo Young Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一些好用的HTTP调试工具》 — Leo Young Blog&url=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/&via=http://leoyoung07.github.io/blog" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aO3LDMAwFQN//0k6bxvJ7oO0ZUqsqY32XBQKAeDzi4/nveHX21ZXXd13f++EDAwNjW8bz8kiuST60fXL+BAwMjPswkjCah+P89Qnj+tswMDAw8vTu+iOSs+17MTAwMK4fl3xuEqaTwI2BgYGRl5r1o2PkT2txDAyMDRl51/33f39lfwMDA2MrxrM81vcQ27Qy+ioMDIyjGXmAy5O5lSGM2ZJhYGBgzErc619aapQsYmBgHMqYDTrkS5AH06XFwsDAOJrRBsQkKcyb+3kR+/jUOmFgYGzOmI1QzIJ1G3yjEI+BgXEoIwmFefHZjnbN9iiHRSwGBsbmjPUGXNI+Wx81e/kEDAyMoxkrs1V57rmy2Vm02zAwMA5lzFK6trjNl6ldlGlUxsDA2I8x7NKVG5ArxeqbXzAwMI5m5De3QxKz1DD/B1AMW2BgYGzOaF/QJnzthmXb+BuuEwYGxraMJPzl4TgHrzfmMDAwzmbM0r52S7ItaGfLioGBcR9G3lybpXFJIJ4FfQwMjDsw2uJzpU22Eu4xMDAw2mC3XqauJ44YGBhnM57l0W4YFM39oOn2ptGGgYFxKOM3A1s5OGnb1RucGBgYRzDapv8sWZxtAxRBFgMD4waMYqwh2KRMEruv1OIYGBgYo8GI/LOW8lkMDAyM2ahWeX1bKhcDrBgYGEcwkiI2ec1KQz8/i4GBcTfGSuk4Gz/9VBGLgYFxA8YfH7uyUFd+L34AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/blog/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/blog/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

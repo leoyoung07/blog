@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://leoyoung07.github.io/blog/"/>
-  <updated>2017-07-30T11:08:22.625Z</updated>
+  <updated>2017-07-30T13:38:02.925Z</updated>
   <id>http://leoyoung07.github.io/blog/</id>
   
   <author>
@@ -14,6 +14,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一些好用的HTTP调试工具</title>
+    <link href="http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/"/>
+    <id>http://leoyoung07.github.io/blog/2017/07/30/http-debug-tools/</id>
+    <published>2017-07-30T12:19:16.000Z</published>
+    <updated>2017-07-30T13:38:02.925Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、发送请求"><a href="#一、发送请求" class="headerlink" title="一、发送请求"></a>一、发送请求</h2><h3 id="cURL"><a href="#cURL" class="headerlink" title="cURL"></a>cURL</h3><p>cURL 是Linux下的命令行工具，windows 下可通过MinGW安装（安装Git for windows即可）。</p>
+<p>基本用法：</p>
+<ul>
+<li>GET</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="string">"http://www.hotmail.com/when/junk.cgi?birthyear=1905&amp;press=OK"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>POST</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># application/x-www-form-urlencoded</span></div><div class="line">curl --data <span class="string">"birthyear=1905&amp;press=%20OK%20"</span>  http://www.example.com/when.cgi</div></pre></td></tr></table></figure>
+<ul>
+<li>HEAD</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl --head <span class="string">"http://www.hotmail.com/when/junk.cgi?birthyear=1905&amp;press=OK"</span></div></pre></td></tr></table></figure>
+<h3 id="HTTPie"><a href="#HTTPie" class="headerlink" title="HTTPie"></a>HTTPie</h3><p>HTTPie 是使用python开发的命令行工具，可用pip安装。</p>
+<p>基本用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http [flags] [METHOD] URL [ITEM [ITEM]]</div></pre></td></tr></table></figure>
+<h3 id="Postman-Restlet-Client"><a href="#Postman-Restlet-Client" class="headerlink" title="Postman/Restlet Client"></a>Postman/Restlet Client</h3><p>Postman 和 Restlet Client都是Chrome下的扩展（应用），具有图形化界面，很容易使用。</p>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop" target="_blank" rel="external">Postman</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/restlet-client-rest-api-t/aejoelaoggembcahagimdiliamlcdmfm" target="_blank" rel="external">Restlet Client</a></li>
+</ul>
+<h2 id="二、抓包-未完待续。。。"><a href="#二、抓包-未完待续。。。" class="headerlink" title="二、抓包(未完待续。。。)"></a>二、抓包(未完待续。。。)</h2><h3 id="Fiddler-Charles"><a href="#Fiddler-Charles" class="headerlink" title="Fiddler/Charles"></a>Fiddler/Charles</h3><h3 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h3><h3 id="Chrome-dev-tools"><a href="#Chrome-dev-tools" class="headerlink" title="Chrome dev-tools"></a>Chrome dev-tools</h3><h3 id="TcpDump"><a href="#TcpDump" class="headerlink" title="TcpDump"></a>TcpDump</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a href="https://curl.haxx.se/docs/httpscripting.html" target="_blank" rel="external">curl - Tutorial</a></p>
+</li>
+<li><p><a href="https://httpie.org/doc" target="_blank" rel="external">Documentation | HTTPie – CLI HTTP client</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      http-debug-tools
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://leoyoung07.github.io/blog/categories/Tools/"/>
+    
+    
+      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
+    
+  </entry>
   
   <entry>
     <title>关于TCP的那些琐事</title>
@@ -553,13 +603,13 @@
       <category term="WeChat" scheme="http://leoyoung07.github.io/blog/categories/WeChat/"/>
     
     
+      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
+    
       <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
       <category term="curl" scheme="http://leoyoung07.github.io/blog/tags/curl/"/>
     
       <category term="wechat" scheme="http://leoyoung07.github.io/blog/tags/wechat/"/>
-    
-      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
     
   </entry>
   
@@ -592,13 +642,13 @@
       <category term="WeChat" scheme="http://leoyoung07.github.io/blog/categories/WeChat/"/>
     
     
+      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
+    
       <category term="php" scheme="http://leoyoung07.github.io/blog/tags/php/"/>
     
       <category term="curl" scheme="http://leoyoung07.github.io/blog/tags/curl/"/>
     
       <category term="wechat" scheme="http://leoyoung07.github.io/blog/tags/wechat/"/>
-    
-      <category term="tools" scheme="http://leoyoung07.github.io/blog/tags/tools/"/>
     
   </entry>
   
