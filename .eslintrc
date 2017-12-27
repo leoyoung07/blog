@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/strongly-recommended"
+  ],
+  "env": {
+    "mocha": true,
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "plugins": [
+    "vue"
+  ],
+  "rules": {
+    "semi": [2, "always"],
+    "no-console": "off",
+    "quotes": ["error", "single"],
+    "no-unused-vars": "warn",
+    "vue/html-self-closing": "off"
+  },
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "sourceType": "module"
+  }
+}
