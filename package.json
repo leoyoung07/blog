@@ -6,9 +6,10 @@
   "private": true,
   "scripts": {
     "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o docs/build.js",
-    "serve": "http-server ./docs -o -c 1 -a localhost",
+    "serve": "http-server ./docs -o -c 1 -a localhost -p 8888",
     "dev": "npm-run-all --parallel watchify serve",
     "lint": "eslint --ext .js,.vue src test/unit",
+    "eslint-fix": "eslint --ext .js,.vue src test/unit --fix",
     "test": "karma start karma.conf.js",
     "build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o docs/build.css ] -e src/main.js | uglifyjs -c warnings=false -m > docs/build.js"
   },
@@ -22,8 +23,10 @@
     "vue": "vue/dist/vue.common.js"
   },
   "dependencies": {
+    "markdown-it": "^8.4.0",
     "moment": "^2.19.4",
-    "vue": "^2.0.1"
+    "vue": "^2.0.1",
+    "vuetify": "^0.17.6"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
