@@ -29,13 +29,13 @@
       <v-content>
         <v-container fluid grid-list-lg>
           <v-layout row wrap align-center justify-center>
-            <v-flex xs10 md8 v-for="issue in issues" :key="issue.id" @click="navTo(issue.html_url)">
+            <v-flex xs10 md8 v-for="issue in issues" :key="issue.id" @click="navTo(issue.htmlUrl)">
               <v-card class="grey--text text--darken-2" hover>
                 <v-card-title primary-title>
                   <div class="headline">{{ issue.title }}</div>
                 </v-card-title>
                 <v-card-text>
-                  <div v-html="getSummary(issue.body)"></div>
+                  <div v-html="issue.summary"></div>
                 </v-card-text>
                 <v-card-actions>
                   <v-btn flat icon color="amber darken-2">
@@ -66,7 +66,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import GitHubApiService from './services/GitHubApiService';
-import RenderService from './services/RenderService';
 
 Vue.use(Vuetify);
 
@@ -81,14 +80,11 @@ export default {
 
   },
   methods: {
-    getSummary: function (text) {
-      return RenderService.getSummary(text, 300);
-    },
     navTo: function (url) {
       window.location.href = url;
     },
     getLabelUrl: function (label) {
-      return 'https://github.com/leoyoung07/blog/issues/?q=is%3Aclosed+label%3A' + label;
+      return GitHubApiService.getLabelHtmlUrl(label);
     }
   },
   computed: {
