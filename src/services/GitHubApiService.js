@@ -5,9 +5,15 @@ import RenderService from './RenderService';
 
 const allClosedIssuesUrl = 'https://api.github.com/repos/leoyoung07/blog/issues?state=closed';
 
+const cache = {};
+
 export default class GitHubApiService {
   static fetchIssues (options) {
     return new Promise((resolve, reject) => {
+      if (cache['allClosedIssues']) {
+        resolve(cache['allClosedIssues']);
+        return;
+      }
       axios
         .get(allClosedIssuesUrl)
         .then(response => {
@@ -34,6 +40,7 @@ export default class GitHubApiService {
             issue.summary = RenderService.getSummary(o.body, 300);
             issues.push(issue);
           });
+          cache['allClosedIssues'] = issues;
           resolve(issues);
         })
         .catch(e => {

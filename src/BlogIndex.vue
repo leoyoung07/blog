@@ -18,9 +18,11 @@
             <v-layout row wrap justify-start>
               <v-flex offset-xs2 class="pa-0">
                 <v-btn flat class="white--text">Home</v-btn>
+                <v-btn flat class="white--text">Labels</v-btn>
+                <v-btn flat class="white--text">Archives</v-btn>
                 <v-btn flat class="white--text">About</v-btn>
                 <v-btn flat class="white--text">Github</v-btn>
-                <v-btn flat class="white--text">Other</v-btn>
+                <v-btn flat class="white--text">Friends</v-btn>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -42,7 +44,7 @@
                     <v-icon>comment</v-icon>
                     <span>{{ issue.comments }}</span>
                   </v-btn>
-                  <v-chip label small class="white--text" v-for="label in issue.labels" :key="label.id" :style="{background: '#' + label.color}" @click.stop="navTo(getLabelUrl(label.name))">{{ label.name }}</v-chip>
+                  <v-chip label small v-for="label in issue.labels" :key="label.id" :style="{background: '#' + label.color, color: getAccessibleColor(label.color)}" @click.stop="navTo(getLabelUrl(label.name))">{{ label.name }}</v-chip>
                   <v-spacer></v-spacer>
                   <v-btn flat class="blue--text white">READ MORE</v-btn>
                 </v-card-actions>
@@ -66,6 +68,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import GitHubApiService from './services/GitHubApiService';
+import RenderService from './services/RenderService';
 
 Vue.use(Vuetify);
 
@@ -85,6 +88,9 @@ export default {
     },
     getLabelUrl: function (label) {
       return GitHubApiService.getLabelHtmlUrl(label);
+    },
+    getAccessibleColor: function (color) {
+      return RenderService.getAccessibleColor(color);
     }
   },
   computed: {
