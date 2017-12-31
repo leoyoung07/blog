@@ -1,37 +1,62 @@
 <template>
   <div id="blogIndex">
     <v-app>
-      <v-container fluid grid-list-lg>
+      <v-container fluid grid-list-lg class="indigo darken-2 white--text pt-5 px-0 pb-0">
+        <v-layout>
+          <v-btn color="pink" dark middle fixed right top fab>
+            <v-icon>search</v-icon>
+          </v-btn>
+        </v-layout>
         <v-layout row wrap>
-          <v-flex xs12 v-for="issue in issues" :key="issue.id">
-            <v-btn color="pink" dark middle fixed right top fab>
-              <v-icon>search</v-icon>
-            </v-btn>
-            <v-card class="grey--text text--darken-2">
-              <v-card-title primary-title>
-                <div class="headline">{{ issue.title }}</div>
-              </v-card-title>
-              <v-card-text>
-                <div v-html="getSummary(issue.body)"></div>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn flat class="cyan--text text--accent-4 white">READ</v-btn>
-                <v-spacer></v-spacer>
-                <v-btn flat icon color="amber darken-2">
-                  <v-icon>comment</v-icon>
-                  <span>{{ issue.comments }}</span>
-                </v-btn>
-                <v-btn icon>
-                  <v-icon>bookmark</v-icon>
-                </v-btn>
-                <v-btn icon>
-                  <v-icon>share</v-icon>
-                </v-btn>
-              </v-card-actions>
-            </v-card>
+          <v-flex xs8 md10 offset-xs2 class="text-xs-left">
+            <p class="display-1">Leo Young Blog</p>
+          </v-flex>
+          <v-flex xs8 md10 offset-xs2 class="text-xs-left">
+            <p>Don't Repeat Yourself.</p>
+          </v-flex>
+          <v-flex xs12 class="mt-2 indigo darken-4">
+            <v-layout row wrap justify-start>
+              <v-flex offset-xs2 class="pa-0">
+                <v-btn flat class="white--text">Home</v-btn>
+                <v-btn flat class="white--text">About</v-btn>
+                <v-btn flat class="white--text">Github</v-btn>
+                <v-btn flat class="white--text">Other</v-btn>
+              </v-flex>
+            </v-layout>
           </v-flex>
         </v-layout>
       </v-container>
+      <v-content>
+        <v-container fluid grid-list-lg>
+          <v-layout row wrap align-center justify-center>
+            <v-flex xs10 md8 v-for="issue in issues" :key="issue.id" @click="navTo(issue.html_url)">
+              <v-card class="grey--text text--darken-2" hover>
+                <v-card-title primary-title>
+                  <div class="headline">{{ issue.title }}</div>
+                </v-card-title>
+                <v-card-text>
+                  <div v-html="getSummary(issue.body)"></div>
+                </v-card-text>
+                <v-card-actions>
+                  <v-btn flat icon color="amber darken-2">
+                    <v-icon>comment</v-icon>
+                    <span>{{ issue.comments }}</span>
+                  </v-btn>
+                  <v-chip label small class="white--text" v-for="label in issue.labels" :key="label.id" :style="{background: '#' + label.color}" @click.stop="navTo(getLabelUrl(label.name))">{{ label.name }}</v-chip>
+                  <v-spacer></v-spacer>
+                  <v-btn flat class="blue--text white">READ MORE</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-content>
+    <!-- <v-container fluid class="pa-0 ma-0"> -->
+    <!-- <v-footer class="pa-3 grey darken-3 white--text" app> -->
+    <!-- <v-spacer></v-spacer> -->
+    <!-- <div>Leo Young - {{ new Date().getFullYear() }}</div> -->
+    <!-- </v-footer> -->
+    <!-- </v-container> -->
     </v-app>
   </div>
 </template>
@@ -49,7 +74,7 @@ export default {
   name: 'BlogIndex',
   data () {
     return {
-      issues: GitHubApiService.fetchIssues()
+      issues: []
     };
   },
   components: {
@@ -58,14 +83,26 @@ export default {
   methods: {
     getSummary: function (text) {
       return RenderService.getSummary(text, 300);
+    },
+    navTo: function (url) {
+      window.location.href = url;
+    },
+    getLabelUrl: function (label) {
+      return 'https://github.com/leoyoung07/blog/issues/?q=is%3Aclosed+label%3A' + label;
     }
   },
   computed: {
 
   },
-  mounted () {
+  async mounted () {
+    this.issues = await GitHubApiService.fetchIssues();
     console.log(this.issues);
   }
 };
 </script>
 <style src="../node_modules/vuetify/dist/vuetify.min.css"></style>
+<style>
+.chip--label, .chip--label span {
+  cursor: pointer !important;
+}
+</style>

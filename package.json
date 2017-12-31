@@ -23,6 +23,7 @@
     "vue": "vue/dist/vue.common.js"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "markdown-it": "^8.4.0",
     "moment": "^2.19.4",
     "vue": "^2.0.1",
