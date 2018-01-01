@@ -8,21 +8,16 @@
           </v-btn>
         </v-layout>
         <v-layout row wrap>
-          <v-flex xs8 md10 offset-xs2 class="text-xs-left">
+          <v-flex xs10 md10 offset-xs1 class="text-xs-left">
             <p class="display-1">Leo Young Blog</p>
           </v-flex>
-          <v-flex xs8 md10 offset-xs2 class="text-xs-left">
+          <v-flex xs10 md10 offset-xs1 class="text-xs-left">
             <p>Don't Repeat Yourself.</p>
           </v-flex>
           <v-flex xs12 class="mt-2 indigo darken-4">
-            <v-layout row wrap justify-start>
-              <v-flex offset-xs2 class="pa-0">
-                <v-btn flat class="white--text">Home</v-btn>
-                <v-btn flat class="white--text">Labels</v-btn>
-                <v-btn flat class="white--text">Archives</v-btn>
-                <v-btn flat class="white--text">About</v-btn>
-                <v-btn flat class="white--text">Github</v-btn>
-                <v-btn flat class="white--text">Friends</v-btn>
+            <v-layout row wrap justify-start class="text-xs-center">
+              <v-flex xs4 md1 :offset-md2="index === 0" v-for="(title, index) in ['Home', 'Labels', 'Archives', 'Github', 'Friends', 'About']" :key="index" class="pa-0">
+                <v-btn flat class="white--text">{{ title }}</v-btn>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -31,7 +26,7 @@
       <v-content>
         <v-container fluid grid-list-lg>
           <v-layout row wrap align-center justify-center>
-            <v-flex xs10 md8 v-for="issue in issues" :key="issue.id" @click="navTo(issue.htmlUrl)">
+            <v-flex xs12 md8 v-for="issue in issues" :key="issue.id" @click="navTo(issue.htmlUrl)">
               <v-card class="grey--text text--darken-2" hover>
                 <v-card-title primary-title>
                   <div class="headline">{{ issue.title }}</div>
