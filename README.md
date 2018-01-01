@@ -1,6 +1,6 @@
-# l-dashboard-view
+# Leo Young Blog
 
-> A Vue.js project
+> A blog based on GitHub issues
 
 ## Build Setup
 
