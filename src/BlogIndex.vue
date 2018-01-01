@@ -1,28 +1,24 @@
 <template>
   <div id="blogIndex">
     <v-app>
-      <v-container fluid grid-list-lg class="indigo darken-2 white--text pt-5 px-0 pb-0">
-        <v-layout>
-          <v-btn color="pink" dark middle fixed right top fab>
-            <v-icon>search</v-icon>
-          </v-btn>
-        </v-layout>
-        <v-layout row wrap>
-          <v-flex xs10 md10 offset-xs1 class="text-xs-left">
-            <p class="display-1">Leo Young Blog</p>
-          </v-flex>
-          <v-flex xs10 md10 offset-xs1 class="text-xs-left">
-            <p>Don't Repeat Yourself.</p>
-          </v-flex>
-          <v-flex xs12 class="mt-2 indigo darken-4">
-            <v-layout row wrap justify-start class="text-xs-center">
-              <v-flex xs4 md1 :offset-md2="index === 0" v-for="(title, index) in ['Home', 'Labels', 'Archives', 'Github', 'Friends', 'About']" :key="index" class="pa-0">
-                <v-btn flat class="white--text">{{ title }}</v-btn>
-              </v-flex>
-            </v-layout>
-          </v-flex>
-        </v-layout>
-      </v-container>
+      <v-btn color="pink" dark middle fixed right top fab>
+        <v-icon>search</v-icon>
+      </v-btn>
+      <v-layout row wrap class="indigo darken-2 white--text pt-5 px-0 pb-0">
+        <v-flex xs10 md10 offset-xs1 class="text-xs-left">
+          <p class="display-1">Leo Young Blog</p>
+        </v-flex>
+        <v-flex xs10 md10 offset-xs1 class="text-xs-left">
+          <p>Don't Repeat Yourself.</p>
+        </v-flex>
+        <v-flex xs12 class="mt-2 indigo darken-4">
+          <v-layout row wrap justify-start class="text-xs-center">
+            <v-flex xs4 md1 :offset-md2="index === 0" v-for="(title, index) in ['Home', 'Labels', 'Archives', 'Github', 'Friends', 'About']" :key="index" class="pa-0">
+              <v-btn flat class="white--text">{{ title }}</v-btn>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+      </v-layout>
       <v-content>
         <v-container fluid grid-list-lg>
           <v-layout row wrap align-center justify-center>

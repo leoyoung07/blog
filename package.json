@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o docs/build.js",
-    "serve": "http-server ./docs -o -c 1 -a localhost -p 8888",
+    "serve": "http-server ./docs -o -c 1 -a 0.0.0.0 -p 8888",
     "dev": "npm-run-all --parallel watchify serve",
     "lint": "eslint --ext .js,.vue src test/unit",
     "eslint-fix": "eslint --ext .js,.vue src test/unit --fix",
