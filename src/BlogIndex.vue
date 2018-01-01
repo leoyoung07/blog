@@ -13,8 +13,8 @@
         </v-flex>
         <v-flex xs12 class="mt-2 indigo darken-4">
           <v-layout row wrap justify-start class="text-xs-center">
-            <v-flex xs4 md1 :offset-md2="index === 0" v-for="(title, index) in ['Home', 'Labels', 'Archives', 'Github', 'Friends', 'About']" :key="index" class="pa-0">
-              <v-btn flat class="white--text">{{ title }}</v-btn>
+            <v-flex xs4 md1 :offset-md2="index === 0" v-for="(item, index) in navItems" :key="index" class="pa-0">
+              <v-btn flat class="white--text" @click.stop="navTo(item.url)">{{ item.title }}</v-btn>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -31,7 +31,7 @@
                   <div v-html="issue.summary"></div>
                 </v-card-text>
                 <v-card-actions>
-                  <v-btn flat icon color="amber darken-2">
+                  <v-btn flat icon color="amber darken-2" @click.stop="navTo(issue.newCommentUrl)">
                     <v-icon>comment</v-icon>
                     <span>{{ issue.comments }}</span>
                   </v-btn>
@@ -67,7 +67,26 @@ export default {
   name: 'BlogIndex',
   data () {
     return {
-      issues: []
+      issues: [],
+      navItems: [{
+        title: 'Home',
+        url: '/'
+      }, {
+        title: 'Labels',
+        url: GitHubApiService.labelsHtmlUrl
+      }, {
+        title: 'Archives',
+        url: GitHubApiService.closedMilestonesHtmlUrl
+      }, {
+        title: 'Github',
+        url: GitHubApiService.githubUserHtmlUrl
+      }, {
+        title: 'Friends',
+        url: '#'
+      }, {
+        title: 'About',
+        url: '#'
+      }]
     };
   },
   components: {

@@ -38,6 +38,7 @@ export default class GitHubApiService {
             issue.closedAt = o.closed_at;
             issue.body = o.body;
             issue.summary = RenderService.getSummary(o.body, 300);
+            issue.newCommentUrl = o.html_url + '#new_comment_field';
             issues.push(issue);
           });
           cache['allClosedIssues'] = issues;
@@ -51,5 +52,21 @@ export default class GitHubApiService {
 
   static getLabelHtmlUrl (label) {
     return 'https://github.com/leoyoung07/blog/issues/?q=is%3Aclosed+label%3A' + label;
+  }
+
+  static get closedMilestonesHtmlUrl () {
+    return 'https://github.com/leoyoung07/blog/milestones?state=closed';
+  }
+
+  static get labelsHtmlUrl () {
+    return 'https://github.com/leoyoung07/blog/labels';
+  }
+
+  static get githubUserHtmlUrl () {
+    return 'https://github.com/leoyoung07';
+  }
+
+  static get allClosedIssuesHtmlUrl () {
+    'https://github.com/leoyoung07/blog/issues?q=is%3Aissue+is%3Aclosed';
   }
 };
