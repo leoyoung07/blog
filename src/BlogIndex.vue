@@ -13,6 +13,14 @@
                       v-model="keyword"
                       @keypress.enter="search"></v-text-field>
       </v-toolbar>
+      <v-fab-transition>
+        <v-btn color="red" dark middle fixed right bottom fab
+               @click="scrollToTop"
+               v-show="scrollToTopVisible"
+               v-scroll="onScroll">
+          <v-icon>keyboard_arrow_up</v-icon>
+        </v-btn>
+      </v-fab-transition>
       <v-layout row wrap class="indigo darken-2 white--text pt-5 px-0 pb-0">
         <v-flex xs10 md10 offset-xs1 class="text-xs-left">
           <p class="display-1">Leo Young Blog</p>
@@ -22,7 +30,8 @@
         </v-flex>
         <v-flex xs12 class="mt-2 indigo darken-4">
           <v-layout row wrap justify-start class="text-xs-center">
-            <v-flex xs4 md1 :offset-md2="index === 0" v-for="(item, index) in navItems" :key="index" class="pa-0">
+            <v-flex xs4 md1 :offset-md2="index === 0" class="pa-0"
+                    v-for="(item, index) in navItems" :key="index">
               <v-btn flat class="white--text" @click.stop="navTo(item.url)">{{ item.title }}</v-btn>
             </v-flex>
           </v-layout>
@@ -44,7 +53,11 @@
                     <v-icon>comment</v-icon>
                     <span>{{ issue.comments }}</span>
                   </v-btn>
-                  <v-chip label small v-for="label in issue.labels" :key="label.id" :style="{background: '#' + label.color, color: getAccessibleColor(label.color)}" @click.stop="navTo(getLabelUrl(label.name))">{{ label.name }}</v-chip>
+                  <v-chip label small
+                          v-for="label in issue.labels" :key="label.id"
+                          :style="{background: '#' + label.color, color: getAccessibleColor(label.color)}"
+                          @click.stop="navTo(getLabelUrl(label.name))">{{ label.name }}
+                  </v-chip>
                   <v-spacer></v-spacer>
                   <v-btn flat class="blue--text white">READ MORE</v-btn>
                 </v-card-actions>
@@ -53,12 +66,9 @@
           </v-layout>
         </v-container>
       </v-content>
-    <!-- <v-container fluid class="pa-0 ma-0"> -->
-    <!-- <v-footer class="pa-3 grey darken-3 white--text" app> -->
-    <!-- <v-spacer></v-spacer> -->
-    <!-- <div>Leo Young - {{ new Date().getFullYear() }}</div> -->
-    <!-- </v-footer> -->
-    <!-- </v-container> -->
+      <v-footer class="pa-3 indigo darken-2 white--text" app>
+        <div>Copyright © {{ new Date().getFullYear() }} Leo Young</div>
+      </v-footer>
     </v-app>
   </div>
 </template>
@@ -97,6 +107,7 @@ export default {
         url: '#'
       }],
       searchBarVisible: false,
+      scrollToTopVisible: false,
       keyword: ''
     };
   },
@@ -122,6 +133,12 @@ export default {
         return;
       }
       this.navTo(GitHubApiService.getIssueSearchHtmlUrl(this.keyword));
+    },
+    scrollToTop: function () {
+      window.scrollTo(0, 0);
+    },
+    onScroll: function () {
+      this.scrollToTopVisible = (window.pageYOffset || document.documentElement.scrollTop) > 300;
     }
   },
   computed: {
