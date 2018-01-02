@@ -1,9 +1,18 @@
 <template>
   <div id="blogIndex">
     <v-app>
-      <v-btn color="pink" dark middle fixed right top fab>
+      <v-btn color="pink" dark middle fixed right top fab
+             v-show="!searchBarVisible" @click="toggleSearchBar">
         <v-icon>search</v-icon>
       </v-btn>
+      <v-toolbar fixed right top v-show="searchBarVisible">
+        <v-text-field placeholder="Search..." hide-details single-line
+                      prepend-icon="search" append-icon="close"
+                      :prepend-icon-cb="search"
+                      :append-icon-cb="toggleSearchBar"
+                      v-model="keyword"
+                      @keypress.enter="search"></v-text-field>
+      </v-toolbar>
       <v-layout row wrap class="indigo darken-2 white--text pt-5 px-0 pb-0">
         <v-flex xs10 md10 offset-xs1 class="text-xs-left">
           <p class="display-1">Leo Young Blog</p>
@@ -86,7 +95,9 @@ export default {
       }, {
         title: 'About',
         url: '#'
-      }]
+      }],
+      searchBarVisible: false,
+      keyword: ''
     };
   },
   components: {
@@ -101,6 +112,16 @@ export default {
     },
     getAccessibleColor: function (color) {
       return RenderService.getAccessibleColor(color);
+    },
+    toggleSearchBar: function () {
+      this.keyword = '';
+      this.searchBarVisible = !this.searchBarVisible;
+    },
+    search: function () {
+      if (!this.keyword) {
+        return;
+      }
+      this.navTo(GitHubApiService.getIssueSearchHtmlUrl(this.keyword));
     }
   },
   computed: {

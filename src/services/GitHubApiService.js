@@ -51,7 +51,7 @@ export default class GitHubApiService {
   }
 
   static getLabelHtmlUrl (label) {
-    return 'https://github.com/leoyoung07/blog/issues/?q=is%3Aclosed+label%3A' + label;
+    return `https://github.com/leoyoung07/blog/issues/?q=is%3Aclosed+label%3A${label}`;
   }
 
   static get closedMilestonesHtmlUrl () {
@@ -67,6 +67,10 @@ export default class GitHubApiService {
   }
 
   static get allClosedIssuesHtmlUrl () {
-    'https://github.com/leoyoung07/blog/issues?q=is%3Aissue+is%3Aclosed';
+    return 'https://github.com/leoyoung07/blog/issues?q=is%3Aissue+is%3Aclosed';
+  }
+
+  static getIssueSearchHtmlUrl (keyword) {
+    return `https://github.com/leoyoung07/blog/issues?utf8=%E2%9C%93&q=is%3Aclosed+${keyword}`;
   }
 };
