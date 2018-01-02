@@ -71,6 +71,6 @@ export default class GitHubApiService {
   }
 
   static getIssueSearchHtmlUrl (keyword) {
-    return `https://github.com/leoyoung07/blog/issues?utf8=%E2%9C%93&q=is%3Aclosed+${keyword}`;
+    return `https://github.com/leoyoung07/blog/issues?utf8=%E2%9C%93&q=is%3Aclosed+assignee%3Aleoyoung07+${keyword}`;
   }
 };
