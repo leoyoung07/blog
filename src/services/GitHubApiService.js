@@ -3,7 +3,7 @@ import axios from 'axios';
 import GitHubIssue from '../models/GitHubIssue';
 import RenderService from './RenderService';
 
-const allClosedIssuesUrl = 'https://api.github.com/repos/leoyoung07/blog/issues?state=closed';
+const allClosedIssuesUrl = 'https://api.github.com/repos/leoyoung07/blog/issues?state=closed&assignee=leoyoung07';
 
 const cache = {};
 
