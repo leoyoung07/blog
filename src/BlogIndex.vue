@@ -39,6 +39,11 @@
       </v-layout>
       <v-content>
         <v-container fluid grid-list-lg>
+          <v-layout row wrap align-center justify-center v-show="loading">
+            <v-flex xs2 md1>
+              <v-progress-circular indeterminate :size="70" :width="7" color="indigo darken-2"></v-progress-circular>
+            </v-flex>
+          </v-layout>
           <v-layout row wrap align-center justify-center>
             <v-flex xs12 md8 v-for="issue in issues" :key="issue.id" @click="navTo(issue.htmlUrl)">
               <v-card class="grey--text text--darken-2" hover>
@@ -108,6 +113,7 @@ export default {
       }],
       searchBarVisible: false,
       scrollToTopVisible: false,
+      loading: true,
       keyword: ''
     };
   },
@@ -146,7 +152,7 @@ export default {
   },
   async mounted () {
     this.issues = await GitHubApiService.fetchIssues();
-    console.log(this.issues);
+    this.loading = false;
   }
 };
 </script>
