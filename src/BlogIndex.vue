@@ -41,7 +41,7 @@
         <v-container fluid grid-list-lg>
           <v-layout row wrap align-center justify-center v-show="loading">
             <v-flex xs2 md1>
-              <v-progress-circular indeterminate :size="70" :width="7" color="indigo darken-2"></v-progress-circular>
+              <v-progress-circular indeterminate :size="50" :width="5" color="indigo darken-2"></v-progress-circular>
             </v-flex>
           </v-layout>
           <v-layout row wrap align-center justify-center>
