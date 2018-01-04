@@ -84,6 +84,7 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import GitHubApiService from './services/GitHubApiService';
 import RenderService from './services/RenderService';
+import StorageService from './services/StorageService';
 
 Vue.use(Vuetify);
 
@@ -151,8 +152,11 @@ export default {
 
   },
   async mounted () {
+    const key = 'all-blog-issues';
+    this.issues = StorageService.fetch(key) || [];
     this.issues = await GitHubApiService.fetchIssues();
     this.loading = false;
+    StorageService.store(key, this.issues);
   }
 };
 </script>

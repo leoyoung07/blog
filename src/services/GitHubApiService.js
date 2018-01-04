@@ -1,6 +1,5 @@
 'use strict';
 import axios from 'axios';
-import GitHubIssue from '../models/GitHubIssue';
 import RenderService from './RenderService';
 
 const allClosedIssuesUrl = 'https://api.github.com/repos/leoyoung07/blog/issues?state=closed&assignee=leoyoung07';
@@ -19,7 +18,7 @@ export default class GitHubApiService {
         .then(response => {
           const issues = [];
           response.data.forEach(o => {
-            const issue = new GitHubIssue();
+            const issue = {};
             issue.url = o.url;
             issue.repositoryUrl = o.repository_url;
             issue.labelsUrl = o.labels_url;
