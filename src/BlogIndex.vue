@@ -108,6 +108,7 @@
       <v-footer class="pa-3 indigo darken-2 white--text" app>
         <div>Copyright © {{ new Date().getFullYear() }} Leo Young</div>
       </v-footer>
+      <v-snackbar bottom v-model="toastVisible">{{ toastMsg }}</v-snackbar>
     </v-app>
   </div>
 </template>
@@ -157,6 +158,8 @@ export default {
       searchBarVisible: false,
       scrollToTopVisible: false,
       drawerVisible: false,
+      toastVisible: false,
+      toastMsg: '',
       loading: true,
       keyword: '',
       avatarUrl: GitHubApiService.userAvatarUrl
@@ -190,17 +193,26 @@ export default {
     },
     onScroll: function () {
       this.scrollToTopVisible = (window.pageYOffset || document.documentElement.scrollTop) > 300;
+    },
+    showToast: function (msg) {
+      this.toastMsg = msg;
+      this.toastVisible = true;
     }
   },
   computed: {
 
   },
   async mounted () {
-    const key = 'all-blog-issues';
-    this.issues = StorageService.fetch(key) || [];
-    this.issues = await GitHubApiService.fetchIssues();
-    this.loading = false;
-    StorageService.store(key, this.issues);
+    try {
+      const key = 'all-blog-issues';
+      this.issues = StorageService.fetch(key) || [];
+      this.issues = await GitHubApiService.fetchIssues();
+      StorageService.store(key, this.issues);
+    } catch (error) {
+      this.showToast(error);
+    } finally {
+      this.loading = false;
+    }
   }
 };
 </script>
