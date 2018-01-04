@@ -21,12 +21,12 @@
           <v-icon>keyboard_arrow_up</v-icon>
         </v-btn>
       </v-fab-transition>
-      <v-layout row wrap class="indigo darken-2 white--text pt-5 px-0 pb-0">
+      <v-layout row wrap hidden-sm-and-down class="indigo darken-2 white--text pt-5 px-0 pb-0">
         <v-flex xs10 md10 offset-xs1 class="text-xs-left">
-          <p class="display-1">Leo Young Blog</p>
+          <p class="display-1">{{ title }}</p>
         </v-flex>
         <v-flex xs10 md10 offset-xs1 class="text-xs-left">
-          <p>Don't Repeat Yourself.</p>
+          <p>{{ subTitle }}</p>
         </v-flex>
         <v-flex xs12 class="mt-2 indigo darken-4">
           <v-layout row wrap justify-start class="text-xs-center">
@@ -36,6 +36,40 @@
             </v-flex>
           </v-layout>
         </v-flex>
+      </v-layout>
+      <v-layout v-show="!searchBarVisible" hidden-md-and-up>
+        <v-navigation-drawer
+          temporary
+          absolute
+          v-model="drawerVisible"
+          class="indigo darken-2"
+        >
+          <v-list class="pa-1">
+            <v-list-tile avatar>
+              <v-list-tile-avatar>
+                <img :src="avatarUrl" />
+              </v-list-tile-avatar>
+              <v-list-tile-content class="white--text">
+                <v-list-tile-title>{{ title }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+          <v-list class="pt-0" dense>
+            <v-divider></v-divider>
+            <v-list-tile v-for="item in navItems" :key="item.title" @click.stop="navTo(item.url)">
+              <v-list-tile-action>
+                <v-icon class="white--text">{{ item.icon }}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content class="white--text">
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-navigation-drawer>
+        <v-toolbar dark color="indigo darken-2">
+          <v-toolbar-side-icon @click="drawerVisible = !drawerVisible"></v-toolbar-side-icon>
+          <v-toolbar-title class="white--text">{{ title }}</v-toolbar-title>
+        </v-toolbar>
       </v-layout>
       <v-content>
         <v-container fluid grid-list-lg>
@@ -92,30 +126,40 @@ export default {
   name: 'BlogIndex',
   data () {
     return {
+      title: 'Leo Young Blog',
+      subTitle: `Don't Repeat Yourself.`,
       issues: [],
       navItems: [{
         title: 'Home',
-        url: '/'
+        url: '/',
+        icon: 'home'
       }, {
         title: 'Labels',
-        url: GitHubApiService.labelsHtmlUrl
+        url: GitHubApiService.labelsHtmlUrl,
+        icon: 'label'
       }, {
         title: 'Archives',
-        url: GitHubApiService.closedMilestonesHtmlUrl
+        url: GitHubApiService.closedMilestonesHtmlUrl,
+        icon: 'timeline'
       }, {
         title: 'Github',
-        url: GitHubApiService.githubUserHtmlUrl
+        url: GitHubApiService.githubUserHtmlUrl,
+        icon: 'code'
       }, {
         title: 'Friends',
-        url: '#'
+        url: '#',
+        icon: 'link'
       }, {
         title: 'About',
-        url: '#'
+        url: '#',
+        icon: 'account_box'
       }],
       searchBarVisible: false,
       scrollToTopVisible: false,
+      drawerVisible: false,
       loading: true,
-      keyword: ''
+      keyword: '',
+      avatarUrl: GitHubApiService.userAvatarUrl
     };
   },
   components: {
