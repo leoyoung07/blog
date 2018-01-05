@@ -32,7 +32,10 @@
           <v-layout row wrap justify-start class="text-xs-center">
             <v-flex xs4 md1 :offset-md2="index === 0" class="pa-0"
                     v-for="(item, index) in navItems" :key="index">
-              <v-btn flat class="white--text" @click.stop="navTo(item.url)">{{ item.title }}</v-btn>
+              <v-btn flat class="white--text" @click.stop="navTo(item.url)">
+                <v-icon class="white--text">{{ item.icon }}</v-icon>
+                <span class="ml-1">{{ item.title }}</span>
+              </v-btn>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -137,7 +140,7 @@ export default {
       }, {
         title: 'Labels',
         url: GitHubApiService.labelsHtmlUrl,
-        icon: 'label'
+        icon: 'fa-tags'
       }, {
         title: 'Archives',
         url: GitHubApiService.closedMilestonesHtmlUrl,
@@ -145,7 +148,7 @@ export default {
       }, {
         title: 'Github',
         url: GitHubApiService.githubUserHtmlUrl,
-        icon: 'code'
+        icon: 'fa-github'
       }, {
         title: 'Friends',
         url: '#',
