@@ -90,7 +90,10 @@
                 <v-card-title primary-title>
                   <div class="headline">{{ issue.title }}</div>
                 </v-card-title>
-                <v-card-text>
+                <v-card-text class="pt-0">
+                  <div class="grey--text">
+                    {{ formatedDateTime(issue.updatedAt) }}
+                  </div>
                   <div v-html="issue.summary"></div>
                 </v-card-text>
                 <v-card-actions>
@@ -121,12 +124,13 @@
 
 <script>
 'use strict';
-import Vue from 'vue';
-import Vuetify from 'vuetify';
+import _ from 'lodash';
 import GitHubApiService from './services/GitHubApiService';
+import moment from 'moment';
 import RenderService from './services/RenderService';
 import StorageService from './services/StorageService';
-import _ from 'lodash';
+import Vue from 'vue';
+import Vuetify from 'vuetify';
 
 Vue.use(Vuetify);
 
@@ -206,6 +210,9 @@ export default {
     showToast: function (msg) {
       this.toastMsg = msg;
       this.toastVisible = true;
+    },
+    formatedDateTime: function (inputDateTime) {
+      return moment(inputDateTime).format('YYYY-MM-DD HH:mm:ss');
     }
   },
   computed: {
