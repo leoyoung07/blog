@@ -123,6 +123,7 @@ import Vuetify from 'vuetify';
 import GitHubApiService from './services/GitHubApiService';
 import RenderService from './services/RenderService';
 import StorageService from './services/StorageService';
+import _ from 'lodash';
 
 Vue.use(Vuetify);
 
@@ -195,7 +196,9 @@ export default {
       window.scrollTo(0, 0);
     },
     onScroll: function () {
-      this.scrollToTopVisible = (window.pageYOffset || document.documentElement.scrollTop) > 300;
+      _.debounce(() => {
+        this.scrollToTopVisible = (window.pageYOffset || document.documentElement.scrollTop) > 300;
+      }, 100)();
     },
     showToast: function (msg) {
       this.toastMsg = msg;
