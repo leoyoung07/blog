@@ -203,9 +203,9 @@ export default {
       window.scrollTo(0, 0);
     },
     onScroll: function () {
-      _.debounce(() => {
+      _.throttle(() => {
         this.scrollToTopVisible = (window.pageYOffset || document.documentElement.scrollTop) > 300;
-      }, 100)();
+      }, 1000)();
     },
     showToast: function (msg) {
       this.toastMsg = msg;
