@@ -101,6 +101,7 @@ import _ from 'lodash';
 import BlogList from './components/BlogList.vue';
 import GitHubApiService from './services/GitHubApiService';
 import StorageService from './services/StorageService';
+import Util from './util/util';
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 
@@ -153,7 +154,7 @@ export default {
   },
   methods: {
     navTo: function (url) {
-      window.location.href = url;
+      Util.navTo(url);
     },
     toggleSearchBar: function () {
       this.keyword = '';

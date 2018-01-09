@@ -34,6 +34,7 @@
 import GitHubApiService from '../services/GitHubApiService';
 import moment from 'moment';
 import RenderService from '../services/RenderService';
+import Util from '../util/util';
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 
@@ -60,7 +61,7 @@ export default {
       return RenderService.getAccessibleColor(color);
     },
     navTo: function (url) {
-      window.location.href = url;
+      Util.navTo(url);
     }
   }
 };
