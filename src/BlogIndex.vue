@@ -22,43 +22,7 @@
         </v-btn>
       </v-fab-transition>
       <blog-header-large :nav-items="navItems" :title="title" :sub-title="subTitle"></blog-header-large>
-      <v-layout v-show="!searchBarVisible" hidden-md-and-up>
-        <v-navigation-drawer
-          temporary
-          absolute
-          v-model="drawerVisible"
-          class="indigo darken-2"
-          width="250"
-        >
-          <v-list class="pa-1">
-            <v-list-tile avatar>
-              <v-list-tile-avatar>
-                <img :src="avatarUrl" />
-              </v-list-tile-avatar>
-              <v-list-tile-content class="white--text subheading">
-                <v-list-tile-title>{{ title }}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-          <v-divider></v-divider>
-          <v-list class="pt-0" dense>
-            <template v-for="(item, index) in navItems">
-              <v-list-tile class="my-2" :key="index" @click.stop="navTo(item.url)">
-                <v-list-tile-action>
-                  <v-icon class="white--text">{{ item.icon }}</v-icon>
-                </v-list-tile-action>
-                <v-list-tile-content class="white--text subheading">
-                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </template>
-          </v-list>
-        </v-navigation-drawer>
-        <v-toolbar dark color="indigo darken-2">
-          <v-toolbar-side-icon @click="drawerVisible = !drawerVisible"></v-toolbar-side-icon>
-          <v-toolbar-title class="white--text">{{ title }}</v-toolbar-title>
-        </v-toolbar>
-      </v-layout>
+      <blog-header-small v-show="!searchBarVisible" :nav-items="navItems" :title="title" :avatar-url="avatarUrl"></blog-header-small>
       <v-content>
         <v-container fluid grid-list-lg>
           <v-layout row wrap align-center justify-center v-show="loading">
@@ -82,6 +46,7 @@
 import _ from 'lodash';
 import BlogList from './components/BlogList.vue';
 import BlogHeaderLarge from './components/BlogHeaderLarge.vue';
+import BlogHeaderSmall from './components/BlogHeaderSmall.vue';
 import GitHubApiService from './services/GitHubApiService';
 import StorageService from './services/StorageService';
 import Util from './util/util';
@@ -124,7 +89,6 @@ export default {
       }],
       searchBarVisible: false,
       scrollToTopVisible: false,
-      drawerVisible: false,
       toastVisible: false,
       toastMsg: '',
       loading: true,
@@ -134,7 +98,8 @@ export default {
   },
   components: {
     BlogList,
-    BlogHeaderLarge
+    BlogHeaderLarge,
+    BlogHeaderSmall
   },
   methods: {
     navTo: function (url) {
@@ -181,4 +146,3 @@ export default {
 };
 </script>
 <style src="../node_modules/vuetify/dist/vuetify.min.css"></style>
-
