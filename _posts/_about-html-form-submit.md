@@ -1,5 +1,13 @@
 # 关于HTML的表单提交
 
+## 现象
+
+表单内按下回车键表单提交
+
+## 实验
+
+## 总结
+
 ## 参考
 
 - http://mattsnider.com/how-forms-submit-when-pressing-enter/
