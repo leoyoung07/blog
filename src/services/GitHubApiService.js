@@ -50,6 +50,7 @@ export default class GitHubApiService {
   }
 
   static getLabelHtmlUrl (label) {
+    label = encodeURIComponent(label);
     return `https://github.com/leoyoung07/blog/issues/?q=is%3Aclosed+label%3A${label}`;
   }
 
@@ -70,6 +71,7 @@ export default class GitHubApiService {
   }
 
   static getIssueSearchHtmlUrl (keyword) {
+    keyword = encodeURIComponent(keyword);
     return `https://github.com/leoyoung07/blog/issues?utf8=%E2%9C%93&q=is%3Aclosed+assignee%3Aleoyoung07+${keyword}`;
   }
 
