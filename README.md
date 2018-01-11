@@ -1,6 +1,6 @@
-# Leo Young Blog
+# [Leo Young Blog](https://leoyoung07.github.io/blog/)
 
-> A blog based on GitHub issues
+> A blog based on GitHub issues: [https://leoyoung07.github.io/blog](https://leoyoung07.github.io/blog)
 
 ## Build Setup
 
