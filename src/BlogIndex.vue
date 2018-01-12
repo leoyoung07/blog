@@ -50,10 +50,6 @@ import BlogHeaderSmall from './components/BlogHeaderSmall.vue';
 import GitHubApiService from './services/GitHubApiService';
 import StorageService from './services/StorageService';
 import Util from './util/util';
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-
-Vue.use(Vuetify);
 
 export default {
   name: 'BlogIndex',

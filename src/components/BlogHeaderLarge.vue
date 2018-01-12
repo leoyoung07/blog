@@ -23,10 +23,6 @@
 <script>
 'use strict';
 import Util from '../util/util';
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-
-Vue.use(Vuetify);
 
 export default {
   name: 'BlogHeaderLarge',
