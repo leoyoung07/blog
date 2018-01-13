@@ -30,7 +30,7 @@
               <v-progress-circular indeterminate :size="50" :width="5" color="indigo darken-2"></v-progress-circular>
             </v-flex>
           </v-layout>
-          <blog-list :issues="issues"></blog-list>
+          <router-view @loading="loading=true" @loaded="loading=false" @loadError="showToast(arguments[0]);"></router-view>
         </v-container>
       </v-content>
       <v-footer class="pa-3 indigo darken-2 white--text" app>
@@ -48,8 +48,8 @@ import BlogList from './components/BlogList.vue';
 import BlogHeaderLarge from './components/BlogHeaderLarge.vue';
 import BlogHeaderSmall from './components/BlogHeaderSmall.vue';
 import GitHubApiService from './services/GitHubApiService';
-import StorageService from './services/StorageService';
 import Util from './util/util';
+import VueRouter from 'vue-router';
 
 export default {
   name: 'BlogIndex',
@@ -57,7 +57,6 @@ export default {
     return {
       title: 'Leo Young Blog',
       subTitle: `Don't Repeat Yourself.`,
-      issues: [],
       navItems: [{
         title: 'Home',
         url: '/',
@@ -87,7 +86,7 @@ export default {
       scrollToTopVisible: false,
       toastVisible: false,
       toastMsg: '',
-      loading: true,
+      loading: false,
       keyword: '',
       avatarUrl: GitHubApiService.userAvatarUrl
     };
@@ -127,18 +126,14 @@ export default {
   computed: {
 
   },
-  async mounted () {
-    try {
-      const key = 'all-blog-issues';
-      this.issues = StorageService.fetch(key) || [];
-      this.issues = await GitHubApiService.fetchIssues();
-      StorageService.store(key, this.issues);
-    } catch (error) {
-      this.showToast(error);
-    } finally {
-      this.loading = false;
-    }
-  }
+  router: new VueRouter({
+    routes: [
+      {
+        path: '/',
+        component: BlogList
+      }
+    ]
+  })
 };
 </script>
 <style src="../node_modules/vuetify/dist/vuetify.min.css"></style>

@@ -34,17 +34,17 @@
 import GitHubApiService from '../services/GitHubApiService';
 import moment from 'moment';
 import RenderService from '../services/RenderService';
+import StorageService from '../services/StorageService';
 import Util from '../util/util';
 
 export default {
   name: 'BlogList',
   props: {
-    issues: {
-      type: Array,
-      default: function () {
-        return [];
-      }
-    }
+  },
+  data () {
+    return {
+      issues: []
+    };
   },
   methods: {
     formatedDateTime: function (inputDateTime) {
@@ -58,6 +58,19 @@ export default {
     },
     navTo: function (url) {
       Util.navTo(url);
+    }
+  },
+  async mounted () {
+    try {
+      this.$emit('loading');
+      const key = 'all-blog-issues';
+      this.issues = StorageService.fetch(key) || [];
+      this.issues = await GitHubApiService.fetchIssues();
+      StorageService.store(key, this.issues);
+    } catch (error) {
+      this.$emit('loadError', error);
+    } finally {
+      this.$emit('loaded');
     }
   }
 };
