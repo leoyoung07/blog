@@ -49,7 +49,23 @@ import BlogHeaderLarge from './components/BlogHeaderLarge.vue';
 import BlogHeaderSmall from './components/BlogHeaderSmall.vue';
 import GitHubApiService from './services/GitHubApiService';
 import Util from './util/util';
+import ViewAbout from './components/ViewAbout.vue';
+import ViewFriends from './components/ViewFriends.vue';
 import VueRouter from 'vue-router';
+
+const routes = [{
+  path: '/',
+  component: BlogList
+}, {
+  path: '/about',
+  component: ViewAbout
+}, {
+  path: '/friends',
+  component: ViewFriends
+}];
+const router = new VueRouter({
+  routes: routes
+});
 
 export default {
   name: 'BlogIndex',
@@ -75,11 +91,11 @@ export default {
         icon: 'fa-github'
       }, {
         title: 'Friends',
-        url: '#',
+        url: '/#/friends',
         icon: 'link'
       }, {
         title: 'About',
-        url: '#',
+        url: '/#/about',
         icon: 'account_box'
       }],
       searchBarVisible: false,
@@ -92,7 +108,6 @@ export default {
     };
   },
   components: {
-    BlogList,
     BlogHeaderLarge,
     BlogHeaderSmall
   },
@@ -126,14 +141,7 @@ export default {
   computed: {
 
   },
-  router: new VueRouter({
-    routes: [
-      {
-        path: '/',
-        component: BlogList
-      }
-    ]
-  })
+  router: router
 };
 </script>
 <style src="../node_modules/vuetify/dist/vuetify.min.css"></style>
