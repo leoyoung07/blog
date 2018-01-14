@@ -1,22 +1,24 @@
 <template>
   <v-layout row wrap hidden-sm-and-down class="indigo darken-2 white--text pt-5 px-0 pb-0">
-    <v-flex xs10 md10 offset-xs1 class="text-xs-left">
+    <v-flex md10 offset-md1 class="text-xs-left">
       <p class="display-1">{{ title }}</p>
     </v-flex>
-    <v-flex xs10 md10 offset-xs1 class="text-xs-left">
+    <v-flex md10 offset-md1 class="text-xs-left">
       <p>{{ subTitle }}</p>
     </v-flex>
-    <v-flex xs12 class="mt-2 indigo darken-4">
-      <v-layout row wrap justify-start class="text-xs-center">
-        <v-flex xs4 md1 :offset-md2="index === 0" class="pa-0"
-                v-for="(item, index) in navItems" :key="index">
-          <v-btn flat class="white--text" @click.stop="navTo(item.url)">
-            <v-icon class="white--text">{{ item.icon }}</v-icon>
-            <span class="ml-1">{{ item.title }}</span>
-          </v-btn>
-        </v-flex>
-      </v-layout>
-    </v-flex>
+    <v-layout row class="mt-2 indigo darken-4">
+      <v-flex md8 offset-md2 lg6 offset-lg2 class="text-xs-center">
+        <v-layout row justify-space-between>
+          <v-flex md3 lg1 class="pa-0"
+                  v-for="(item, index) in navItems" :key="index">
+            <v-btn flat class="white--text" @click.stop="navTo(item.url)">
+              <v-icon class="white--text">{{ item.icon }}</v-icon>
+              <span class="ml-1">{{ item.title }}</span>
+            </v-btn>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+    </v-layout>
   </v-layout>
 </template>
 
