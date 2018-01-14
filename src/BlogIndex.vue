@@ -1,6 +1,23 @@
 <template>
   <div id="blogIndex">
     <v-app>
+      <header>
+        <blog-header-large :nav-items="navItems" :title="title" :sub-title="subTitle"></blog-header-large>
+        <blog-header-small v-show="!searchBarVisible" :nav-items="navItems" :title="title" :avatar-url="avatarUrl"></blog-header-small>
+      </header>
+      <v-content>
+        <v-container fluid grid-list-lg>
+          <v-layout row wrap align-center justify-center v-show="loading">
+            <v-flex xs2 md1>
+              <v-progress-circular indeterminate :size="50" :width="5" color="indigo darken-2"></v-progress-circular>
+            </v-flex>
+          </v-layout>
+          <router-view @loading="loading=true" @loaded="loading=false" @loadError="showToast(arguments[0]);"></router-view>
+        </v-container>
+      </v-content>
+      <v-footer class="pa-3 indigo darken-2 white--text" app>
+        <div>Copyright © {{ new Date().getFullYear() }} Leo Young</div>
+      </v-footer>
       <v-btn color="pink" dark middle fixed right top fab
              v-show="!searchBarVisible" @click="toggleSearchBar">
         <v-icon>search</v-icon>
@@ -21,21 +38,6 @@
           <v-icon>keyboard_arrow_up</v-icon>
         </v-btn>
       </v-fab-transition>
-      <blog-header-large :nav-items="navItems" :title="title" :sub-title="subTitle"></blog-header-large>
-      <blog-header-small v-show="!searchBarVisible" :nav-items="navItems" :title="title" :avatar-url="avatarUrl"></blog-header-small>
-      <v-content>
-        <v-container fluid grid-list-lg>
-          <v-layout row wrap align-center justify-center v-show="loading">
-            <v-flex xs2 md1>
-              <v-progress-circular indeterminate :size="50" :width="5" color="indigo darken-2"></v-progress-circular>
-            </v-flex>
-          </v-layout>
-          <router-view @loading="loading=true" @loaded="loading=false" @loadError="showToast(arguments[0]);"></router-view>
-        </v-container>
-      </v-content>
-      <v-footer class="pa-3 indigo darken-2 white--text" app>
-        <div>Copyright © {{ new Date().getFullYear() }} Leo Young</div>
-      </v-footer>
       <v-snackbar bottom v-model="toastVisible">{{ toastMsg }}</v-snackbar>
     </v-app>
   </div>
