@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap align-center justify-center>
-    <h1>Friends</h1>
+    <h1>[Friends] Is in construction...</h1>
   </v-layout>
 </template>
 
