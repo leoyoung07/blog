@@ -65,7 +65,7 @@ export default {
       subTitle: `Don't Repeat Yourself.`,
       navItems: [{
         title: 'Home',
-        url: '/#/',
+        url: '#/',
         icon: 'home'
       }, {
         title: 'Labels',
@@ -81,11 +81,11 @@ export default {
         icon: 'fa-github'
       }, {
         title: 'Friends',
-        url: '/#/friends',
+        url: '#/friends',
         icon: 'link'
       }, {
         title: 'About',
-        url: '/#/about',
+        url: '#/about',
         icon: 'account_box'
       }],
       searchBarVisible: false,
