@@ -29,6 +29,7 @@
     "markdown-it": "^8.4.0",
     "moment": "^2.19.4",
     "vue": "^2.0.1",
+    "vue-router": "^3.0.1",
     "vuetify": "^0.17.6"
   },
   "devDependencies": {
@@ -64,7 +65,6 @@
     "npm-run-all": "^2.3.0",
     "proxyquireify": "^3.0.1",
     "uglify-js": "^2.5.0",
-    "vue-router": "^3.0.1",
     "vueify": "^9.0.0",
     "watchify": "^3.4.0"
   }
