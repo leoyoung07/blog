@@ -7,7 +7,7 @@
         </v-card-title>
         <v-card-text class="pt-0">
           <div class="grey--text">
-            {{ formatedDateTime(issue.updatedAt) }}
+            {{ issue.updatedAt }}
           </div>
           <div v-html="issue.summary"></div>
         </v-card-text>
@@ -32,7 +32,6 @@
 <script>
 'use strict';
 import GitHubApiService from '../services/GitHubApiService';
-import moment from 'moment';
 import RenderService from '../services/RenderService';
 import StorageService from '../services/StorageService';
 import Util from '../util/util';
@@ -47,9 +46,6 @@ export default {
     };
   },
   methods: {
-    formatedDateTime: function (inputDateTime) {
-      return moment(inputDateTime).format('YYYY-MM-DD HH:mm:ss');
-    },
     getLabelUrl: function (label) {
       return GitHubApiService.getLabelHtmlUrl(label);
     },

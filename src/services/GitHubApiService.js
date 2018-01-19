@@ -1,8 +1,12 @@
 'use strict';
 import axios from 'axios';
 import RenderService from './RenderService';
+import Util from '../util/util';
+import * as publicEvents from '../../test/mock/public_events.json';
 
 const allClosedIssuesUrl = 'https://api.github.com/repos/leoyoung07/blog/issues?state=closed&assignee=leoyoung07';
+
+const publicEventsUrl = 'https://api.github.com/users/leoyoung07/events';
 
 const cache = {};
 
@@ -32,9 +36,9 @@ export default class GitHubApiService {
             issue.state = o.state;
             issue.milestone = o.milestone;
             issue.comments = o.comments;
-            issue.createdAt = o.created_at;
-            issue.updatedAt = o.updated_at;
-            issue.closedAt = o.closed_at;
+            issue.createdAt = Util.getLocalDateTime(o.created_at);
+            issue.updatedAt = Util.getLocalDateTime(o.updated_at);
+            issue.closedAt = Util.getLocalDateTime(o.closed_at);
             issue.body = o.body;
             issue.summary = RenderService.getSummary(o.body, 300);
             issue.newCommentUrl = o.html_url + '#new_comment_field';
@@ -46,6 +50,12 @@ export default class GitHubApiService {
         .catch(e => {
           reject(e);
         });
+    });
+  }
+
+  static fetchPublicEvents () {
+    return new Promise((resolve, reject) => {
+      resolve(publicEvents.default);
     });
   }
 
