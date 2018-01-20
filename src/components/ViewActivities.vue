@@ -1,6 +1,7 @@
 <template>
   <v-layout row wrap align-center justify-center>
     <v-flex lg8 lg-offset2 sm10 sm-offset1 xs12>
+      <v-subheader v-text="timelineTitle" class="light-blue--text text--darken-2"></v-subheader>
       <timeline-list :items="publicEvents"></timeline-list>
     </v-flex>
   </v-layout>
@@ -17,7 +18,8 @@ export default {
   },
   data () {
     return {
-      publicEvents: []
+      publicEvents: [],
+      timelineTitle: 'Recent Activities on GitHub'
     };
   },
   components: {
