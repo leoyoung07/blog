@@ -55,7 +55,24 @@ export default class GitHubApiService {
 
   static fetchPublicEvents () {
     return new Promise((resolve, reject) => {
-      resolve(publicEvents.default);
+      const events = [];
+      publicEvents.default.forEach(e => {
+        if (e.type === 'PushEvent') {
+          events.push({
+            title: e.type,
+            dateTime: Util.getLocalDateTime(e.created_at),
+            detail: `Pushed ${e.payload.size} commits to repo ${e.repo.name}.`
+          });
+        }
+        if (e.type === 'IssuesEvent') {
+          events.push({
+            title: e.type,
+            dateTime: Util.getLocalDateTime(e.created_at),
+            detail: `${e.payload.action} ${e.payload.issue.title} on repo ${e.repo.name}`
+          });
+        }
+      });
+      resolve(events);
     });
   }
 
