@@ -12,7 +12,7 @@ import GitHubApiService from '../services/GitHubApiService';
 import TimelineList from './TimelineList.vue';
 
 export default {
-  name: 'ViewAbout',
+  name: 'ViewActivities',
   props: {
   },
   data () {

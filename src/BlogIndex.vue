@@ -74,19 +74,19 @@ export default {
       }, {
         title: 'Archives',
         url: GitHubApiService.closedMilestonesHtmlUrl,
-        icon: 'timeline'
+        icon: 'date_range'
       }, {
         title: 'Github',
         url: GitHubApiService.githubUserHtmlUrl,
         icon: 'fa-github'
       }, {
+        title: 'Activities',
+        url: '#/activities',
+        icon: 'timeline'
+      }, {
         title: 'Friends',
         url: '#/friends',
         icon: 'link'
-      }, {
-        title: 'About',
-        url: '#/about',
-        icon: 'account_box'
       }],
       searchBarVisible: false,
       scrollToTopVisible: false,
