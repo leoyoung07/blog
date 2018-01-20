@@ -2,12 +2,9 @@
 import axios from 'axios';
 import RenderService from './RenderService';
 import Util from '../util/util';
-import * as publicEvents from '../../test/mock/public_events.json';
 
 const allClosedIssuesUrl = 'https://api.github.com/repos/leoyoung07/blog/issues?state=closed&assignee=leoyoung07';
-
 const publicEventsUrl = 'https://api.github.com/users/leoyoung07/events';
-
 const cache = {};
 
 export default class GitHubApiService {
@@ -55,24 +52,36 @@ export default class GitHubApiService {
 
   static fetchPublicEvents () {
     return new Promise((resolve, reject) => {
-      const events = [];
-      publicEvents.default.forEach(e => {
-        if (e.type === 'PushEvent') {
-          events.push({
-            title: e.type,
-            dateTime: Util.getLocalDateTime(e.created_at),
-            detail: `Pushed ${e.payload.size} commits to repo ${e.repo.name}.`
+      if (cache['publicEvents']) {
+        resolve(cache['publicEvents']);
+        return;
+      }
+      axios
+        .get(publicEventsUrl)
+        .then(response => {
+          const events = [];
+          response.data.forEach(e => {
+            if (e.type === 'PushEvent') {
+              events.push({
+                title: e.type,
+                dateTime: Util.getLocalDateTime(e.created_at),
+                detail: `Pushed ${e.payload.size} commits to repo ${e.repo.name}.`
+              });
+            }
+            if (e.type === 'IssuesEvent') {
+              events.push({
+                title: e.type,
+                dateTime: Util.getLocalDateTime(e.created_at),
+                detail: `${e.payload.action} ${e.payload.issue.title} on repo ${e.repo.name}`
+              });
+            }
+            cache['publicEvents'] = events;
+            resolve(events);
           });
-        }
-        if (e.type === 'IssuesEvent') {
-          events.push({
-            title: e.type,
-            dateTime: Util.getLocalDateTime(e.created_at),
-            detail: `${e.payload.action} ${e.payload.issue.title} on repo ${e.repo.name}`
-          });
-        }
-      });
-      resolve(events);
+        })
+        .catch(e => {
+          reject(e);
+        });
     });
   }
 
