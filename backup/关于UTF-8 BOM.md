@@ -1,4 +1,4 @@
-## 什么是 UTF-8 BOM
+## 什么是 BOM
 
 wikipedia上的解释：
 
@@ -8,6 +8,8 @@ wikipedia上的解释：
 >- Which of several Unicode encodings that text stream is encoded as.
 >
 >BOM use is optional, and, if used, should appear at the start of the text stream.
+
+简单的说就是放在文件开头，用于标明字节序的标记。
 
 ## C#中的UTF-8 BOM
 
