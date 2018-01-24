@@ -5,6 +5,7 @@ import Util from '../util/util';
 
 const allClosedIssuesUrl = 'https://api.github.com/repos/leoyoung07/blog/issues?state=closed&assignee=leoyoung07';
 const publicEventsUrl = 'https://api.github.com/users/leoyoung07/events';
+const githubRootUrl = 'https://github.com/';
 const cache = {};
 
 export default class GitHubApiService {
@@ -63,16 +64,18 @@ export default class GitHubApiService {
           response.data.forEach(e => {
             if (e.type === 'PushEvent') {
               events.push({
-                title: e.type,
+                title: 'Commits',
                 dateTime: Util.getLocalDateTime(e.created_at),
-                detail: `Pushed ${e.payload.size} commits to repo ${e.repo.name}.`
+                detail: `Pushed ${e.payload.size} commits to repo ${e.repo.name}.`,
+                htmlUrl: `${githubRootUrl}${e.repo.name}`
               });
             }
             if (e.type === 'IssuesEvent') {
               events.push({
-                title: e.type,
+                title: 'Issues',
                 dateTime: Util.getLocalDateTime(e.created_at),
-                detail: `${e.payload.action} ${e.payload.issue.title} on repo ${e.repo.name}`
+                detail: `${e.payload.action} ${e.payload.issue.title} on repo ${e.repo.name}`,
+                htmlUrl: e.payload.issue.html_url
               });
             }
             cache['publicEvents'] = events;
