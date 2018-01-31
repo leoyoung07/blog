@@ -3,7 +3,7 @@
     <v-app>
       <header>
         <blog-header-large :nav-items="navItems" :title="title" :sub-title="subTitle"></blog-header-large>
-        <blog-header-small v-show="!searchBarVisible" :nav-items="navItems" :title="title" :avatar-url="avatarUrl"></blog-header-small>
+        <blog-header-small :nav-items="navItems" :title="title" :avatar-url="avatarUrl"></blog-header-small>
       </header>
       <v-content>
         <v-container fluid grid-list-lg>
@@ -18,18 +18,7 @@
       <v-footer class="pa-3 indigo darken-2 white--text" app>
         <div>Copyright © {{ new Date().getFullYear() }} Leo Young</div>
       </v-footer>
-      <v-btn color="pink" dark middle fixed right top fab
-             v-show="!searchBarVisible" @click="toggleSearchBar">
-        <v-icon>search</v-icon>
-      </v-btn>
-      <v-toolbar fixed right top v-show="searchBarVisible">
-        <v-text-field placeholder="Search..." hide-details single-line
-                      prepend-icon="search" append-icon="close"
-                      :prepend-icon-cb="search"
-                      :append-icon-cb="toggleSearchBar"
-                      v-model="keyword"
-                      @keypress.enter="search"></v-text-field>
-      </v-toolbar>
+      <widget-search></widget-search>
       <v-fab-transition>
         <v-btn color="red" dark middle fixed right bottom fab
                @click="scrollToTop"
@@ -52,6 +41,7 @@ import GitHubApiService from './services/GitHubApiService';
 import routes from './routes/route';
 import Util from './util/util';
 import VueRouter from 'vue-router';
+import WidgetSearch from './components/WidgetSearch.vue';
 
 const router = new VueRouter({
   routes: routes
@@ -88,32 +78,21 @@ export default {
         url: '#/friends',
         icon: 'link'
       }],
-      searchBarVisible: false,
       scrollToTopVisible: false,
       toastVisible: false,
       toastMsg: '',
       loading: false,
-      keyword: '',
       avatarUrl: GitHubApiService.userAvatarUrl
     };
   },
   components: {
     BlogHeaderLarge,
-    BlogHeaderSmall
+    BlogHeaderSmall,
+    WidgetSearch
   },
   methods: {
     navTo: function (url) {
       Util.navTo(url);
-    },
-    toggleSearchBar: function () {
-      this.keyword = '';
-      this.searchBarVisible = !this.searchBarVisible;
-    },
-    search: function () {
-      if (!this.keyword) {
-        return;
-      }
-      this.navTo(GitHubApiService.getIssueSearchHtmlUrl(this.keyword));
     },
     scrollToTop: function () {
       window.scrollTo(0, 0);
