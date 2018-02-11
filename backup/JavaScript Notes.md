@@ -11,3 +11,54 @@
 - [Document.open() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
 
 - [Document.close() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/close)
+
+---
+
+## 关于 `jQuery` 中的 `.attr()` 与 `.prop()` 方法
+
+### 参考
+
+- https://api.jquery.com/attr/
+
+- https://api.jquery.com/prop/
+
+---
+
+## 关于 `jQuery` 中的 `.serialize()` 与 `.serializeArray()` 方法
+
+注：这两个方法不能获取 `disable` 的字段值
+
+### 参考
+
+- https://api.jquery.com/serialize/
+
+- https://api.jquery.com/serializeArray/
+
+- https://stackoverflow.com/questions/15958671/disabled-fields-not-picked-up-by-serializearray
+
+## 关于 `node.js` 中 `Web Socket` 报错 `Error: read ECONNRESET`
+
+错误信息：
+
+```text
+Error: read ECONNRESET
+WebSocketServer.js:20
+	at exports._errnoException (util.js:1050:11)
+	at TCP.onread (net.js:581:26)
+```
+
+错误原因其实是因为没有为 `Web Socket` 实例添加错误处理。
+
+解决方法：
+```JavaScript
+ws.on('error', (e) => {
+  console.log(e);
+  //handle error here
+});
+```
+
+### 参考
+
+- [javascript - node.js Error: read ECONNRESET - Stack Overflow](https://stackoverflow.com/questions/31501038/node-js-error-read-econnreset)
+
+- [websocket报错read ECONNRESET - CSDN博客](http://blog.csdn.net/a19891024/article/details/72901479)
