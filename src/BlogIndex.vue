@@ -52,7 +52,7 @@ export default {
   data () {
     return {
       title: 'Leo Young Blog',
-      subTitle: `Don't Repeat Yourself.`,
+      subTitle: `Keep It Simple Stupid.`,
       navItems: [{
         title: 'Home',
         url: '#/',
