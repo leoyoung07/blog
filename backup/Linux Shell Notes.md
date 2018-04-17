@@ -34,3 +34,24 @@
 - [process - What does kill 0 do actually? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/67532/what-does-kill-0-do-actually)
 
 - [What does `kill -0` do? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/169898/what-does-kill-0-do)
+
+## bash 下常用的组合键
+
+| 组合键   | 说明           |
+| -------- | -------------- |
+| Ctrl + C | 终止目前的命令 |
+| Ctrl + D | 输入结束 (EOF) |
+| Ctrl + M | 相当于 Enter   |
+| Ctrl + S | 暂停屏幕的输出 |
+| Ctrl + Q | 恢复屏幕的输出 |
+| Ctrl + Z | 暂停目前的命令 |
+
+### 参考
+
+- [鸟哥的 Linux 私房菜 -- 学习 bash shell](http://cn.linux.vbird.org/linux_basic/0320bash_4.php)
+
+## 让进程在后台可靠运行的几种方法
+
+### 参考
+
+- [让进程在后台可靠运行的几种方法](https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html)
