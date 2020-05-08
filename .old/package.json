@@ -1,0 +1,71 @@
+{
+  "name": "leo-young-blog",
+  "version": "0.1.0",
+  "description": "A Vue.js project",
+  "author": "Leo Young",
+  "private": true,
+  "scripts": {
+    "watchify": "watchify -vd -p browserify-hmr -e src/main.js -o docs/build.js",
+    "serve": "http-server ./docs -o -c 1 -a 0.0.0.0 -p 8888",
+    "dev": "npm-run-all --parallel watchify serve",
+    "lint": "eslint --ext .js,.vue src test/unit",
+    "eslint-fix": "eslint --ext .js,.vue src test/unit --fix",
+    "test": "karma start karma.conf.js",
+    "build": "cross-env NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o docs/build.css ] -e src/main.js | uglifyjs -c warnings=false -m > docs/build.js",
+    "backup-blogs": "babel-node scripts/backup_blogs.js"
+  },
+  "browserify": {
+    "transform": [
+      "babelify",
+      "vueify"
+    ]
+  },
+  "browser": {
+    "vue": "vue/dist/vue.common.js"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "lodash": "^4.17.4",
+    "markdown-it": "^8.4.0",
+    "moment": "^2.19.4",
+    "vue": "^2.0.1",
+    "vue-router": "^3.0.1",
+    "vuetify": "^0.17.6"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.92",
+    "@types/node": "^9.3.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.0.0",
+    "babel-eslint": "^8.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-runtime": "^6.0.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.1.0",
+    "browserify-hmr": "^0.3.1",
+    "chai": "^4.1.2",
+    "cross-env": "^2.0.0",
+    "envify": "^3.4.1",
+    "eslint": "^3.3.0",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "eslint-plugin-vue": "^4.0.0-beta.2",
+    "http-server": "^0.10.0",
+    "karma": "^2.0.0",
+    "karma-browserify": "^5.1.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-spec-reporter": "0.0.26",
+    "mocha": "^4.0.1",
+    "npm-run-all": "^2.3.0",
+    "proxyquireify": "^3.0.1",
+    "uglify-js": "^2.5.0",
+    "vueify": "^9.0.0",
+    "watchify": "^3.4.0"
+  }
+}
