@@ -218,6 +218,11 @@
   resolved "https://registry.npm.taobao.org/@angular/router/download/@angular/router-9.1.5.tgz#eafa8a1a2a015498fb39fdc789ad723f4e743b2b"
   integrity sha1-6vqKGioBVJj7Of3Hia1yP050Oys=
 
+"@angular/service-worker@~9.1.3":
+  version "9.1.5"
+  resolved "https://registry.npm.taobao.org/@angular/service-worker/download/@angular/service-worker-9.1.5.tgz#478d0d91153b286dde329744391d4d95eaf4be82"
+  integrity sha1-R40NkRU7KG3eMpdEOR1Nler0voI=
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.8.3":
   version "7.8.3"
   resolved "https://registry.npm.taobao.org/@babel/code-frame/download/@babel/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
