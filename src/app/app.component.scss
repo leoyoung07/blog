@@ -1,0 +1,24 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.card-list-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-list-wrapper {
+  width: 80%;
+  padding: 20px;
+}
+
+.article-card {
+  margin: 10px 0;
+  cursor: pointer;
+}
