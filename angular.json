@@ -17,6 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/blog/",
+            "deployUrl": "/blog/",
             "outputPath": "docs",
             "index": "src/index.html",
             "main": "src/main.ts",
