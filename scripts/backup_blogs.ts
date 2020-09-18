@@ -1,5 +1,5 @@
-'use strict';
-import GitHubApiService from '../src/services/GitHubApiService';
+import { GithubService } from '../src/app/services/github.service';
+import { RenderService } from '../src/app/services/render.service';
 import fs from 'fs';
 import path from 'path';
 
@@ -11,12 +11,12 @@ if (!fs.existsSync(backupDir)) {
 
 (async () => {
   try {
-    const issues = await GitHubApiService.fetchIssues();
-    issues.forEach(issue => {
+    const issues = await (new GithubService(new RenderService())).fetchIssues();
+    issues.forEach((issue) => {
       const filePath = path.join(backupDir, issue.title + '.md');
       fs.writeFileSync(filePath, issue.body, {
         encoding: 'utf8',
-        flag: 'w'
+        flag: 'w',
       });
       console.log(`backup success: ${issue.title}.md`);
     });
