@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1600414001855,
+  "timestamp": 1600418319311,
   "index": "/blog/index.html",
   "assetGroups": [
     {
@@ -13,14 +13,14 @@
       "urls": [
         "/blog/favicon.ico",
         "/blog/index.html",
-        "/blog/main-es2015.6107d7bfd59ee5a2b170.js",
-        "/blog/main-es5.6107d7bfd59ee5a2b170.js",
+        "/blog/main-es2015.c92c9f75aefadc433b4b.js",
+        "/blog/main-es5.c92c9f75aefadc433b4b.js",
         "/blog/manifest.webmanifest",
         "/blog/polyfills-es2015.f332a089ad1600448873.js",
-        "/blog/polyfills-es5.177e85a9724683782539.js",
+        "/blog/polyfills-es5.b13383c02142e13834f5.js",
         "/blog/runtime-es2015.92012863247753dad8e4.js",
         "/blog/runtime-es5.92012863247753dad8e4.js",
-        "/blog/styles.073240152ac0dd3bab3a.css"
+        "/blog/styles.8b5cb7bf3355d5c463c0.css"
       ],
       "patterns": []
     },
@@ -61,15 +61,15 @@
     "/blog/assets/img/numeric-7-box.svg": "534466df0a87c7d6edc3683a612c741da0d0b9a1",
     "/blog/assets/img/numeric-7-circle.svg": "6e1d760c3a7c926f9e5870f29aa2b86e7ded3961",
     "/blog/favicon.ico": "ba13e10002c3454a01e8fe16c1223c313d1483a2",
-    "/blog/index.html": "e04a4af9db5366100633fa83360d3ec63e88a7a1",
-    "/blog/main-es2015.6107d7bfd59ee5a2b170.js": "47b912539ea9dfd22ce05d7294e88dae80c236ef",
-    "/blog/main-es5.6107d7bfd59ee5a2b170.js": "1f69fa255a960f7aa9f16093e4a621adb6b87026",
+    "/blog/index.html": "5f79db9504a6f3bfeff6ef12772609c09cb79198",
+    "/blog/main-es2015.c92c9f75aefadc433b4b.js": "944ffbf06becc83d5a0dbcfb35d6a501b53399d4",
+    "/blog/main-es5.c92c9f75aefadc433b4b.js": "1f063d12f987c6f856731207b585dea5950d07f6",
     "/blog/manifest.webmanifest": "c4adb97ab4e1cc492cf5c425c4756417afb0f9bc",
     "/blog/polyfills-es2015.f332a089ad1600448873.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
-    "/blog/polyfills-es5.177e85a9724683782539.js": "8dc00539ffcf2fb967b5496bf0cb94a2828b4524",
+    "/blog/polyfills-es5.b13383c02142e13834f5.js": "2fbe40f8a902b796c7cd6009941e9f4c2fd85bdb",
     "/blog/runtime-es2015.92012863247753dad8e4.js": "9b5153b19348240df9123dfe8903d2c5663e13e4",
     "/blog/runtime-es5.92012863247753dad8e4.js": "9b5153b19348240df9123dfe8903d2c5663e13e4",
-    "/blog/styles.073240152ac0dd3bab3a.css": "c7b0ea12ae84ce81fd6ecc7914391a0548df2ef8"
+    "/blog/styles.8b5cb7bf3355d5c463c0.css": "9fadb8c2a6e6d8238b921187b025d2f89bc6c2aa"
   },
   "navigationUrls": [
     {
