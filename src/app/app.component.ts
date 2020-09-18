@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GithubService } from './services/github.service';
 import { GithubIssue } from './models/github-issue';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Util from './util/util';
 
 @Component({
   selector: 'app-root',
@@ -43,6 +44,11 @@ export class AppComponent implements OnInit {
   public loading = false;
 
   public searchKeyword = '';
+
+  public showSearchBar = false;
+
+  @ViewChild('searchInput') searchInput: ElementRef;
+
   /**
    * getGithubIssues
    */
@@ -61,10 +67,49 @@ export class AppComponent implements OnInit {
   }
 
   /**
+   * onSearchKeyword
+   */
+  public onSearchKeyword() {
+    if (this.searchKeyword) {
+      Util.navTo(this.githubService.getIssueSearchHtmlUrl(this.searchKeyword));
+    }
+  }
+
+  /**
    * clearSearchKeyword
    */
   public clearSearchKeyword() {
     this.searchKeyword = '';
+  }
+
+  /**
+   * onSearchIconClick
+   */
+  public onSearchIconClick() {
+    if (!this.showSearchBar) {
+      this.showSearchBar = true;
+      setTimeout(() => {
+        // this will make the execution after the above boolean has changed
+        this.searchInput.nativeElement.focus();
+      }, 0);
+    } else {
+      this.onSearchKeyword();
+    }
+  }
+
+  /**
+   * onCloseSearchBar
+   */
+  public onCloseSearchBar() {
+    this.clearSearchKeyword();
+    this.showSearchBar = false;
+  }
+
+  /**
+   * onViewBlogDetail
+   */
+  public onViewBlogDetail(issue: GithubIssue) {
+    Util.navTo(issue.htmlUrl);
   }
   ngOnInit(): void {
     this.getGithubIssues();

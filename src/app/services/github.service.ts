@@ -4,8 +4,7 @@ import { RenderService } from './render.service';
 import Util from '../util/util';
 import { GithubIssue } from '../models/github-issue';
 
-const allClosedIssuesUrl =
-  'https://api.github.com/repos/leoyoung07/blog/issues?state=closed&assignee=leoyoung07';
+const allClosedIssuesUrl = 'https://leo-blog-api.azurewebsites.net/blog/list';
 const publicEventsUrl = 'https://api.github.com/users/leoyoung07/events';
 const githubRootUrl = 'https://github.com/';
 const cache: { allClosedIssues?: GithubIssue[]; [key: string]: any } = {};
@@ -20,7 +19,7 @@ export class GithubService {
     if (cache.allClosedIssues) {
       return cache.allClosedIssues;
     } else {
-      const response = await axios.get(`${allClosedIssuesUrl}&__t=${Date.now()}`);
+      const response = await axios.get(allClosedIssuesUrl);
       const issues: GithubIssue[] = response.data.map((o) => {
         const issue: GithubIssue = {
           url: o.url,

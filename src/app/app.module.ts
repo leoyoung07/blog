@@ -9,9 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { LabelColorPipe } from './pipes/label-color.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LabelColorPipe],
   imports: [
     BrowserModule,
     FormsModule,

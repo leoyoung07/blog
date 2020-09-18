@@ -8,7 +8,7 @@ export interface GithubIssue {
   id: string;
   number: string;
   title: string;
-  labels: string;
+  labels: IssueLabel[];
   state: string;
   milestone: string;
   comments: string;
@@ -18,4 +18,9 @@ export interface GithubIssue {
   body: string;
   summary: string;
   newCommentUrl: string;
+}
+
+export interface IssueLabel {
+  name: string;
+  color: string;
 }

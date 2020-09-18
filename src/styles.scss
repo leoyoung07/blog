@@ -6,3 +6,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .hidden {
   display: none !important;
 }
+
+.mat-chip.small {
+  min-height: 24px;
+  font-size: 12px;
+}
