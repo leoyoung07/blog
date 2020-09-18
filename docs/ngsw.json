@@ -1,0 +1,92 @@
+{
+  "configVersion": 1,
+  "timestamp": 1600412179407,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main-es2015.6107d7bfd59ee5a2b170.js",
+        "/main-es5.6107d7bfd59ee5a2b170.js",
+        "/manifest.webmanifest",
+        "/polyfills-es2015.f332a089ad1600448873.js",
+        "/polyfills-es5.177e85a9724683782539.js",
+        "/runtime-es2015.0dae8cbc97194c7caed4.js",
+        "/runtime-es5.0dae8cbc97194c7caed4.js",
+        "/styles.073240152ac0dd3bab3a.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/img/github-circle-white-transparent.svg",
+        "/assets/img/numeric-7-box.svg",
+        "/assets/img/numeric-7-circle.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/img/github-circle-white-transparent.svg": "471786e88134491a36f0f31c72685936c87491e1",
+    "/assets/img/numeric-7-box.svg": "534466df0a87c7d6edc3683a612c741da0d0b9a1",
+    "/assets/img/numeric-7-circle.svg": "6e1d760c3a7c926f9e5870f29aa2b86e7ded3961",
+    "/favicon.ico": "ba13e10002c3454a01e8fe16c1223c313d1483a2",
+    "/index.html": "d619a7d4d10f4c13293bd42f42a8870ad2fd3e0a",
+    "/main-es2015.6107d7bfd59ee5a2b170.js": "47b912539ea9dfd22ce05d7294e88dae80c236ef",
+    "/main-es5.6107d7bfd59ee5a2b170.js": "1f69fa255a960f7aa9f16093e4a621adb6b87026",
+    "/manifest.webmanifest": "c4adb97ab4e1cc492cf5c425c4756417afb0f9bc",
+    "/polyfills-es2015.f332a089ad1600448873.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
+    "/polyfills-es5.177e85a9724683782539.js": "8dc00539ffcf2fb967b5496bf0cb94a2828b4524",
+    "/runtime-es2015.0dae8cbc97194c7caed4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/runtime-es5.0dae8cbc97194c7caed4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/styles.073240152ac0dd3bab3a.css": "c7b0ea12ae84ce81fd6ecc7914391a0548df2ef8"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
