@@ -22,25 +22,9 @@ export class GithubService {
       const response = await axios.get(allClosedIssuesUrl);
       const issues: GithubIssue[] = response.data.map((o) => {
         const issue: GithubIssue = {
-          url: o.url,
-          repositoryUrl: o.repository_url,
-          labelsUrl: o.labels_url,
-          commentsUrl: o.comments_url,
-          eventsUrl: o.events_url,
-          htmlUrl: o.html_url,
-          id: o.id,
-          number: o.number,
-          title: o.title,
-          labels: o.labels,
-          state: o.state,
-          milestone: o.milestone,
-          comments: o.comments,
-          createdAt: Util.getLocalDateTime(o.created_at),
-          updatedAt: Util.getLocalDateTime(o.updated_at),
-          closedAt: Util.getLocalDateTime(o.closed_at),
-          body: o.body,
+          ...o,
           summary: this.renderService.getSummary(o.body, 300),
-          newCommentUrl: o.html_url + '#new_comment_field',
+          newCommentUrl: o.htmlUrl + '#new_comment_field',
         };
         return issue;
       });
