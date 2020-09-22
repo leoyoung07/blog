@@ -7,7 +7,6 @@ import { GithubIssue } from '../models/github-issue';
 const allClosedIssuesUrl = 'https://leo-blog-api.azurewebsites.net/blog/list';
 const publicEventsUrl = 'https://api.github.com/users/leoyoung07/events';
 const githubRootUrl = 'https://github.com/';
-const cache: { allClosedIssues?: GithubIssue[]; [key: string]: any } = {};
 
 @Injectable({
   providedIn: 'root',
@@ -15,30 +14,21 @@ const cache: { allClosedIssues?: GithubIssue[]; [key: string]: any } = {};
 export class GithubService {
   constructor(private renderService: RenderService) {}
 
-  async fetchIssues() {
-    if (cache.allClosedIssues) {
-      return cache.allClosedIssues;
-    } else {
-      const response = await axios.get(allClosedIssuesUrl);
-      const issues: GithubIssue[] = response.data.map((o) => {
-        const issue: GithubIssue = {
-          ...o,
-          summary: this.renderService.getSummary(o.body, 300),
-          newCommentUrl: o.htmlUrl + '#new_comment_field',
-        };
-        return issue;
-      });
-      cache.allClosedIssues = issues;
-      return issues;
-    }
+  async fetchIssues(params?: any) {
+    const response = await axios.get(allClosedIssuesUrl, { params });
+    const issues: GithubIssue[] = response.data.map((o) => {
+      const issue: GithubIssue = {
+        ...o,
+        summary: this.renderService.getSummary(o.body, 300),
+        newCommentUrl: o.htmlUrl + '#new_comment_field',
+      };
+      return issue;
+    });
+    return issues;
   }
 
   fetchPublicEvents() {
     return new Promise((resolve, reject) => {
-      if (cache.publicEvents) {
-        resolve(cache.publicEvents);
-        return;
-      }
       axios
         .get(publicEventsUrl)
         .then((response) => {
@@ -60,7 +50,6 @@ export class GithubService {
                 htmlUrl: e.payload.issue.html_url,
               });
             }
-            cache.publicEvents = events;
             resolve(events);
           });
         })

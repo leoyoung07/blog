@@ -55,7 +55,9 @@ export class AppComponent implements OnInit {
   public async getGithubIssues() {
     try {
       this.loading = true;
-      this.githubIssues = await this.githubService.fetchIssues();
+      this.githubIssues = await this.githubService.fetchIssues({
+        q: this.searchKeyword,
+      });
     } catch (error) {
       console.error(error);
       this.snackBar.open(error, 'OK', {
@@ -69,10 +71,8 @@ export class AppComponent implements OnInit {
   /**
    * onSearchKeyword
    */
-  public onSearchKeyword() {
-    if (this.searchKeyword) {
-      Util.navTo(this.githubService.getIssueSearchHtmlUrl(this.searchKeyword));
-    }
+  public async onSearchKeyword() {
+    await this.getGithubIssues();
   }
 
   /**
@@ -100,9 +100,10 @@ export class AppComponent implements OnInit {
   /**
    * onCloseSearchBar
    */
-  public onCloseSearchBar() {
+  public async onCloseSearchBar() {
     this.clearSearchKeyword();
     this.showSearchBar = false;
+    await this.onSearchKeyword();
   }
 
   /**
