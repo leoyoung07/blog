@@ -10,9 +10,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { LabelColorPipe } from './pipes/label-color.pipe';
+import { BlogsComponent } from './blogs/blogs.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
-  declarations: [AppComponent, LabelColorPipe],
+  declarations: [AppComponent, LabelColorPipe, BlogsComponent, ToolbarComponent],
   imports: [
     BrowserModule,
     FormsModule,

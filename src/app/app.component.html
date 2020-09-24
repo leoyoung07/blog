@@ -4,84 +4,20 @@
       mode="indeterminate"
       [class.hidden]="!loading"
     ></mat-progress-bar>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <button mat-icon-button aria-label="7 icon">
-          <mat-icon svgIcon="numeric-7-circle">7</mat-icon>
-        </button>
-        <span>{{ title }}</span>
-        <span class="toolbar-spacer"></span>
-        <mat-form-field floatLabel="never" [class.hidden]="!showSearchBar">
-          <input
-            #searchInput
-            matInput
-            type="text"
-            [(ngModel)]="searchKeyword"
-            (keydown.enter)="onSearchKeyword()"
-          />
-          <mat-placeholder class="placeholder">Search Blogs</mat-placeholder>
-          <button
-            mat-button
-            matSuffix
-            mat-icon-button
-            aria-label="Clear"
-            (click)="onCloseSearchBar()"
-          >
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
-        <button
-          mat-icon-button
-          aria-label="Search icon"
-          (click)="onSearchIconClick()"
-        >
-          <mat-icon>search</mat-icon>
-        </button>
-        <button mat-icon-button aria-label="Github icon">
-          <mat-icon svgIcon="github-circle-white-transparent">github</mat-icon>
-        </button>
-      </mat-toolbar-row>
-
-      <mat-toolbar-row>
-        <span style="font-weight: normal; font-size: 16px"
-          >Keep It Simple Stupid.</span
-        >
-      </mat-toolbar-row>
-    </mat-toolbar>
+    <app-toolbar
+      [title]="title"
+      [(keyword)]="searchKeyword"
+      (search)="onSearchKeyword()"
+    ></app-toolbar>
   </div>
 
-  <div>
+  <div class="content">
     <mat-tab-group color="accent" backgroundColor="primary">
       <mat-tab label="Articles">
-        <div class="card-list-container">
-          <div class="card-list-wrapper">
-            <mat-card
-              *ngFor="let issue of githubIssues"
-              class="article-card"
-              (click)="onViewBlogDetail(issue)"
-            >
-              <mat-card-header>
-                <mat-card-title>{{ issue.title }}</mat-card-title>
-                <mat-card-subtitle>{{ issue.updatedAt | date }}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p>
-                  {{ issue.summary }}
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <mat-chip-list>
-                  <mat-chip
-                    class="small"
-                    *ngFor="let label of issue.labels"
-                    [style]="label.color | labelColor"
-                    >{{ label.name }}</mat-chip
-                  >
-                </mat-chip-list>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-        </div>
+        <app-blogs
+          [githubIssues]="githubIssues"
+          (viewBlogDetail)="onViewBlogDetail($event)"
+        ></app-blogs>
       </mat-tab>
       <mat-tab label="Tags"> Content 2 </mat-tab>
       <mat-tab label="Archives"> Content 3 </mat-tab>

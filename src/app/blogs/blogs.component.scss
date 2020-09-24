@@ -1,0 +1,15 @@
+.card-list-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-list-wrapper {
+  width: 80%;
+  padding: 20px;
+}
+
+.article-card {
+  margin: 10px 0;
+  cursor: pointer;
+}
