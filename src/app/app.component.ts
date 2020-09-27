@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GithubService } from './services/github.service';
-import { GithubIssue } from './models/github-issue';
+import { GithubIssue, IssueLabel } from './models/github-issue';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Util from './util/util';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-root',
@@ -16,21 +17,38 @@ export class AppComponent implements OnInit {
   ) {}
 
   public title = `Leo Young's Blog`;
-  public githubIssues: GithubIssue[] = [];
+  public blogs: GithubIssue[] = [];
+  public tags: IssueLabel[] = [];
 
   public loading = false;
 
   public searchKeyword = '';
 
+  public selectedTabIndex = 0;
+
   /**
    * getGithubIssues
    */
-  public async getGithubIssues() {
+  public async getBlogs() {
     try {
       this.loading = true;
-      this.githubIssues = await this.githubService.fetchIssues({
+      this.blogs = await this.githubService.fetchBlogs({
         q: this.searchKeyword,
       });
+    } catch (error) {
+      console.error(error);
+      this.snackBar.open(error, 'OK', {
+        duration: 5000,
+      });
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  public async getTags() {
+    try {
+      this.loading = true;
+      this.tags = await this.githubService.fetchTags();
     } catch (error) {
       console.error(error);
       this.snackBar.open(error, 'OK', {
@@ -45,7 +63,8 @@ export class AppComponent implements OnInit {
    * onSearchKeyword
    */
   public async onSearchKeyword() {
-    await this.getGithubIssues();
+    this.selectedTabIndex = 0;
+    await this.getBlogs();
   }
 
   /**
@@ -54,7 +73,26 @@ export class AppComponent implements OnInit {
   public onViewBlogDetail(issue: GithubIssue) {
     Util.navTo(issue.htmlUrl);
   }
+
+  /**
+   * onSelectedTabChange
+   */
+  public async onSelectedTabChange(e: MatTabChangeEvent) {
+    if (e.index === 0) {
+      await this.getBlogs();
+    } else if (e.index === 1) {
+      await this.getTags();
+    } else {
+    }
+  }
+
+  /**
+   * onTagSelected
+   */
+  public onTagClick(e: IssueLabel) {
+    Util.navTo(this.githubService.getLabelHtmlUrl(e.name));
+  }
   ngOnInit(): void {
-    this.getGithubIssues();
+    this.getBlogs();
   }
 }

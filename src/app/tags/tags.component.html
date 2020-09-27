@@ -1,0 +1,11 @@
+<div class="chip-list-container">
+  <mat-chip-list class="chip-list-wrapper">
+    <mat-chip
+      class="small"
+      *ngFor="let tag of tags"
+      [style]="tag.color | labelColor"
+      (click)="onChipClick(tag)"
+      >{{ tag.name }}</mat-chip
+    >
+  </mat-chip-list>
+</div>

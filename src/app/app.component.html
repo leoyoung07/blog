@@ -12,14 +12,22 @@
   </div>
 
   <div class="content">
-    <mat-tab-group color="accent" backgroundColor="primary">
+    <mat-tab-group
+      color="accent"
+      backgroundColor="primary"
+      (selectedTabChange)="onSelectedTabChange($event)"
+      [(selectedIndex)]="selectedTabIndex"
+    >
       <mat-tab label="Articles">
         <app-blogs
-          [githubIssues]="githubIssues"
+          [blogs]="blogs"
           (viewBlogDetail)="onViewBlogDetail($event)"
+          (tagClick)="onTagClick($event)"
         ></app-blogs>
       </mat-tab>
-      <mat-tab label="Tags"> Content 2 </mat-tab>
+      <mat-tab label="Tags">
+        <app-tags [tags]="tags" (tagClick)="onTagClick($event)"></app-tags>
+      </mat-tab>
       <mat-tab label="Archives"> Content 3 </mat-tab>
     </mat-tab-group>
   </div>

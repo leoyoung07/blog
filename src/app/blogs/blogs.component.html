@@ -1,25 +1,26 @@
 <div class="card-list-container">
   <div class="card-list-wrapper">
     <mat-card
-      *ngFor="let issue of githubIssues"
+      *ngFor="let blog of blogs"
       class="article-card"
-      (click)="onViewBlogDetail(issue)"
+      (click)="onViewBlogDetail(blog)"
     >
       <mat-card-header>
-        <mat-card-title>{{ issue.title }}</mat-card-title>
-        <mat-card-subtitle>{{ issue.updatedAt | date }}</mat-card-subtitle>
+        <mat-card-title>{{ blog.title }}</mat-card-title>
+        <mat-card-subtitle>{{ blog.updatedAt | date }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <p>
-          {{ issue.summary }}
+          {{ blog.summary }}
         </p>
       </mat-card-content>
       <mat-card-actions>
         <mat-chip-list>
           <mat-chip
             class="small"
-            *ngFor="let label of issue.labels"
+            *ngFor="let label of blog.labels"
             [style]="label.color | labelColor"
+            (click)="onTagClick(label)"
             >{{ label.name }}</mat-chip
           >
         </mat-chip-list>

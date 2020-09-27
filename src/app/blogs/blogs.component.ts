@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { GithubIssue } from '../models/github-issue';
+import { GithubIssue, IssueLabel } from '../models/github-issue';
 
 @Component({
   selector: 'app-blogs',
@@ -7,9 +7,10 @@ import { GithubIssue } from '../models/github-issue';
   styleUrls: ['./blogs.component.scss'],
 })
 export class BlogsComponent implements OnInit {
-  @Input() public githubIssues: GithubIssue[];
+  @Input() public blogs: GithubIssue[];
 
   @Output() viewBlogDetail = new EventEmitter<GithubIssue>();
+  @Output() tagClick = new EventEmitter<IssueLabel>();
   constructor() {}
 
   ngOnInit(): void {}
@@ -19,5 +20,12 @@ export class BlogsComponent implements OnInit {
    */
   public onViewBlogDetail(issue: GithubIssue) {
     this.viewBlogDetail.emit(issue);
+  }
+
+  /**
+   * onTagClick
+   */
+  public onTagClick(label: IssueLabel) {
+    this.tagClick.emit(label);
   }
 }

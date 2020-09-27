@@ -12,9 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { LabelColorPipe } from './pipes/label-color.pipe';
 import { BlogsComponent } from './blogs/blogs.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { TagsComponent } from './tags/tags.component';
 
 @NgModule({
-  declarations: [AppComponent, LabelColorPipe, BlogsComponent, ToolbarComponent],
+  declarations: [AppComponent, LabelColorPipe, BlogsComponent, ToolbarComponent, TagsComponent],
   imports: [
     BrowserModule,
     FormsModule,
