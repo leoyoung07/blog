@@ -13,9 +13,10 @@ import { LabelColorPipe } from './pipes/label-color.pipe';
 import { BlogsComponent } from './blogs/blogs.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TagsComponent } from './tags/tags.component';
+import { ArchivesComponent } from './archives/archives.component';
 
 @NgModule({
-  declarations: [AppComponent, LabelColorPipe, BlogsComponent, ToolbarComponent, TagsComponent],
+  declarations: [AppComponent, LabelColorPipe, BlogsComponent, ToolbarComponent, TagsComponent, ArchivesComponent],
   imports: [
     BrowserModule,
     FormsModule,

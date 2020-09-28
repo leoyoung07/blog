@@ -8,6 +8,7 @@
       [title]="title"
       [(keyword)]="searchKeyword"
       (search)="onSearchKeyword()"
+      (githubIconClick)="onGithubIconClick()"
     ></app-toolbar>
   </div>
 
@@ -28,7 +29,12 @@
       <mat-tab label="Tags">
         <app-tags [tags]="tags" (tagClick)="onTagClick($event)"></app-tags>
       </mat-tab>
-      <mat-tab label="Archives"> Content 3 </mat-tab>
+      <mat-tab label="Archives">
+        <app-archives
+          [archives]="archives"
+          (archiveClick)="onArchiveClick($event)"
+        ></app-archives>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </div>

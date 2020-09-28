@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubService } from './services/github.service';
-import { GithubIssue, IssueLabel } from './models/github-issue';
+import { GithubIssue, IssueLabel, IssueMilestone } from './models/github-issue';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Util from './util/util';
 import { MatTabChangeEvent } from '@angular/material/tabs';
@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   public title = `Leo Young's Blog`;
   public blogs: GithubIssue[] = [];
   public tags: IssueLabel[] = [];
+
+  public archives: IssueMilestone[] = [];
 
   public loading = false;
 
@@ -59,6 +61,20 @@ export class AppComponent implements OnInit {
     }
   }
 
+  public async getArchives() {
+    try {
+      this.loading = true;
+      this.archives = await this.githubService.fetchArchives();
+    } catch (error) {
+      console.error(error);
+      this.snackBar.open(error, 'OK', {
+        duration: 5000,
+      });
+    } finally {
+      this.loading = false;
+    }
+  }
+
   /**
    * onSearchKeyword
    */
@@ -82,6 +98,8 @@ export class AppComponent implements OnInit {
       await this.getBlogs();
     } else if (e.index === 1) {
       await this.getTags();
+    } else if (e.index === 2) {
+      await this.getArchives();
     } else {
     }
   }
@@ -91,6 +109,17 @@ export class AppComponent implements OnInit {
    */
   public onTagClick(e: IssueLabel) {
     Util.navTo(this.githubService.getLabelHtmlUrl(e.name));
+  }
+
+  public onArchiveClick(e: IssueMilestone) {
+    Util.navTo(`${e.htmlUrl}?closed=1`);
+  }
+
+  /**
+   * onGithubIconClick
+   */
+  public onGithubIconClick() {
+    Util.navTo(this.githubService.blogRepoUrl);
   }
   ngOnInit(): void {
     this.getBlogs();

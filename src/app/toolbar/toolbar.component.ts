@@ -24,6 +24,8 @@ export class ToolbarComponent implements OnInit {
 
   @Output() public search = new EventEmitter<string>();
 
+  @Output() public githubIconClick = new EventEmitter();
+
   public showSearchBar = false;
 
   @ViewChild('searchInput') searchInput: ElementRef;
@@ -91,5 +93,12 @@ export class ToolbarComponent implements OnInit {
   public clearSearchKeyword() {
     this.keyword = '';
     this.keywordChange.emit(this.keyword);
+  }
+
+  /**
+   * onGithubIconClick
+   */
+  public onGithubIconClick() {
+    this.githubIconClick.emit();
   }
 }

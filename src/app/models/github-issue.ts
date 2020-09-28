@@ -10,7 +10,7 @@ export interface GithubIssue {
   title: string;
   labels: IssueLabel[];
   state: string;
-  milestone: string;
+  milestone: IssueMilestone | null;
   comments: string;
   createdAt: string;
   updatedAt: string;
@@ -23,4 +23,15 @@ export interface GithubIssue {
 export interface IssueLabel {
   name: string;
   color: string;
+}
+
+export interface IssueMilestone {
+  url: string;
+  htmlUrl: string;
+  labelsUrl: string;
+  id: number;
+  nodeId: string;
+  number: number;
+  title: string;
+  description: string;
 }

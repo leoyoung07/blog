@@ -1,0 +1,11 @@
+<div class="chip-list-container">
+  <mat-chip-list class="chip-list-wrapper mat-chip-list-stacked">
+    <mat-chip
+      *ngFor="let archive of archives"
+      (click)="onChipClick(archive)"
+      color="accent"
+      selected
+      >{{ archive.description }}</mat-chip
+    >
+  </mat-chip-list>
+</div>

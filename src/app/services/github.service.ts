@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { RenderService } from './render.service';
 import Util from '../util/util';
-import { GithubIssue, IssueLabel } from '../models/github-issue';
+import { GithubIssue, IssueLabel, IssueMilestone } from '../models/github-issue';
 
 const blogApiUrl = 'https://leo-blog-api.azurewebsites.net/blog/list';
 const tagApiUrl = 'https://leo-blog-api.azurewebsites.net/label/list';
+const archiveApiUrl = 'https://leo-blog-api.azurewebsites.net/milestone/list';
 const githubRootUrl = 'https://github.com/';
+const githubBlogRepoUrl = 'https://github.com/leoyoung07/blog';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +33,17 @@ export class GithubService {
     const response = await axios.get(tagApiUrl, { params });
     const tags: IssueLabel[] = response.data.map((o) => {
       const tag: IssueLabel = {
+        ...o,
+      };
+      return tag;
+    });
+    return tags;
+  }
+
+  async fetchArchives(params?: any) {
+    const response = await axios.get(archiveApiUrl, { params });
+    const tags: IssueMilestone[] = response.data.map((o) => {
+      const tag: IssueMilestone = {
         ...o,
       };
       return tag;
@@ -66,5 +79,9 @@ export class GithubService {
 
   get userAvatarUrl() {
     return 'https://avatars1.githubusercontent.com/u/8199708?v=4';
+  }
+
+  get blogRepoUrl() {
+    return githubBlogRepoUrl;
   }
 }
