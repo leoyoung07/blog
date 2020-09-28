@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1600919971098,
+  "timestamp": 1601264380490,
   "index": "/blog/index.html",
   "assetGroups": [
     {
@@ -13,14 +13,14 @@
       "urls": [
         "/blog/favicon.ico",
         "/blog/index.html",
-        "/blog/main-es2015.5f94139aa846fa210b26.js",
-        "/blog/main-es5.5f94139aa846fa210b26.js",
+        "/blog/main-es2015.a45f74c1746d66b3d3f0.js",
+        "/blog/main-es5.a45f74c1746d66b3d3f0.js",
         "/blog/manifest.webmanifest",
         "/blog/polyfills-es2015.f332a089ad1600448873.js",
         "/blog/polyfills-es5.b13383c02142e13834f5.js",
         "/blog/runtime-es2015.92012863247753dad8e4.js",
         "/blog/runtime-es5.92012863247753dad8e4.js",
-        "/blog/styles.8b5cb7bf3355d5c463c0.css"
+        "/blog/styles.e3c6c9e705b705a28f2c.css"
       ],
       "patterns": []
     },
@@ -61,15 +61,15 @@
     "/blog/assets/img/numeric-7-box.svg": "534466df0a87c7d6edc3683a612c741da0d0b9a1",
     "/blog/assets/img/numeric-7-circle.svg": "6e1d760c3a7c926f9e5870f29aa2b86e7ded3961",
     "/blog/favicon.ico": "ba13e10002c3454a01e8fe16c1223c313d1483a2",
-    "/blog/index.html": "ef757d5d2507924fcc54396d2308981ad5275173",
-    "/blog/main-es2015.5f94139aa846fa210b26.js": "0e2a85a4b7a541644f1d59d856df6c982fa76ca4",
-    "/blog/main-es5.5f94139aa846fa210b26.js": "21d10198a1111198c176faf7e66775f454276379",
+    "/blog/index.html": "aee061273c9765575eda55ac65c4e0cd8cea4718",
+    "/blog/main-es2015.a45f74c1746d66b3d3f0.js": "d3efb2fd87ab0243a1602221375a73e630a17c1a",
+    "/blog/main-es5.a45f74c1746d66b3d3f0.js": "36056a8324751731b6f363cb9a0150c89aedf57c",
     "/blog/manifest.webmanifest": "c4adb97ab4e1cc492cf5c425c4756417afb0f9bc",
     "/blog/polyfills-es2015.f332a089ad1600448873.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
     "/blog/polyfills-es5.b13383c02142e13834f5.js": "2fbe40f8a902b796c7cd6009941e9f4c2fd85bdb",
     "/blog/runtime-es2015.92012863247753dad8e4.js": "9b5153b19348240df9123dfe8903d2c5663e13e4",
     "/blog/runtime-es5.92012863247753dad8e4.js": "9b5153b19348240df9123dfe8903d2c5663e13e4",
-    "/blog/styles.8b5cb7bf3355d5c463c0.css": "9fadb8c2a6e6d8238b921187b025d2f89bc6c2aa"
+    "/blog/styles.e3c6c9e705b705a28f2c.css": "c8c1531e9ed5ab59d377a7f70874429d64a0e22f"
   },
   "navigationUrls": [
     {
